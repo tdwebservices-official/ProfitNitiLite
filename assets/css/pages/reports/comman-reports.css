@@ -1,0 +1,142 @@
+select.assign_by {
+    min-width: 200px;
+  }
+  select.assign_by+span.select2 span.selection {
+    width: 100%;
+  }
+  form label.error {
+    color: red;
+    display: block;
+    width: 100%;
+}
+
+.extra-row-btn i {color: #487FFF;font-size: 24px;}
+
+a.extra-row-btn {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.sub-row{
+  display: none;
+}
+
+a.extra-row-btn.active i::before {
+    content: "\f1af";
+}
+
+a.show-acc-edit {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 5px;
+    color: #b9955e;
+}
+.hide-his-tr {
+    display: none !important;
+}
+.balance-sheet-table div table td, .balance-sheet-table div table th {
+    padding: 5px;
+}
+
+.balance-sheet-table div table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+.balance-sheet-table table.gridlines tr.row0,.balance-sheet-table table.gridlines tr.row1 {
+    display: none;
+}
+
+.balance-sheet-table table.gridlines tr.row0 td,.balance-sheet-table table.gridlines tr.row2 td {
+    background-color: var(--neutral-50) !important;
+    color: var(--text-primary-light) !important;
+    padding: 16px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    border-color: #EBECEF;
+        text-align: left !important;
+}
+
+html[data-theme="dark"] .balance-sheet-table table.gridlines td{
+    color: #000;
+}
+
+html[data-theme="dark"] .form-select,html[data-theme="dark"] .form-control,html[data-theme="dark"] textarea{
+   color: #000 !important;
+}
+
+
+.balance-sheet-table table.gridlines td {
+    font-family: Inter, sans-serif;
+    border-color: #EBECEF !important;
+    background: #fff !important;
+        text-align: left !important;
+    color: var(--text-secondary-light);
+    padding: 16px !important;
+    border-bottom: 1px solid var(--neutral-200);
+    background-color: var(--white);
+    vertical-align: middle;
+}
+.custom-table-box table {
+    border-radius: 0;
+}
+.custom-table-box table tr:nth-child(1), .custom-table-box table tr:nth-child(2) {
+    display: none;
+}
+.custom-table-box table tr td{
+        padding: 16px;
+            text-align: left;
+             font-family: Inter, sans-serif;
+                 background-color: #fff;
+}
+body .custom-table-box table tr:nth-child(3) td{
+    background-color: var(--neutral-50);
+    color: var(--text-primary-light);
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+}
+.custom-table-box table tr:nth-child(odd) td {
+    background-color: #fff;
+}
+.custom-table-box table tr td.negative,html[data-theme="dark"] .balance-sheet-table .custom-table-box table td.negative{
+    color: var(--danger-main);
+}
+html[data-theme="dark"] .balance-sheet-table .custom-table-box td{
+    color: #000;
+}
+html[data-theme="dark"] .balance-sheet-table .custom-table-box table tr:nth-child(3) td{
+    color: var(--text-primary-light);
+}
+.custom-table-box table tr td.shaky-td, html[data-theme="dark"] .balance-sheet-table .custom-table-box td.shaky-td {
+    color: #721c24;
+    font-weight: 600;
+   /* background-color: #f8d7da;*/
+}
+
+.custom-table-box table tr td.shaky-td span, html[data-theme="dark"] .balance-sheet-table .custom-table-box td.shaky-td span, .custom-table-box table tr td.steady-td span,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.steady-td span, .custom-table-box table tr td.strong-td span,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.strong-td span{
+    background-color: #f8d7da;
+    padding: 2px 15px;
+    border-radius: 6px;
+}
+
+.custom-table-box table tr td.steady-td,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.steady-td {
+        color: #856404;
+        font-weight: 600;
+   /*  background-color: #fff3cd;*/
+}
+.custom-table-box table tr td.steady-td span,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.steady-td span{
+    background-color: #fff3cd;
+}
+
+.custom-table-box table tr td.strong-td,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.strong-td {
+        color: #155724;
+        font-weight: 600;
+  /*   background-color: #d4edda;*/
+}
+.custom-table-box table tr td.strong-td span,html[data-theme="dark"] .balance-sheet-table .custom-table-box td.strong-td span{
+    background-color: #d4edda;
+}
