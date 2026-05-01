@@ -6,7 +6,7 @@
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">BS Category Report</h6>
+    <h6 class="fw-semibold mb-0">Business Health Report</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -15,7 +15,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">BS Category Report</li>
+      <li class="fw-medium">Business Health Report</li>
     </ul>
   </div>
 
@@ -49,7 +49,7 @@
 <div class="col-lg-12 mt-20 balance-sheet-table-box d-none">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title mb-0">BS Category</h5>
+            <h5 class="card-title mb-0">Business Health Report>
           </div>
           <div class="card-body">
             <div class="table-responsive balance-sheet-table">

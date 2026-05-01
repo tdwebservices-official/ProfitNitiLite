@@ -8,6 +8,12 @@
 .ui-datepicker-calendar,.ui-datepicker-current {
     display: none !important;
 }
+.balance-sheet-table table.gridlines tr.row0 td:not(:first-child) {
+    font-size: 0 !important;
+}
+.balance-sheet-table table.gridlines tr td {
+  font-size: 14.5px !important;
+}
 </style>
 
 @endsection
@@ -58,8 +64,15 @@
 
   <div class="col-lg-12 mt-20 balance-sheet-table-box d-none">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header  d-flex align-items-center justify-content-between">
             <h5 class="card-title mb-0">Cashflow</h5>
+             <select id="figureType" class="form-control" style="width:200px;">
+              <option value="1">Actual</option>
+              <option value="1000" selected>Thousands</option>
+              <option value="100000">Lakhs</option>
+              <option value="10000000">Crores</option>
+              <option value="1000000">Millions</option>
+            </select>
           </div>
           <div class="card-body">
             <div class="table-responsive balance-sheet-table">
@@ -83,14 +96,7 @@
             <div id="columnChart2" class=""></div>
           </div>
         </div>
-        <div class="card mt-20">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Cash Balance Over Time</h5>
-          </div>
-          <div class="card-body">
-            <div id="columnChart3" class=""></div>
-          </div>
-        </div>
+        
       </div>
 
 

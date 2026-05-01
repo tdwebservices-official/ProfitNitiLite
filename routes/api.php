@@ -30,8 +30,6 @@ Route::group(['middleware' => ['web','auth', 'permission404']], function() {
     Route::post('UploadMedia', [OptionsController::class, 'UploadMedia'])->name('attachments.add-update');
     Route::post('RemoveMedia', [OptionsController::class, 'RemoveMedia'])->name('attachments.remove');
 
-  
-
     Route::post('deleteKPIRecord', [KPIDataControlller::class, 'deleteKPIRecord'])->name('kpi-record.delete');
     Route::post('updateKPIRecord', [KPIDataControlller::class, 'updateKPIRecord'])->name('kpi-record.update');
     Route::post('storeKPIRecord', [KPIDataControlller::class, 'storeKPIRecord'])->name('kpi-record.store');
@@ -50,9 +48,12 @@ Route::group(['middleware' => ['web','auth', 'permission404']], function() {
     Route::post('getCashMngReport', [ReportController::class, 'getCashMngReport'])->name('reports.cash-mng-report');
     Route::post('getCapexReport', [ReportController::class, 'getCapexReport'])->name('reports.capex-report');
     Route::post('getFinancingReport', [ReportController::class, 'getFinancingReport'])->name('reports.financing-report');
+    Route::post('getImpactOfChangeReport', [ReportController::class, 'getImpactOfChangeReport'])->name('reports.impact-of-change-report');
+
     Route::post('getCashFlowQualityReport', [ReportController::class, 'getCashFlowQualityReport'])->name('reports.cashflow-quality-report');
     Route::post('getBSCategoryReport', [ReportController::class, 'getBSCategoryReport'])->name('reports.bs-category-report');
     Route::post('getDashboardReports', [DashboardController::class, 'getDashboardReports'])->name('dashboard.report');
+    Route::post('generateDashboardDataWithDeepSeek', [DashboardController::class, 'generateDashboardDataWithDeepSeek'])->name('dashboard.deepseekAPI');
 
       /*  Route::post('/calculate/multi-product', 'FinancialCalculatorController@calculateMultiProduct')->name('financial-calculator.multi-product');
         Route::post('/calculate/seasonal', 'FinancialCalculatorController@calculateSeasonal')->name('financial-calculator.seasonal');

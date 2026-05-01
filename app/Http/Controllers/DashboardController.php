@@ -18,9 +18,14 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Row;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use Illuminate\Support\Facades\Auth;
+use App\Services\DeepSeekService;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use Illuminate\Support\Facades\Storage;
+use App\Services\PdfService;
 use DB;
 use Validator;
 use File;
+
 
 class DashboardController extends Controller{
 
@@ -35,8 +40,9 @@ class DashboardController extends Controller{
   public $financing_report_list;
   public $profitloss_report_list;
   public $cashflow_quality_report_list;
+  protected $deepseek;
 
-  function __construct() {
+  function __construct( DeepSeekService $deepseek, PdfService $pdf ) {
 
     $this->financial_summary_list = config('chart-of-accounts.financial_summary_list');
     $this->power_profit_report_list = config('chart-of-accounts.power_profit_report_list');
@@ -49,6 +55,9 @@ class DashboardController extends Controller{
     $this->balance_sheet_list_keys = config('chart-of-accounts.default_keys');
     $this->new_financial_summary_report_list = config('chart-of-accounts.new_financial_summary_report_list');
     $this->financing_report_list = config('chart-of-accounts.financing_report_list');
+
+    $this->deepseek = $deepseek;
+    $this->pdf = $pdf;
   }
 
   /* Display Dashboard Page */
@@ -78,21 +87,115 @@ class DashboardController extends Controller{
       return view('auth.login');
     }
   }
+
+  public function generateDashboardDataWithDeepSeek( Request $request  ){
+
+    $prompt_html = $request->get('prompt_html'); 
+    $type = $request->get('type'); 
+
+    if( $type == 'ProfitCashflow' ){
+      $content_prompt = 'You are a financial analyst. Below is an HTML dashboard showing Profit vs Cash Flow.
+
+      '.$prompt_html.'
+      ---
+
+      Based only on the numbers in this dashboard, write ONE short paragraph (like the example below) that explains:
+
+      - The relationship between operating cash profit (from profit walk), operating cash flow (from cash walk), and reported profit (from reconciliation).
+      - The impact of working capital and any capital surplus/withdrawal.
+      - The final net cash result and why profit is not converting into cash.
+
+      Example style (use this as a template, but replace with YOUR actual figures):
+      "Operating cash flow (₹2.69 Cr) is HIGHER than operating cash profit (₹24.6 L) — driven by strong collections this month. However, working capital absorbed ₹2.44 Cr, and a capital surplus of ₹1.36 Cr from other capital sources partly offset it. Net result: business generated approximately (₹77.5 L) of negative cash this month — the profit shown is NOT fully converting into cash."
+
+      Use your numbers: operating cash profit (from "Operating cash profit" row in profit walk), operating cash flow (from "Operating cash flow" row in cash walk), reported profit (from "Profit" row in reconciliation), working capital change (from "Working capital" row in reconciliation), and other capital or capital withdrawal as applicable.
+
+      Output only the paragraph – no extra text.';
+    }else if( $type == 'WorkingCapital' ){
+      $content_prompt = 'You are a financial analyst. Below is an HTML dashboard with Profit vs Cash Flow data.
+
+      '.$prompt_html.'
+
+      Based ONLY on the numbers in this dashboard, calculate the following working capital metrics:
+
+      - **A/R days** (Days Sales Outstanding) = (Average receivables / Revenue) × 365  
+        *If receivables are not directly shown, estimate using: (Revenue – Cash from customer) as the change in receivables, then derive average.*
+      - **A/P days** (Days Payables Outstanding) = (Average payables / COGS) × 365  
+        *Estimate payables from: (COGS + change in inventory?) – but simplest: use (Purchases – Cash to supplier). Use given COGS and cash to supplier.*
+      - **Inventory days** = (Inventory / COGS) × 365  
+        *If inventory not shown, infer from the gap between COGS and cash to supplier (i.e., purchases vs COGS).*
+
+      Then write **exactly one sentence** (max 25 words) in this format:
+
+      "A/P days (X) are much higher than A/R days (Y) — suppliers are funding the business. Inventory of Z days is on the heavier side."
+
+      Replace X, Y, Z with your calculated numbers (rounded to whole days). Do not add any extra text or explanation.';
+    }else if( $type == 'FinancialRatio' ){
+      $content_prompt = 'You are a financial analyst. Below is an HTML dashboard showing key financial ratios for a business.
+
+      '.$prompt_html.'
+
+      Based ONLY on the numbers in this HTML, write ONE short paragraph (2–3 sentences) that:
+
+      - Comments on profitability metrics: Return on Equity (ROE) and Interest Coverage. Use the exact values shown (e.g., "ROE X%, Interest coverage Yx").
+      - Highlights the most concerning ratio(s) among liquidity (current ratio, quick ratio) and leverage (debt/equity).
+      - Gives a specific, actionable recommendation (e.g., deleverage, raise equity, improve quick ratio).
+
+      Use this example style (but replace with YOUR actual numbers from the HTML):
+      "Profitability metrics (ROE 108.8%, Interest coverage 12.7x) are exceptional, but liquidity and leverage need attention. Debt-to-equity at 1.93x is the most pressing concern — consider deleveraging or raising equity. Quick ratio below 1.0x means without selling inventory, the business cannot cover short-term obligations."
+
+      Output only the paragraph – no extra text.';
+    }
+
+    $messages = [
+      ['role' => 'system', 'content' => 'You are a financial analyst.'],
+      [
+        'role' => 'user',
+        'content' =>  $content_prompt
+      ],
+    ];
+    try {
+      $resp = $this->deepseek->chat($messages, 'deepseek-chat');
+      $content = data_get($resp, 'choices.0.message.content', null);
+      return response()->json([
+        'status' => 'success',
+        'content' => $content
+      ]);
+    } catch (\Exception $e) {
+      return response()->json([
+        'status' => 'error',
+        'message' => $e->getMessage()
+      ], 500);
+    }
+  }
   
   public function getDashboardReports( Request $request ){
     try {
-        
+       
+
       $list_data = $this->dashboard_report( $request );
+     
       $bs_category = different_ratio_output( 'BS Category', $list_data );
 
       $bs_category['current_month'] = $bs_category['current_month'] .' - '. final_give_bs_category_weight( $bs_category['current_month'] );
-      $bs_category['last_month'] = $bs_category['last_month'] .' - '. final_give_bs_category_weight( $bs_category['last_month'] );
+      $bs_category['last_month'] = $bs_category['last_month'] .' - '. final_give_bs_category_weight( $bs_category['last_month'] );  
 
       $report_data = [
         
         'Sales' => [ 'data' => different_ratio_output( 'Sales', $list_data ), 'noInt' => 0 ],
+        'Overheads' => [ 'data' => different_ratio_output( 'Overheads', $list_data ), 'noInt' => 0 ],
+        'COGS' => [ 'data' => different_ratio_output( 'COGS', $list_data ), 'noInt' => 0 ],
         'Gross Margin' => [ 'data' => different_ratio_output( 'Gross Profit', $list_data ), 'noInt' => 0 ],
+        'Gross Mrg Perc' => [ 'data' => different_ratio_output( 'Gross Mrg Perc', $list_data ), 'noInt' => 0 ],
+        'Net Mrg Perc' => [ 'data' => different_ratio_output( 'Net Mrg Perc', $list_data ), 'noInt' => 0 ],
+        'CurrentRatio' => [ 'data' => different_ratio_output( "CurrentRatio", $list_data ), 'noInt' => 0 ],      
+        'QuickRatio' => [ 'data' => different_ratio_output( "QuickRatio", $list_data ), 'noInt' => 0 ],      
+        'DebtToEquity' => [ 'data' => different_ratio_output( "DebtToEquity", $list_data ), 'noInt' => 0 ],      
+        'Interest Cover' => [ 'data' => different_ratio_output( "Interest Cover", $list_data ), 'noInt' => 0 ],      
+        'Return on equity' => [ 'data' => different_ratio_output( "Return on equity", $list_data ), 'noInt' =>0 ],
+        'Operating Cash Flow' => [ 'data' => different_ratio_output( "Operating Cash Flow", $list_data ), 'noInt' =>0 ],
         'Operating Profit' => [ 'data' => different_ratio_output( 'Operating Profit', $list_data ), 'noInt' => 0 ],
+        'Retained Profit' => [ 'data' => different_ratio_output( 'Retained Profit', $list_data ), 'noInt' => 0 ],
         'Break Even Sales' => [ 'data' => different_ratio_output( 'Break Even Sales', $list_data ), 'noInt' => 0 ],
         'Fixed Assets' => [ 'data' => different_ratio_output( 'Fixed Assets', $list_data ), 'noInt' => 0 ],
         'Other Assets' => [ 'data' => different_ratio_output( 'Other Assets List', $list_data ), 'noInt' => 0 ],
@@ -107,6 +210,7 @@ class DashboardController extends Controller{
         'Accounts Payable' => [ 'data' => different_ratio_output( 'Accounts Payable', $list_data ), 'noInt' => 0 ],
         'A/P Days' => [ 'data' => different_ratio_output( 'A/P Days', $list_data ), 'noInt' => 0 ],
         'Working Capital' => [ 'data' => different_ratio_output( 'Working Capital', $list_data ), 'noInt' => 0 ],
+        'Capital Withdrawn' => [ 'data' => different_ratio_output( 'Capital Withdrawn', $list_data ), 'noInt' => 0 ],
         'W/C Days' => [ 'data' => different_ratio_output( 'W/C Days', $list_data ), 'noInt' => 0 ],
         'Closing Stock' => [ 'data' => different_ratio_output( 'Closing Stock', $list_data ), 'noInt' => 0 ],
         'Inventory Days' => [ 'data' => different_ratio_output( 'Inventory Days', $list_data ), 'noInt' => 0 ],
@@ -615,7 +719,16 @@ class DashboardController extends Controller{
     $cell_wise_item['BS Category'] = ['A' => 'BS Category'];
     $cell_wise_item['Total Overheads'] = ['A' => 'Total Overheads'];
     $cell_wise_item['Gross Mrg Perc'] = ['A' => 'Gross Mrg Perc'];
-    
+    $cell_wise_item['Net Mrg Perc'] = ['A' => 'Net Mrg Perc'];
+    $cell_wise_item['CurrentRatio'] = ['A' => 'Current Ratio'];
+    $cell_wise_item['QuickRatio'] = ['A' => 'Quick Ratio'];
+    $cell_wise_item['DebtToEquity'] = ['A' => 'Debt to Equity'];
+    $cell_wise_item['Interest Cover'] = ['A' => 'Interest Cover'];
+    $cell_wise_item['Return on equity'] = ['A' => 'Return on equity'];
+    $cell_wise_item['Capital Withdrawn'] = ['A' => 'Capital Withdrawn'];
+    $cell_wise_item['Operating Cash Flow'] = ['A' => 'Operating Cash Flow'];
+
+
     $next_index = 'A';
     foreach($column_width_list as $column_key => $column_width ){
         if( $column_key != 'A' ){
@@ -634,6 +747,10 @@ class DashboardController extends Controller{
             $cell_wise_item['Total Overheads'][ $column_key ] = convert_decimal_format( $total_overheads );
             $gross_mrg_perc = comman_module_formula( (float)str_replace(',','',$cell_wise_item['Sales'][$column_key]), (float)str_replace(',','',$cell_wise_item['Gross Profit'][$column_key]), 2 );
             $cell_wise_item['Gross Mrg Perc'][ $column_key ] = $gross_mrg_perc;
+
+            $net_mrg_perc = comman_module_formula( (float)str_replace(',','',$cell_wise_item['Sales'][$column_key]), (float)str_replace(',','',$cell_wise_item['Profit after Tax'][$column_key]), 2 );
+            $cell_wise_item['Net Mrg Perc'][ $column_key ] = $net_mrg_perc;
+
             $break_even_sales = comman_module_formula( $gross_mrg_perc, $total_overheads, 2 );
             $cell_wise_item['Break Even Sales'][ $column_key ] = convert_decimal_format($break_even_sales);
             
@@ -647,7 +764,6 @@ class DashboardController extends Controller{
             $cell_wise_item['A/P Days'][ $column_key ] = convert_decimal_format($acc_pay_days);
             $cell_wise_item['Inventory Days'][ $column_key ] = convert_decimal_format($inventory_days);
             $cell_wise_item['W/C Days'][ $column_key ] = convert_decimal_format($wc_capital_days);
-            
             
             $working_capital = ( (float)str_replace(',','',$cell_wise_item['Accounts Receivable'][$column_key]) + (float)str_replace(',','',$cell_wise_item['Closing Stock'][$column_key]) ) - (float)str_replace(',','',$cell_wise_item['Accounts Payable'][$column_key]);
             $working_capital = round($working_capital,2);
@@ -679,17 +795,24 @@ class DashboardController extends Controller{
             $old_closing_st = isset($cell_wise_item['Closing Stock'][$next_index]) ? str_replace(',', '', $cell_wise_item['Closing Stock'][$next_index]) : 0;
             $old_acc_pay = isset($cell_wise_item['Accounts Payable'][$next_index]) ? str_replace(',', '', $cell_wise_item['Accounts Payable'][$next_index]) : 0;
             $Depreciation = isset($cell_wise_item['Depreciation & Amortization'][$next_index]) ? str_replace(',', '', $cell_wise_item['Depreciation & Amortization'][$next_index]) : 0;
+            $retPFT = isset($cell_wise_item['Retained Profit'][$next_index]) ? str_replace(',', '', $cell_wise_item['Retained Profit'][$next_index]) : 0;
             
+
+
             if( $Current_Liabilities != 0 ){
                $current_ratio =  round( (float)$Current_Assets / (float)$Current_Liabilities,2);
             }
-
-
 
             $quick_ratio = 0;
             if( $Current_Liabilities != 0 ){
                 $quick_ratio = ( (float)$Current_Assets - (float)$closing_stocks ) / (float)$Current_Liabilities;
             }
+
+
+            $cell_wise_item['CurrentRatio'][ $column_key ] = convert_decimal_format($current_ratio,2);
+            $cell_wise_item['QuickRatio'][ $column_key ] = convert_decimal_format($quick_ratio,2);
+
+            $cell_wise_item['Capital Withdrawn'][ $column_key ] = convert_decimal_format((float)$retPFT + (float)$Equity);
 
             $total_debt = $bank_loan_current  +  $bank_loan_non_current;
             $total_debt = round($total_debt, 2);
@@ -697,6 +820,8 @@ class DashboardController extends Controller{
             if( $total_debt > 0 ){
                 $debt_equity = round( $total_debt / $Equity, 2 );
             }
+
+            $cell_wise_item['DebtToEquity'][ $column_key ] = convert_decimal_format($debt_equity,2);
 
             $n_cell_val1 = ( $fixed_assets + $other_non_current_assets + $other_current_assets ) - ( $other_current_liability -  $other_none_current_liability );
             $n_cell_val1 = round($n_cell_val1,2);
@@ -709,6 +834,7 @@ class DashboardController extends Controller{
                 $asset_tunover = ( $revenue *  count($data_column_range) / 1 ) / $n_cell_val4;
                 $asset_tunover = round($asset_tunover,2);
             } 
+
 
 
             //   if( $column_key == 'C' ){
@@ -732,13 +858,14 @@ class DashboardController extends Controller{
             //   'Capex Coverage' =>  $Capex_Coverage ]);
             // }
 
-
              
             $roe = 0;
             if ( (float)$Equity / 100 != 0) {
                 $roe  = ( (float)$profit_after_tax * count($data_column_range) / 1 ) / ( (float)$Equity  / 100);
                 $roe = round($roe,2);
             }
+
+            $cell_wise_item['Return on equity'][ $column_key ] = convert_decimal_format($roe,2);
     
             $rot = 0;
             if ( (float)$total_assets  / 100 != 0) {
@@ -753,7 +880,9 @@ class DashboardController extends Controller{
            if( (float)$operating_profit > 0 ){
                 $Interest_Cover = round( ((float)$interest_charge / (float)$operating_profit) * 100, 2 );
             }
-    
+      
+            $cell_wise_item['Interest Cover'][ $column_key ] = convert_decimal_format($Interest_Cover,2);
+
             $rec_days = comman_cashmg_formula( $revenue, $acc_rec, 1,  count($data_column_range), 2 );
             $invt_days = comman_cashmg_formula( $cogs, $closing_stocks, 1,  count($data_column_range), 2 );
             $pay_days = comman_cashmg_formula( $cogs, $acc_pay, 1,  count($data_column_range), 2 );
@@ -767,6 +896,9 @@ class DashboardController extends Controller{
             $cash_acc_pay = (float)$acc_pay - (float)$old_acc_pay;
     
             $operating_cash_flow =  $operating_cash_profit - $cash_acc_rec - $cash_closing_st + ( $cash_acc_pay );
+
+            $cell_wise_item['Operating Cash Flow'][ $column_key ] = convert_decimal_format($operating_cash_flow);
+
             $Operating_CF_Margin = ($revenue > 0) ? round( $operating_cash_flow / $revenue, 2 ) : 0;
             $Cash_Flow_Coverage = ($Current_Liabilities > 0) ? round( $operating_cash_flow / $Current_Liabilities, 2 ) : 0;                    
             $Cash_Flow_Debt = ($total_debt > 0) ? round( $operating_cash_flow / $total_debt, 2 ) : 0;                    
