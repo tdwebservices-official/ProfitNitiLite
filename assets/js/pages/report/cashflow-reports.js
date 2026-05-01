@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
         );
     }
 
-        function waterfullchart() {
+    function waterfullchart() {
 
     const chartData = {
         operating: [],
@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
         financing: []
     };
 
-    // ✅ Extract data safely with flexible matching
+    // Extract data
     $('#sheet0 tbody tr').each(function () {
 
         let label = $(this).find('td:first').text().trim().toLowerCase();
@@ -48,45 +48,11 @@ jQuery(document).ready(function() {
         }
     });
 
-
-
-    // ✅ Extract Dates
+    // Extract Dates
     const dates = [];
     $('#sheet0 .row1 td:not(:first)').each(function () {
         dates.push($(this).text().trim());
     });
-
-    let categories = [];
-    let base = [];
-    let values = [];
-
-    let runningTotal = 0;
-
-    dates.forEach((date, i) => {
-
-        let operating = chartData.operating[i] || 0;
-        let investing = chartData.investing[i] || 0;
-        let financing = chartData.financing[i] || 0;
-
-        // 🔹 Operating
-        categories.push(`${date} Operating`);
-        base.push(runningTotal);
-        values.push(operating);
-        runningTotal += operating;
-
-        // 🔹 Investing
-        categories.push(`${date} Investing`);
-        base.push(runningTotal);
-        values.push(investing);
-        runningTotal += investing;
-
-        // 🔹 Financing
-        categories.push(`${date} Financing`);
-        base.push(runningTotal);
-        values.push(financing);
-        runningTotal += financing;
-    });
-
 
     const options = {
         chart: {
@@ -96,33 +62,29 @@ jQuery(document).ready(function() {
         },
         series: [
             {
-                name: 'Base',
-                data: base
+                name: 'Operating',
+                data: chartData.operating
             },
             {
-                name: 'Value',
-                data: values
+                name: 'Investing',
+                data: chartData.investing
+            },
+            {
+                name: 'Financing',
+                data: chartData.financing
             }
         ],
-        colors: [
-            'transparent',
-            function ({ value }) {
-                return value >= 0 ? '#00E396' : '#FF4560';
-            }
-        ],
+        colors: ['#00E396', '#FEB019', '#FF4560'],
         plotOptions: {
             bar: {
                 horizontal: false
             }
         },
         dataLabels: {
-            enabled: true,
-            formatter: function (val, opts) {
-                return opts.seriesIndex === 1 ? val : '';
-            }
+            enabled: true
         },
         xaxis: {
-            categories: categories,
+            categories: dates,
             labels: {
                 rotate: -45
             }
@@ -134,22 +96,17 @@ jQuery(document).ready(function() {
         },
         tooltip: {
             y: {
-                formatter: function (val, opts) {
-                    return opts.seriesIndex === 1 ? val : '';
-                }
+                formatter: val => val
             }
-        },
-        legend: {
-            show: false
         }
     };
 
-    // ✅ Destroy previous chart if exists
+    // Destroy previous chart
     if (window.chart1) {
         window.chart1.destroy();
     }
 
-    // ✅ Render chart
+    // Render
     window.chart1 = new ApexCharts(
         document.querySelector("#columnChart1"),
         options
@@ -157,6 +114,148 @@ jQuery(document).ready(function() {
 
     window.chart1.render();
 }
+
+    function ddwaterfullchart() {
+
+        const chartData = {
+            operating: [],
+            investing: [],
+            financing: []
+        };
+
+        // ✅ Extract data safely with flexible matching
+        $('#sheet0 tbody tr').each(function () {
+
+            let label = $(this).find('td:first').text().trim().toLowerCase();
+
+            let values = [];
+            $(this).find('td:not(:first)').each(function () {
+                let val = $(this).text().replace(/,/g, '').trim();
+                values.push(parseFloat(val) || 0);
+            });
+
+            if (label.includes('operating activity')) {
+                chartData.operating = values;
+            }
+
+            if (label.includes('investing activity')) {
+                chartData.investing = values;
+            }
+
+            if (label.includes('financing activity')) {
+                chartData.financing = values;
+            }
+        });
+
+
+
+        // ✅ Extract Dates
+        const dates = [];
+        $('#sheet0 .row1 td:not(:first)').each(function () {
+            dates.push($(this).text().trim());
+        });
+
+        let categories = [];
+        let base = [];
+        let values = [];
+
+        let runningTotal = 0;
+
+        dates.forEach((date, i) => {
+
+            let operating = chartData.operating[i] || 0;
+            let investing = chartData.investing[i] || 0;
+            let financing = chartData.financing[i] || 0;
+
+            // 🔹 Operating
+            categories.push(`${date} Operating`);
+            base.push(runningTotal);
+            values.push(operating);
+            runningTotal += operating;
+
+            // 🔹 Investing
+            categories.push(`${date} Investing`);
+            base.push(runningTotal);
+            values.push(investing);
+            runningTotal += investing;
+
+            // 🔹 Financing
+            categories.push(`${date} Financing`);
+            base.push(runningTotal);
+            values.push(financing);
+            runningTotal += financing;
+        });
+
+
+        const options = {
+            chart: {
+                type: 'bar',
+                stacked: true,
+                height: 500
+            },
+            series: [
+                {
+                    name: 'Base',
+                    data: base
+                },
+                {
+                    name: 'Value',
+                    data: values
+                }
+            ],
+            colors: [
+                'transparent',
+                function ({ value }) {
+                    return value >= 0 ? '#00E396' : '#FF4560';
+                }
+            ],
+            plotOptions: {
+                bar: {
+                    horizontal: false
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val, opts) {
+                    return opts.seriesIndex === 1 ? val : '';
+                }
+            },
+            xaxis: {
+                categories: categories,
+                labels: {
+                    rotate: -45
+                }
+            },
+            yaxis: {
+                labels: {
+                    formatter: val => val
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val, opts) {
+                        return opts.seriesIndex === 1 ? val : '';
+                    }
+                }
+            },
+            legend: {
+                show: false
+            }
+        };
+
+        // ✅ Destroy previous chart if exists
+        if (window.chart1) {
+            window.chart1.destroy();
+        }
+
+        // ✅ Render chart
+        window.chart1 = new ApexCharts(
+            document.querySelector("#columnChart1"),
+            options
+        );
+
+        window.chart1.render();
+    }
 
 
 // Your input data
@@ -218,131 +317,6 @@ var options2 = {
     var chart2 = new ApexCharts(document.querySelector("#columnChart2"), options2);
     chart2.render();
 
-var options3 = {
-            series: [{
-                name: 'New Patient',
-                data: [48, 35, 55, 32, 48, 30, 55, 50, 57]
-            }, {
-                name: 'Old Patient',
-                data: [12, 20, 15, 26, 22, 60, 40, 48, 25]
-            }],
-            legend: {
-                show: false 
-            },
-            chart: {
-                type: 'area',
-                width: '100%',
-                height: 270,
-                toolbar: {
-                    show: false
-                },
-                padding: {
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 3,
-                colors: ['#487FFF', '#FF9F29'], // Use two colors for the lines
-                lineCap: 'round'
-            },
-            grid: {
-                show: true,
-                borderColor: '#D1D5DB',
-                strokeDashArray: 1,
-                position: 'back',
-                xaxis: {
-                    lines: {
-                        show: false
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                row: {
-                    colors: undefined,
-                    opacity: 0.5
-                },
-                column: {
-                    colors: undefined,
-                    opacity: 0.5
-                },
-                padding: {
-                    top: -20,
-                    right: 0,
-                    bottom: -10,
-                    left: 0
-                },
-            },
-            colors: ['#487FFF', '#FF9F29'], // Set color for series
-            fill: {
-                type: 'gradient',
-                colors: ['#487FFF', '#FF9F29'], 
-                
-                gradient: {
-                    shade: 'light',
-                    type: 'vertical',
-                    shadeIntensity: 0.5,
-                    gradientToColors: [undefined, '#FF9F2900'], // Apply transparency to both colors
-                    inverseColors: false,
-                    opacityFrom: [0.4, 0.6], // Starting opacity for both colors
-                    opacityTo: [0.3, 0.3], // Ending opacity for both colors
-                    stops: [0, 100],
-                },
-            },
-            markers: {
-                colors: ['#487FFF', '#FF9F29'], // Use two colors for the markers
-                strokeWidth: 3,
-                size: 0,
-                hover: {
-                    size: 10
-                }
-            },
-            xaxis: {
-                labels: {
-                    show: false
-                },
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                tooltip: {
-                    enabled: false
-                },
-                labels: {
-                    formatter: function (value) {
-                        return value;
-                    },
-                    style: {
-                        fontSize: "14px"
-                    }
-                }
-            },
-            yaxis: {
-              labels: {
-                formatter: function (val) {
-                    return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-                }
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return val.toLocaleString('en-IN');
-                }
-            }
-        },
-        };
-
-        var chart3 = new ApexCharts(document.querySelector('#columnChart3'), options3);
-        chart3.render();
-  
-
     $('#cashflow-report-form').validate({
         // Validate only visible fields
         ignore: ":hidden",
@@ -397,60 +371,46 @@ var options3 = {
 
                         jQuery('.balance-sheet-table-box').removeClass('d-none');
                         jQuery('.balance-sheet-table').html(res.table_html);
+
+                         setDataAttributeTB();
+
+                        setTimeout(function() {
+                            // Trigger once for default selection
+                            $("#figureType").trigger("change");
+                        },150);
                         
                         var report_itemObj = get_report_item_list();
 
                         waterfullchart();
 
-
                         const r_data = {
-    "Trade Receivables": report_itemObj['Trade Receivables'],
-    "Trade Payables": report_itemObj['Trade Payables'],
-    "Inventory": report_itemObj['Inventory'],
-    "Equity": report_itemObj['Equity'],
-    "Borrowings": report_itemObj['Borrowings'],
-    "Others": report_itemObj['Others']
-};
+                            "Trade Receivables": report_itemObj['Trade Receivables'],
+                            "Trade Payables": report_itemObj['Trade Payables'],
+                            "Inventory": report_itemObj['Inventory'],
+                            "Equity": report_itemObj['Equity'],
+                            "Borrowings": report_itemObj['Borrowings'],
+                            "Others": report_itemObj['Others']
+                        };
 
-const r_categories = Object.keys(r_data);
+                        const r_categories = Object.keys(r_data);
 
-// series = months
-const r_series = res.chart_header.map((month, i) => ({
-    name: month,
-    data: r_categories.map(cat => r_data[cat][i] || 0)
-}));
+                        // series = months
+                        const r_series = res.chart_header.map((month, i) => ({
+                            name: month,
+                            data: r_categories.map(cat => r_data[cat][i] || 0)
+                        }));
 
-// colors
-const colors = generateNiceColors(res.chart_header.length);
+                        // colors
+                        const colors = generateNiceColors(res.chart_header.length);
 
-// ✅ FINAL FIX
-chart2.updateOptions({
-    series: r_series,
-    colors: colors,
-    xaxis: {
-        categories: r_categories   // ✅ MUST be items
-    }
-});
-
-
-                        chart3.updateOptions({
+                        // ✅ FINAL FIX
+                        chart2.updateOptions({
+                            series: r_series,
+                            colors: colors,
                             xaxis: {
-                                categories: res.chart_header
+                                categories: r_categories   // ✅ MUST be items
                             }
                         });
-
-                        chart3.updateSeries([
-                            {
-                                name: 'Cash at Beginning of Period',
-                                data: report_itemObj['Cash at Beginning of Period']
-                            },
-                            {
-                                name: 'Cash at End of Period',
-                                data: report_itemObj['Cash at End of Period']
-                            }
-                        ]);
-
-
                     }
                     if( res.status == 'error' ){
                        swal.fire({

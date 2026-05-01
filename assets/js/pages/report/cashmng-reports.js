@@ -7,81 +7,6 @@ jQuery(document).ready(function() {
     }
 });
 
- 
-     createChartTwo('columnChart3', '#E30A0A', '#FF9F29', '#144BD6', '#45B369');
-    
-
-
-     var options4 = {
-        series: [{
-            name: 'Ticket',
-            data: [6200, 5200, 4200, 3200]
-        }],
-        chart: {
-            type: 'bar',
-            height: 270,
-            toolbar: {
-                show: false
-            },
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 4,
-                horizontal: true,
-                distributed: true, // Enables individual bar styling
-                barHeight: '22px'
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        grid: {
-            show: true,
-            borderColor: '#ddd',
-            strokeDashArray: 0,
-            position: 'back',
-            xaxis: {
-              lines: {
-                show: false
-              }
-            },   
-            yaxis: {
-              lines: {
-                show: false
-            }
-          },  
-        },
-        xaxis: {
-            categories: ['High', 'Medium', 'Low', 'Urgent'],
-            labels: {
-              formatter: function (val) {
-                  return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-              }
-            }
-        },
-        legend: {
-            show: false
-        },
-        fill: {
-            type: 'gradient',
-            gradient: {
-                shade: 'light',
-                type: "horizontal",
-                shadeIntensity: 0.5,
-                gradientToColors: ['#144bd6'],
-                inverseColors: false,
-                opacityFrom: 1,
-                opacityTo: 1,
-                stops: [0, 100]
-            }
-        },
-        colors: [
-            '#144bd6',
-        ]
-    };
-
-    var chart4 = new ApexCharts(document.querySelector("#columnChart4"), options4);
-    chart4.render();
 
 
      var options5 = {
@@ -267,21 +192,32 @@ jQuery(document).ready(function() {
 
                         jQuery('.balance-sheet-table-box').removeClass('d-none');
                         jQuery('.balance-sheet-table').html(res.table_html);
-
                         var report_itemObj = get_report_item_list();
+                        
+                         colorizeRowsByLabel(".balance-sheet-table table", [
+                          "AP Days"
+                      ]);
 
-                        chart3.updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        oppcolorizeRowsByLabel(".balance-sheet-table table", [
+                          "A/R Days"
+                      ]);
+
+                        setDataAttributeTB();
+
+                        setTimeout(function() {
+                            // Trigger once for default selection
+                            $("#figureType").trigger("change");
+                        },150);
+
+                        
+
                         // var acrDays = arraySum(report_itemObj['Accounts Receivable Days'][report_itemObj['Accounts Receivable Days'].length-1]);
                         // var invDays = arraySum(report_itemObj['Inventory Days']);
                         // var acpDays = arraySum(report_itemObj['Accounts Payable Days']);
 
-                        var acrDays = report_itemObj['Accounts Receivable Days'][report_itemObj['Accounts Receivable Days'].length-1];
+                        var acrDays = report_itemObj['A/R Days'][report_itemObj['A/R Days'].length-1];
                         var invDays = report_itemObj['Inventory Days'][report_itemObj['Inventory Days'].length-1];
-                        var acpDays = report_itemObj['Accounts Payable Days'][report_itemObj['Accounts Payable Days'].length-1];
+                        var acpDays = report_itemObj['AP Days'][report_itemObj['AP Days'].length-1];
 
                         // var quick_ratio = arraySum(report_itemObj['Quick Ratio']);
                         // var current_ratio = arraySum(report_itemObj['Current Ratio']);
@@ -290,44 +226,35 @@ jQuery(document).ready(function() {
                         var current_ratio = report_itemObj['Current Ratio'][report_itemObj['Current Ratio'].length-1];
 
 
-                        GaugeCharts['#currentRatio'].updateSeries([current_ratio]);
-                        GaugeCharts['#quickRatio'].updateSeries([quick_ratio]);
+                        GaugeCharts['#currentRatio'].updateSeries([(current_ratio / 2) * 100]);
+
+                        //#008000
+                        var current_ratio_color = (current_ratio<2) ? "#ff0000" : '#008000'
+                        var quick_ratio_color = (quick_ratio<1) ? "#ff0000" : '#008000';
+
+                        GaugeCharts['#currentRatio'].updateOptions({
+                            fill: {
+                                colors: [current_ratio_color]
+                            },
+                            customValue: current_ratio
+                        });
+
+                        GaugeCharts['#quickRatio'].updateSeries([(quick_ratio / 2) * 100]);
+
+                        GaugeCharts['#quickRatio'].updateOptions({
+                            fill: {
+                                colors: [quick_ratio_color]
+                            },
+                            customValue: quick_ratio
+                        });
+
 
                         jQuery(".ar-days .number").text(parseFloat(acrDays).toFixed(2));
                         jQuery(".inv-days .number").text(parseFloat(invDays).toFixed(2));
                         jQuery(".ap-days .number").text(parseFloat(acpDays).toFixed(2));
                         jQuery(".cc-days .number").text(parseFloat((acrDays+invDays) - acpDays).toFixed(2));
 
-                        chart3.updateSeries([
-                            {
-                                name: 'A/R Days',
-                                data: report_itemObj['Accounts Receivable Days']
-                            },
-                            {
-                                name: 'Inventory Days',
-                                data: report_itemObj['Inventory Days']
-                            },
-                            {
-                                name: 'A/P Days',
-                                data: report_itemObj['Accounts Payable Days']
-                            },
-                            {
-                                name: 'W/C Days',
-                                data: report_itemObj['Working Capital Days']
-                            }
-                        ]);
-                        chart4.updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
-
-                        chart4.updateSeries([
-                            {
-                                name: 'Marginal Cash Flow',
-                                data: report_itemObj['Marginal Cash Flow']
-                            }
-                        ]);
+                       
 
                         chart5.updateOptions({
                             xaxis: {
@@ -408,100 +335,7 @@ jQuery('.report_type').val('download');
         });
     } );  
 	
- function createChartTwo(chartId, color1, color2, color3, color4) {
-
-    var options = {
-    series: [{
-        name: "This month",
-        data: [0, 48, 20, 24, 6, 33, 30, 48, 35, 18, 20, 5]
-    },{
-        name: "This Last",
-        data: [0, 99, 20, 24, 6, 66, 30, 48, 35, 18, 20, 5]
-    }],
-    chart: {
-        height: 300,
-        type: 'line',
-        toolbar: {
-            show: false
-        },
-        zoom: {
-            enabled: false
-        },
-    },
-    dataLabels: {
-        enabled: false
-    },
-    stroke: {
-        curve: 'smooth',
-        colors: [color1, color2, color3, color4],
-        width: 4
-    },
-    markers: {
-        size: 0,
-        strokeWidth: 3,
-        hover: {
-            size: 8
-        }
-    },
-    tooltip: {
-        enabled: true,
-        x: {
-            show: true,
-        },
-        y: {
-            show: false,
-        },
-        z: {
-            show: false,
-        }
-    },
-    grid: {
-        row: {
-            colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-        },
-        borderColor: '#D1D5DB',
-        strokeDashArray: 3,
-    },
-    
-            yaxis: {
-          labels: {
-                formatter: function (val) {
-                    return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-                }
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return val.toLocaleString('en-IN');
-                }
-            }
-        },
-    xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        tooltip: {
-            enabled: false
-        },
-        labels: {
-            formatter: function (value) {
-                return value;
-            },
-            style: {
-                fontSize: "14px"
-            }
-        },
-        axisBorder: {
-            show: false
-        },
-       
-    }
-};
-
-chart3 = new ApexCharts(document.querySelector("#columnChart3"), options);
-chart3.render();
-}
-
+ 
 
 function createGauge(el, value, color, targetLabel) {
     const options = {
@@ -528,15 +362,15 @@ function createGauge(el, value, color, targetLabel) {
               fontSize: '12px'
             },
             value: {
-              offsetY: -10,
-              fontSize: '28px',
-              formatter: function (val) {
-                return val.toFixed(2);
+                offsetY: -10,
+                fontSize: '28px',
+                formatter: function (val, opts) {
+                  return opts.config.customValue.toFixed(2);
               }
-            }
+          }
           }
         }
-      },
+    },
       fill: {
         colors: [color]
       },

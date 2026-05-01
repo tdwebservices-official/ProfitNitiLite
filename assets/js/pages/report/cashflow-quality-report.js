@@ -64,6 +64,13 @@ jQuery(document).ready(function() {
                         //jQuery('.balance-sheet-table').html(res.table_html);
                         jQuery('.balance-sheet-table').html(hg_table_create(res.cellArray));
                         
+                        setDataAttributeTB();
+
+                        setTimeout(function() {
+                            // Trigger once for default selection
+                            $("#figureType").trigger("change");
+                        },150);
+                        
 
                     }
                     if( res.status == 'error' ){

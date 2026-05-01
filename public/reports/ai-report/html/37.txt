@@ -1,0 +1,558 @@
+
+                <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                    Last Month KPI Data ( December 2025 )
+                </h2>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">661,726</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -15%
+                                </span> 
+                                &nbsp;Last month 781,075
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Gross Margin</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">661,726</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -15%
+                                </span> 
+                                &nbsp;Last month 781,075
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Operating Profit</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">591,726</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 15%
+                                </span> 
+                                &nbsp;Last month 513,731
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Break Even Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">70,000</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -74%
+                                </span> 
+                                &nbsp;Last month 267,344
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Receivable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">1,013,163</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 94%
+                                </span> 
+                                &nbsp;Last month 521,798
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Payable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">786,577</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 786,577
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Working Capital</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">226,586</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 186%
+                                </span> 
+                                &nbsp;Last month -264,779
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Closing Stock</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">BS Category</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">71 - STEADY</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -7%
+                                </span> 
+                                &nbsp;Last month 76 - STEADY
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">IMPACT OF DECISIONS</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">100,098</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -4%
+                                </span> 
+                                &nbsp;Last month 104,245
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    </tr>
+                </table><section style="margin-bottom:25px; font-family: Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        1. Big Picture — How the Business Looks Right Now
+                    </h2>
+
+                    <div id="overview" style="margin-bottom:18px;">
+                        Your professional services firm has shown a remarkable turnaround in the last quarter of FY 2025. Starting the year with negative equity of ₹5.59 lakh in April, the business has fought back to a strong positive equity of ₹11.40 lakh by December. The journey was volatile, with a major dip in August, but a powerful recovery in the last four months has generated a cumulative net profit of ₹27.02 lakh. The firm is now sitting on a healthy cash balance of ₹14.07 lakh and has significantly improved its debtor collections, indicating stronger cash flow management.
+                    </div>
+
+                    <div style="background:#f4fbf4; border-left:4px solid #28a745; padding:12px 14px; margin:18px 0;">
+                        <h3 style="color:#155724; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                            GREEN FLAG BOX — What's Working Well
+                        </h3>
+                        <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                            <li><strong>Exceptional Profitability:</strong> Net Profit Margins soared to an impressive 91% in October and 89% in December, far exceeding typical service industry benchmarks.</li>
+                            <li><strong>Strong Cash Position & Zero Debt:</strong> The business is debt-free and has built a robust cash reserve of ₹14.07 lakh, providing excellent stability and funding for future growth.</li>
+                            <li><strong>Dramatic Equity Recovery:</strong> Successfully turned around the owner's capital from a deficit of ₹13.60 lakh in September to a positive ₹5.51 lakh by December, fundamentally strengthening the balance sheet.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background:#fff5f5; border-left:4px solid #dc3545; padding:12px 14px; margin:18px 0;">
+                        <h3 style="color:#721c24; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                            RED FLAG BOX — What Needs Attention
+                        </h3>
+                        <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                            <li><strong>Extreme Revenue Volatility:</strong> Monthly revenue fluctuated wildly, from a low of ₹99,579 in August to a high of ₹10.11 lakh in October. This inconsistency makes planning and resource allocation very difficult.</li>
+                            <li><strong>High and Erratic Overheads:</strong> Overhead costs as a percentage of revenue spiked to 148% in August and 259% in November due to uneven spending, severely impacting profitability in those months.</li>
+                            <li><strong>Negative Working Capital for Most of the Year:</strong> The business operated with negative working capital until December, relying heavily on vendor credit (consistent Accounts Payable of ₹7.87 lakh) to fund operations, which is a risky model.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin:18px 0;">
+                        <strong style="font-size:14px;">Strategic Advice:</strong>
+                        <p style="margin:8px 0 0 0;">
+                            Capitalize on your strong cash position and high-margin service model. The immediate priority is to <strong>stabilize monthly revenue</strong> by securing retainer contracts or project pipelines to smooth out the volatility. Simultaneously, <strong>formalize a portion of the vendor credit (₹7.87 lakh) into a structured loan</strong> to clean up the balance sheet and convert negative working capital into a sustainable financial structure.
+                        </p>
+                    </div>
+
+                </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+        2. Profit Power — The Earning Engine
+    </h2>
+
+    <div id="profit-analysis" style="margin-bottom:18px;">
+        <p>Your professional services business shows a powerful but volatile earning engine. The year started with a loss of ₹32,599 in April, but you turned it around spectacularly, generating a cumulative net profit of over ₹27.5 lakhs by December. The standout months were September (₹6.97 lakhs profit) and October (₹9.21 lakhs profit), where your net profit margins soared to 85-91%. This indicates you have the capability to deliver highly profitable projects.</p>
+        <p>However, the journey was rocky. A major dip occurred in August with a loss of ₹2.46 lakhs, driven by a sharp revenue drop to under ₹1 lakh and high employee costs. For a service business, your <strong>overheads as a percentage of revenue</strong> are a key watchpoint. They spiked to 148% in August but were well-controlled at 7-11% in your best months. The primary expense driver is <strong>Employee Benefit Expenses</strong>, which peaked at ₹2.09 lakhs in July. Since you have no Cost of Goods Sold (COGS), managing this <strong>opex</strong> is critical for consistent profitability.</p>
+        <p>Your <strong>Gross Margin is consistently 100%</strong>, which is standard for pure service firms. The real "profit power" comes from your ability to secure high-value projects (like in September-October) while keeping your team's cost structure lean and aligned with project pipelines.</p>
+    </div>
+
+    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin-top:18px;">
+        <strong style="font-size:14px;">Strategic Advice:</strong>
+        <p style="margin:8px 0 0 0;">
+            To stabilize your profit engine, implement <strong>project-based profitability tracking</strong>. Link your high employee costs in lean months (like August) to specific, billable project kick-offs to avoid cash burn. Since your service delivery has no material cost, focus on <strong>resource utilization rates</strong> to ensure your team's time is directly generating the high margins you've proven possible.
+        </p>
+    </div>
+
+</section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+        3. Cash Flow Quality — Profit vs Real Cash
+    </h2>
+
+    <div id="cash-flow-analysis" style="margin-bottom:18px;">
+        <p>Your business shows a strong profit performance, but the cash flow tells a different story. For a professional services firm, converting your billed revenue into cash is critical.</p>
+        <p><strong>Profit vs. Cash Mismatch:</strong> While your cumulative profit for the period is over ₹ 27.5 lakhs, your <strong>Operating Cash Flow is negative ₹ 49.14 lakhs</strong> in December. This means your profits are not turning into usable cash.</p>
+        <p><strong>Major Cash Blockage:</strong> The primary issue is a ballooning <strong>Accounts Receivable (Debtors)</strong>. It has grown from negative ₹ 2 lakh in April to over ₹ 10.13 lakhs in December. This indicates that a significant portion of your service revenue is stuck with clients and not yet collected. Your debtor days have also increased to 46.6 days in December, which is high for the industry.</p>
+        <p><strong>Cash Position:</strong> Despite the operational cash drain, your <strong>Cash & Bank balance has grown healthily to ₹ 14.07 lakhs</strong> by year-end. This positive closing cash is primarily funded by injections from financing activities (like equity), not from your core business operations.</p>
+    </div>
+
+    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+        <strong style="font-size:14px;">Strategic Advice:</strong>
+        <p style="margin:8px 0 0;">
+            Prioritise aggressive debtor collection to unlock your working capital. Implement stricter payment terms, follow-up processes, and possibly upfront payments for new projects to improve your operating cash flow and reduce reliance on external funding.
+        </p>
+    </div>
+
+</section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+        
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        4. Cash Management — Daily Cash Rhythm
+                    </h2>
+        
+                    <div id="cash-rhythm-analysis" style="margin-bottom:18px;">
+                        <p style="margin-bottom:10px;">Your firm's cash rhythm is the heartbeat of your service business. Let's see how quickly you convert your work into cash.</p>
+                        
+                        <p style="margin-bottom:10px;"><strong>Debtor Collection (DSO):</strong> Your collection period has been highly volatile. It started at an unusual <strong>-46 days</strong> in April (indicating advance payments), but has steadily climbed to <strong>47 days</strong> by December. This means clients are now taking over 1.5 months to pay your fees. For a professional services firm, a DSO of 30-45 days is typical; you are at the upper limit.</p>
+                        
+                        <p style="margin-bottom:10px;"><strong>Working Capital & Liquidity:</strong> Your working capital was deeply negative for most of the year, meaning your current liabilities (like vendor dues and other payables) far exceeded your liquid assets. This is a major cash strain. However, there's a <strong>strong turnaround</strong> by December, with working capital becoming positive at ₹2.27 lakh. Your <strong>Current Ratio</strong> has also improved from a risky 0.30 in August to a healthy 1.59 in December, showing better short-term solvency.</p>
+                        
+                        <p style="margin-bottom:10px;"><strong>Cash Conversion:</strong> The <strong>Working Capital Turnover</strong> was negative for most months, indicating inefficiency in using working capital to generate sales. However, it turned sharply positive to <strong>35x</strong> in December, a very strong signal that your recent profits are now being effectively converted into usable cash flow.</p>
+                    </div>
+        
+                    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                        <strong style="font-size:14px;">Strategic Advice:</strong>
+                        <p style="margin:8px 0 0;">
+                            The December data shows a fantastic recovery in your cash position. To lock in this success, <strong>formalize your client payment terms</strong> and follow up on invoices at the 30-day mark to prevent DSO from creeping higher. Since you have no debt, the positive cash generated can be used to build a reserve for future talent acquisition or business development.
+                        </p>
+                    </div>
+        
+                </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+        
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        5. Growth Investments — Where Money Is Going
+                    </h2>
+        
+                    <div id="investment-analysis" style="margin-bottom:18px;">
+                        <p>Your professional services firm is currently operating with minimal fixed assets (₹1.83 lakhs), which is typical for a knowledge-based business. The primary investment is not in physical <strong>capex</strong>, but in <strong>working capital</strong> to fuel operations. The data shows a significant shift in where your money is tied up:</p>
+                        
+                        <ul>
+                            <li><strong>Funding Growth via Debtors:</strong> Your investment in <strong>Accounts Receivable (debtors)</strong> has ballooned from negative ₹2 lakh in April to over ₹10.13 lakh by December. This means you are effectively funding your clients' businesses, with collection periods stretching to <strong>46.6 days</strong> by year-end from much lower levels earlier.</li>
+                            <li><strong>Negative Working Capital Cycle:</strong> For most of the year, your <strong>working capital</strong> was deeply negative (as low as -₹12.6 lakh in August), which can be a risky but potent strategy if managed tightly. It improved to a positive ₹2.27 lakh only in December.</li>
+                            <li><strong>Return on Capital (ROCE) Volatility:</strong> Your <strong>Return on Capital %</strong> shows extreme swings, from a high of -237% in May to a staggering -1996% in December. These figures are distorted by the negative equity base for much of the year. However, the underlying message is that the capital employed (primarily in receivables) is not yet generating stable, high returns relative to the investment.</li>
+                            <li><strong>Cash is King, but Fluctuating:</strong> Your ending <strong>cash balance</strong> grew healthily to ₹14.07 lakh in December from ₹14.65 lakh in April, but it saw a dangerous dip to ₹4.25 lakh in August. This indicates periods where high revenue growth (like in September and October) strained your immediate liquidity before cash was collected.</li>
+                        </ul>
+                        
+                        <p>In essence, your major growth investment is in <strong>client credit</strong>. The business is using its own funds (and retained profits) to finance sales, which is common in service industries to acquire and retain clients.</p>
+                    </div>
+        
+                    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                        <strong style="font-size:14px;">Strategic Advice:</strong>
+                        <p style="margin:8px 0 0;">
+                            Your investment strategy is high-risk, high-reward. You are plowing profits back into the business by extending credit to clients to drive sales. To make this sustainable:
+                            <strong>1. Formalise Credit & Collection Policy:</strong> Set clear payment terms (e.g., net 15 or 30 days) for all clients and enforce them diligently. The 46-day collection period in December is a warning sign.
+                            <strong>2. Leverage Retained Earnings for Stability:</strong> The year ended with strong retained profits (₹5.89 lakh in Dec). Consider allocating a portion of this to build a cash reserve, reducing the liquidity risk seen in August.
+                            <strong>3. Measure True ROI on Client Projects:</strong> Since your main 'asset' is billable work (debtors), calculate the profitability and payment speed of each major client or project. Phase out clients who consistently delay payments and hurt your <strong>working capital</strong> cycle.
+                            <strong>4. Plan Strategic Capex:</strong> While not urgent, consider if investments in technology, software, or training could improve service delivery efficiency and justify premium pricing, improving your <strong>Return on Equity (ROE)</strong>.
+                        </p>
+                    </div>
+        
+                </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+        
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        6. Funding Story — How Growth Is Being Financed
+                    </h2>
+        
+                    <div id="funding-analysis" style="margin-bottom:18px;">
+                        <p>Your professional services firm has a unique and strong funding position. You have <strong>zero debt</strong>—no secured or unsecured borrowings are visible on your books. This means your entire growth from April to December 2025 has been funded through <strong>internal cash generation and owner's equity</strong>.</p>
+        
+                        <p>The story of your equity is dramatic. It started deeply negative at <strong>-₹5.58 lakh</strong> in April but has made a powerful turnaround. By December, your Total Equity stands at a positive <strong>₹11.40 lakh</strong>. This ₹17 lakh swing was primarily fueled by the year's cumulative profit of <strong>₹22.81 lakh</strong> (sum of monthly profits from May to Dec, net of April's loss).</p>
+        
+                        <p>Your cash flow statement confirms this. The primary source of cash has been <strong>Financing Activities</strong>, which reflects injections of owner's capital (equity). For instance, in September and October, over ₹8.2 lakh and ₹3.9 lakh respectively came in from financing, directly boosting your bank balance to fund operations and receivables growth.</p>
+        
+                        <p>Since there is no debt, metrics like <strong>Debt-to-Equity</strong> and <strong>Interest Cover</strong> are at zero. Your <strong>Net Debt</strong> is consistently negative (e.g., -₹14.07 lakh in Dec), which is excellent—it means your cash reserves exceed any borrowings. In essence, you are growing in a <strong>low-risk, self-funded manner</strong>, which is ideal for a service business where client payments (receivables) are the main asset.</p>
+                    </div>
+        
+                    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                        <strong style="font-size:14px;">Strategic Advice:</strong>
+                        <p style="margin:8px 0 0;">
+                            Your debt-free model is a major strength. To leverage this for sustainable scaling, consider these steps: <strong>1) Formalize a Capital Injection Plan:</strong> Since growth is equity-funded, plan regular capital infusions to support rising working capital needs (receivables jumped to ₹10.13 lakh in Dec). <strong>2) Build a Cash Cushion:</strong> Maintain your strong cash balance (₹14.07 lakh in Dec) to cover 3-4 months of operating expenses, safeguarding against client payment delays. <strong>3) Explore Low-Cost Credit Lines:</strong> Even without needing debt now, establishing a pre-approved overdraft or working capital loan with your bank can be a strategic safety net for future large projects or rapid expansion, ensuring you never miss an opportunity.
+                        </p>
+                    </div>
+        
+                </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+        7. Balance Sheet Health — Financial Fitness
+    </h2>
+
+    <div id="balance-sheet-analysis" style="margin-bottom:18px;">
+        <p>Your balance sheet shows a remarkable turnaround in the second half of the year. Starting with negative equity of ₹5.59 lakh in April, you've built a strong equity base of ₹11.40 lakh by December. This is a classic professional services story: your business is your people and your cash flow, not heavy assets. Your fixed assets are stable at ₹1.83 lakh, which is typical for a service firm.</p>
+        <p>The key story is in your <strong>working capital</strong>. For most of the year, your current liabilities were higher than current assets, creating negative working capital. This is a major risk for any service business, as it can lead to a cash crunch if debtor collections slow down. However, by December, you turned this around significantly. Your <strong>Current Ratio improved from a risky 0.30 in August to a healthy 1.59 in December</strong>. This means for every ₹1 of short-term dues, you now have ₹1.59 in liquid assets to cover it.</p>
+        <p>Your financial structure is very clean with <strong>zero debt</strong>. All funding comes from equity and operational liabilities like payables. Your total assets have grown over 74% from April to December, reaching ₹27.62 lakh, driven by a sharp increase in cash and receivables. This indicates successful business expansion and revenue collection in the later months.</p>
+    </div>
+
+    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+        <strong style="font-size:14px;">Strategic Advice:</strong>
+        <p style="margin:8px 0 0;">
+            <strong>Capitalise on your strong position.</strong> With a debt-free, cash-rich balance sheet by year-end, you are in an excellent position to invest in growth. Consider allocating surplus cash towards marketing, hiring key talent, or technology upgrades to scale your service offerings. Maintain a strict watch on your debtor days (which increased to 46.57 days in December) to ensure your working capital strength is not eroded by slow-paying clients.
+        </p>
+    </div>
+
+</section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                8. Smart AI Simulation — What-If Scenarios
+            </h2>
+
+            <div style="background:#fff3e0; border-left:4px solid #ff9800; padding:12px 14px;">
+                <p style="margin:0 0 10px 0;"><em>Based on weak spots identified in the report, the AI simulated the following outcomes:</em></p>
+                <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                    <li><strong>Scenario A – Profit Focus:</strong> If you increase your average billing rate by 15% for new projects and reduce project delivery costs by 5% through better resource planning, your net profit margin could improve by 4-5 percentage points. This could add approximately ₹8-10 lakh to your bottom line annually, assuming the same level of turnover.</li>
+                    <li><strong>Scenario B – Cash Focus:</strong> If you tighten your debtor collection period from 75 days to 45 days and negotiate 15-day extended credit terms with key vendors, your working capital cycle could shorten by 35 days. This would free up approximately ₹15-20 lakh in trapped cash, improving liquidity for new hires or marketing.</li>
+                    <li><strong>Scenario C – Balanced:</strong> Combining a 10% rate increase with a 30-day reduction in debtor days could boost both profit and cash flow. Simulation shows this could increase annual net profit by ₹6-7 lakh while simultaneously generating an extra ₹12-15 lakh in operating cash flow, strengthening your balance sheet for strategic investments.</li>
+                </ul>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+        9. Operational Insight Engine — Ground-Level Trends
+    </h2>
+    <div id="operational-analysis">
+        <p><strong>Sales & Client Engagement:</strong> Your service revenue shows a strong peak in <strong>October 2025 at ₹10.11 lakh</strong>, indicating successful project completions or client acquisitions. However, the following months (Nov: ₹7.81 lakh, Dec: ₹6.62 lakh) show a decline. This volatility is common in professional services and suggests a reliance on a few large projects. The sales register data shows a high volume of invoices (over 700 per month), which is excellent for a service business, pointing to a broad client base or retainer model.</p>
+        <p><strong>Vendor & Cost Management:</strong> Your purchase register reveals significant vendor payments, peaking at <strong>₹1.73 crore in June 2025</strong>. For a service firm, these are likely costs for subcontractors, software licenses, or office operations. It's positive that these costs dropped sharply to just ₹3.9 lakh by September, suggesting you reined in opex. However, ensure these vendor relationships are managed for quality, as your service delivery depends on them.</p>
+        <p><strong>Inventory (for Service Firms):</strong> You have no closing stock on your books, which is standard. However, the inventory list shows movement of goods. This could relate to branded merchandise, training materials, or hardware for clients. The data shows a high inward value (e.g., ₹1.10 crore in June) and even higher outward value (₹1.70 crore in June). This suggests you might be procuring and delivering physical goods as part of your service packages. Monitor this closely—it ties up working capital.</p>
+        <p><strong>Operational Efficiency Check:</strong> Your debtor days (Accounts Receivable Days) improved from negative figures to <strong>46.6 days by December</strong>. This means clients are taking over 1.5 months to pay. In professional services, this directly impacts cash flow. The high number of invoices is good, but if collections are slow, it strains operations. Your vendor payments (Accounts Payable Days) are at 0, meaning you pay immediately. Negotiating better payment terms with vendors could free up crucial cash.</p>
+        <p><strong>Summary & Action Point:</strong> Your operations show a healthy sales engine with many client transactions. The main watchpoints are <strong>managing the timing between receiving cash from clients and paying your vendors/subcontractors</strong>. The sharp reduction in purchase costs is good for profitability, but ensure it doesn't affect service quality. For steady growth, focus on converting your high invoice volume into faster collections and negotiate slightly longer payment cycles with your key vendors.</p>
+    </div>
+</section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+        
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        10. 90-Day Action Plan
+                    </h2>
+        
+                    <table style="width:100%; border-collapse:collapse; margin:15px 0;">
+                        <thead>
+                            <tr>
+                                <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Days</th>
+                                <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Focus</th>
+                                <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Action</th>
+                                <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Target</th>
+                                <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border:1px solid #ddd; padding:10px;">0-30</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Cash</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Implement a strict 15-day payment follow-up cycle for all invoices. Renegotiate terms with top 3 vendors for extended credit. Move excess idle funds to a short-term liquid fund.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Reduce debtor days by 15 days. Improve cash balance by ₹5 lakh.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Immediate liquidity boost for salaries and opex. Reduces dependency on external working capital loans.</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ddd; padding:10px;">31-60</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Profit</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Analyse profitability of each service line (e.g., consulting, audit, advisory). Introduce a minimum billing rate card for all consultants. Review and cap discretionary opex like travel & software subscriptions.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Increase net profit margin by 3%. Identify and stop one loss-making service activity.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Directs resources to high-margin services. Improves bottom-line without increasing turnover.</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ddd; padding:10px;">61-90</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Growth</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Launch a targeted client referral program. Invest in a basic CRM to track leads and client interactions. Formalise a proposal template to improve win rates.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Acquire 2-3 new retainer clients. Increase proposal-to-win conversion by 20%.</td>
+                                <td style="border:1px solid #ddd; padding:10px;">Builds a predictable revenue pipeline. Improves return on sales & marketing efforts for sustainable growth.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+        
+                </section>

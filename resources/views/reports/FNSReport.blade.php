@@ -6,7 +6,7 @@
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Financial Summery Report</h6>
+    <h6 class="fw-semibold mb-0">Financial Summary Report</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -15,7 +15,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">Financial Summery Report</li>
+      <li class="fw-medium">Financial Summary Report</li>
     </ul>
   </div>
 
@@ -49,8 +49,15 @@
 
   <div class="col-lg-12 mt-20 balance-sheet-table-box d-none">
     <div class="card">
-      <div class="card-header">
-        <h5 class="card-title mb-0">Financial Summery</h5>
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="card-title mb-0">Financial Summary</h5>
+         <select id="figureType" class="form-control" style="width:200px;">
+              <option value="1">Actual</option>
+              <option value="1000" selected>Thousands</option>
+              <option value="100000">Lakhs</option>
+              <option value="10000000">Crores</option>
+              <option value="1000000">Millions</option>
+            </select>
       </div>
       <div class="card-body">
         <div class="table-responsive balance-sheet-table">

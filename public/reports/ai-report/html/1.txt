@@ -1,0 +1,545 @@
+
+                <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                    Last Month KPI Data ( November 2025 )
+                </h2>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">2,024,000</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 192%
+                                </span> 
+                                &nbsp;Last month 693,000
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Gross Margin</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">2,024,000</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 192%
+                                </span> 
+                                &nbsp;Last month 693,000
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Operating Profit</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">1,463,544</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 384%
+                                </span> 
+                                &nbsp;Last month 302,223
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Break Even Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">560,456</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 43%
+                                </span> 
+                                &nbsp;Last month 390,777
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Receivable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">2,898,894</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 6%
+                                </span> 
+                                &nbsp;Last month 2,735,694
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Payable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">-1,237,279</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -2%
+                                </span> 
+                                &nbsp;Last month -1,214,776
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Working Capital</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">4,136,173</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 5%
+                                </span> 
+                                &nbsp;Last month 3,950,470
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Closing Stock</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">BS Category</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">69 - STEADY</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 13%
+                                </span> 
+                                &nbsp;Last month 61 - STEADY
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">IMPACT OF DECISIONS</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">-575,767</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#fdecec; padding:6px; border-radius:4px; font-weight:500; color:#dc3545; font-size:14px;">
+                                    <i class="ri-arrow-right-down-line"></i> -1,278%
+                                </span> 
+                                &nbsp;Last month 48,891
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    </tr>
+                </table><section style="margin-bottom:25px; font-family: Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+                        <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                            1. Big Picture — How the Business Looks Right Now
+                        </h2>
+
+                        <div id="overview" style="margin-bottom:18px;">
+                            The business has shown strong growth in total equity and assets, reaching ₹46.69 lakh and ₹64.76 lakh respectively by November 2025. Profitability has been volatile, with a high of ₹14.64 lakh in November but a significant loss of ₹6.89 lakh in August. The company maintains a robust current ratio, consistently above 5, indicating good short-term liquidity.
+                        </div>
+
+                        <div style="background:#f4fbf4; border-left:4px solid #28a745; padding:12px 14px; margin:18px 0;">
+                            <h3 style="color:#155724; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                                GREEN FLAG BOX — What's Working Well
+                            </h3>
+                            <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                                <li><strong>Strong Profitability Peaks:</strong> The business achieved a high net profit of ₹14.64 lakh in November 2025 with a net profit margin of 72.31%.</li>
+                                <li><strong>Excellent Liquidity Position:</strong> Current ratio remains very healthy, recorded at 7.81 in November 2025, well above the standard benchmark.</li>
+                                <li><strong>Solid Equity Growth:</strong> Total equity has grown significantly from ₹12.44 lakh in April to ₹46.69 lakh in November 2025, strengthening the balance sheet.</li>
+                            </ul>
+                        </div>
+
+                        <div style="background:#fff5f5; border-left:4px solid #dc3545; padding:12px 14px; margin:18px 0;">
+                            <h3 style="color:#721c24; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                                RED FLAG BOX — What Needs Attention
+                            </h3>
+                            <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                                <li><strong>Volatile Operating Performance:</strong> The business reported a substantial operating loss of ₹6.89 lakh in August 2025, with an operating profit margin of -171.05%.</li>
+                                <li><strong>Negative Operating Cash Flows:</strong> Cash flows from operating activity were negative in multiple months, including -₹1.86 lakh in November 2025.</li>
+                                <li><strong>High Overhead Burden in Low Months:</strong> Overheads consumed 271.05% of revenue in August 2025, severely impacting profitability during that period.</li>
+                            </ul>
+                        </div>
+
+                        <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin:18px 0;">
+                            <strong style="font-size:14px;">Strategic Advice:</strong>
+                            <p style="margin:8px 0 0 0;">
+                                Prioritise stabilising monthly profitability by controlling overhead costs, especially employee expenses which spiked to ₹10.02 lakh in August. Focus on converting profits into positive operating cash flow to reduce reliance on financing activities for liquidity.
+                            </p>
+                        </div>
+
+                    </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                2. Profit Power — The Earning Engine
+            </h2>
+
+            <div id="profit-analysis" style="margin-bottom:18px;">
+                <p>Your business shows significant volatility in monthly profitability, with the Current Year Profit ranging from a loss of ₹6.89 lakh in August to a high profit of ₹14.64 lakh in November. The Gross Margin remains at 100% each month as COGS is reported as zero, meaning all Sales translate directly to Gross Profit.</p>
+                <p>Operating expenses are the primary driver of profit fluctuations. Employee Benefit Expenses spiked to ₹10.02 lakh in August, contributing to that month's loss, while they were lower at ₹2.40 lakh in June. Overheads as a percentage of revenue were highest in August at 271.05% and lowest in November at 27.69%.</p>
+                <p>Your Net Profit percentage mirrors the Operating Profit percentage, reaching a high of 72.31% in November and a low of -171.05% in August. The Return on Equity % has been extremely variable, from -461.77% in August to 555.11% in May, indicating inconsistent earnings relative to the owner's investment.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin-top:18px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0 0;">
+                    Stabilise your employee and administrative costs to prevent months like August from eroding strong sales performance. Focus on converting the high gross margin into consistent net profit by managing overheads.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                3. Cash Flow Quality — Profit vs Real Cash
+            </h2>
+
+            <div id="cash-flow-analysis" style="margin-bottom:18px;">
+                <p style="margin-bottom:10px;">
+                    The company's profit after tax for November,2025 was ₹14.64 lakh. However, the cash generated from operating activities for the same month was -₹1.86 lakh. This indicates a significant gap between reported profits and actual cash inflow.
+                </p>
+                <p style="margin-bottom:10px;">
+                    A major blockage to cash flow is the high level of trade receivables. In November,2025, the change in trade receivables was -₹1.63 lakh, meaning more cash is tied up in debtors. The accounts receivable balance stood at ₹28.99 lakh.
+                </p>
+                <p style="margin-bottom:10px;">
+                    The cash flow from financing activities was a positive ₹5.25 lakh in November,2025, primarily from equity of ₹14.64 lakh, which helped offset the negative operating cash flow. The net cash flow for the month was ₹3.39 lakh.
+                </p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    Prioritise aggressive collection from debtors to convert profits into cash. The business is reliant on financing to cover operational cash shortfalls; improving receivable days is critical for financial sustainability.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                4. Cash Management — Daily Cash Rhythm
+            </h2>
+
+            <div id="cash-rhythm-analysis" style="margin-bottom:18px;">
+                <p>Your cash conversion cycle is determined by Accounts Receivable Days, as Inventory and Accounts Payable Days are zero. Receivable Days were 105.49 in April, improved to 61.49 in May, but peaked at 159.37 in June. The cycle has been volatile, with the latest figure at 43.56 days in November.</p>
+                <p>This results in a Working Capital requirement that started at ₹24.07 lakh in April and has grown to ₹41.36 lakh in November. The Working Capital Turnover ratio was 1.83 in April and improved to 5.87 by November.</p>
+                <p>Your monthly cash flow from operations shows significant fluctuation. It was negative at -₹24.07 lakh in April and -₹1.86 lakh in November. The net cash flow for the period was ₹12.05 lakh in April and ₹3.39 lakh in November.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    The high and volatile Receivable Days are tying up significant cash in working capital. Prioritise stricter credit control and faster collection processes to reduce the cash conversion cycle and improve operational cash flow consistency.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                5. Growth Investments — Where Money Is Going
+            </h2>
+
+            <div id="investment-analysis" style="margin-bottom:18px;">
+                <p>Your investment in Fixed Assets began at ₹9.10 lakh in April and increased to ₹9.96 lakh from May onwards. The company has no Non-current Investments. Other Capital Expenditure has been variable, showing an outflow of ₹5.40 lakh in April and an inflow of ₹2.38 lakh in November.</p>
+                <p>Return on Capital Employed has been highly volatile, ranging from -190.76% in August to 271.88% in September. Return on Total Assets followed a similar pattern, from -140.59% in August to 180.78% in November. Asset Turnover was highest in May at 3.16 and lowest in June at 1.06.</p>
+                <p>Net Operating Assets have grown from ₹18.67 lakh in April to ₹43.74 lakh in November. The company's funding for operations, represented by Total Funding, has increased in line with this, from ₹18.67 lakh to ₹43.74 lakh over the same period.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    The significant volatility in Return on Capital and Return on Assets indicates inconsistent operational efficiency relative to the capital base. The growth in Net Operating Assets suggests capital is being deployed, but the returns are not yet stable. Focus on improving the consistency of profitability to justify the increasing asset base and ensure sustainable growth.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                6. Funding Story — How Growth Is Being Financed
+            </h2>
+
+            <div id="funding-analysis" style="margin-bottom:18px;">
+                <p>The company's funding structure has evolved over the period. Total Equity stood at ₹12.44 lakh in April and increased to ₹46.69 lakh by November. Total Non-Current Liabilities, which include borrowings, were ₹18.29 lakh in April and reduced to ₹11.06 lakh in November.</p>
+                <p>Debt levels have been managed down. Secured Long-term Borrowings were ₹8.23 lakh in April and became -₹4.18 lakh in November. Unsecured Long-term Borrowings remained stable at ₹10.06 lakh from April to June, then increased to ₹15.24 lakh from July onwards. The Debt to Equity ratio improved from 1.47 in April to 0.24 in November.</p>
+                <p>Cash flow from financing activity was a significant inflow of ₹45.22 lakh in April, primarily funding the start of operations. Subsequent months saw mixed financing flows, including an inflow of ₹12.38 lakh in May and an outflow of -₹2.72 lakh in June. The Net Debt position was ₹6.24 lakh in April and improved to -₹2.95 lakh by November.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    The reduction in secured debt and improved debt-to-equity ratio is positive. However, the reliance on unsecured borrowings has increased. Consider diversifying funding sources and formalizing credit terms to strengthen the balance sheet for sustained growth.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                7. Balance Sheet Health — Financial Fitness
+            </h2>
+
+            <div id="balance-sheet-analysis" style="margin-bottom:18px;">
+                <p>The company's total equity and liabilities stood at ₹36.08 lakh in April 2025 and increased to ₹64.76 lakh by November 2025. Total equity grew from ₹12.44 lakh to ₹46.69 lakh over the same period, while total liabilities decreased from ₹23.64 lakh to ₹18.07 lakh.</p>
+                <p>The current ratio has remained strong, ranging from 5.04 in April to 7.81 in November. The debt to equity ratio improved significantly, from 1.47 in April to 0.24 in November, indicating reduced reliance on borrowed funds.</p>
+                <p>Working capital was ₹24.07 lakh in April and increased to ₹41.36 lakh in November. The company maintained a high quick ratio, identical to the current ratio, as there was no inventory throughout the period.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    Continue leveraging the strong equity growth and low debt levels to fund expansion. The high current and quick ratios provide a solid buffer; consider optimizing this excess liquidity for higher returns.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                8. Smart AI Simulation — What-If Scenarios
+            </h2>
+
+            <div style="background:#fff3e0; border-left:4px solid #ff9800; padding:12px 14px;">
+                <p style="margin:0 0 10px 0;"><em>Based on weak spots identified in the report, the AI simulated the following outcomes:</em></p>
+                <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                    <li><strong>Scenario A – Profit Focus:</strong> If the high overheads of ₹10.92 lakh in August were controlled to the September level of ₹5.86 lakh, the operating profit could have been ₹-1.03 lakh instead of ₹-6.89 lakh, improving the Net Profit % from -171.05 to -25.56 for that month.</li>
+                    <li><strong>Scenario B – Cash Focus:</strong> If the Accounts Receivable Days were consistently maintained at the November level of 43.56 days instead of the peak of 159.37 days in June, the average monthly cash inflow from operations could improve by approximately ₹8.42 lakh, strengthening the Cash and Bank balance.</li>
+                    <li><strong>Scenario C – Balanced:</strong> Combining both controls—reducing overheads and improving debtor collection—could simultaneously boost the November Return on Equity % beyond 376.14 and ensure a more stable Operating Cash Flow, reducing reliance on financing activities for liquidity.</li>
+                </ul>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+                        <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                            9. Operational Insight Engine — Ground-Level Trends
+                        </h2>
+
+                        <div id="operational-analysis">
+                            <p>Sales performance has been variable, with revenue ranging from a low of ₹3.67 lakh in April to a high of ₹20.24 lakh in November. The company maintains a 100% gross margin as COGS is reported as zero across all months.</p>
+                            <p>Overheads as a percentage of revenue show significant fluctuation, from a low of 26.92% in May to a high of 271.05% in August. This directly impacts operating profit, which was negative in April (₹-1.35 lakh) and August (₹-6.89 lakh) but reached ₹14.64 lakh in November.</p>
+                            <p>Working capital management shows a high dependency on receivables, with Accounts Receivable Days peaking at 159.37 days in June. The current ratio remains strong, consistently above 5, indicating good short-term liquidity.</p>
+                        </div>
+
+                    </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+                        <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                            10. 90-Day Action Plan
+                        </h2>
+
+                        <table style="width:100%; border-collapse:collapse; margin:15px 0;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Days</th>
+                                    <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Focus</th>
+                                    <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Action</th>
+                                    <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Target</th>
+                                    <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Benefit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #ddd; padding:10px;">0-30</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Cash</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Improve cash collection from receivables, which were ₹28.99 lakh in November. Review and manage high other current liabilities of ₹19.39 lakh.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Increase cash balance from ₹14.01 lakh and reduce receivable days from 43.56 days.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Strengthen liquidity and reduce reliance on external financing for operations.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ddd; padding:10px;">31-60</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Profit</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Stabilise monthly profitability after volatile results like ₹14.64 lakh profit in November and a ₹6.89 lakh loss in August. Control employee expenses, which spiked to ₹10.02 lakh in August.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Achieve consistent positive net profit and maintain net profit % above 40%.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Build a stable earnings base to increase reserves & surplus, currently at ₹31.06 lakh.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ddd; padding:10px;">61-90</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Growth</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Leverage high-return months (Return on Equity of 376.14% in November) to plan for sustainable sales growth beyond the peak of ₹20.24 lakh in November.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Increase monthly sales consistently and improve asset turnover from 3.70.</td>
+                                    <td style="border:1px solid #ddd; padding:10px;">Scale the business while maintaining strong profitability and efficient use of total assets (₹64.76 lakh).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </section>

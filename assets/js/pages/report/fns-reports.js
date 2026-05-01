@@ -58,6 +58,12 @@ jQuery(document).ready(function() {
                     if( res.status == 'success' ){
                         jQuery('.balance-sheet-table-box').removeClass('d-none');
                         jQuery('.balance-sheet-table').html(res.table_html);
+
+                        setDataAttributeTB();
+                        setTimeout(function() {
+                            // Trigger once for default selection
+                            $("#figureType").trigger("change");
+                        },150);
                     }
                     if( res.status == 'error' ){
                        swal.fire({

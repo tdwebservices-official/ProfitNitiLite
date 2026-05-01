@@ -109,3 +109,111 @@ function get_report_item_list(){
 	});
 	return report_table_list;
 }
+
+// Function to format number with commas
+function PNTFormatNumber(num) {
+    return Number(num).toLocaleString('en-IN', {
+        maximumFractionDigits: 2
+    });
+}
+
+// Change event
+$(document).on("change", "#figureType", function () {
+	let divisor = parseFloat($(this).val());
+	let suffixVal = $("#figureType").val(); 
+	var suffix = '';
+	if( suffixVal == 1000 ){
+		suffix = 'K';
+	}else if( suffixVal == 100000 ){
+		suffix = 'L';
+	}else if( suffixVal == 1000000 ){
+		suffix = 'M';
+	}else if( suffixVal == 10000000 ){
+		suffix = 'Cr';
+	}
+	$(".balance-sheet-table table tbody tr td:not(:first-child)").each(function () {
+
+		let original = $(this).attr("data-original");
+		if (original !== undefined) {
+			let newValue = original / divisor;
+			// if( original == 0 ){
+			// 	$(this).text(PNTFormatNumber(newValue));
+			// }else{				
+			// }
+				//$(this).text(PNTFormatNumber(newValue) +' '+ suffix);
+			$(this).text(PNTFormatNumber(newValue));
+		}
+	});
+});
+
+function setDataAttributeTB(){
+	// Store original values
+    $(".balance-sheet-table table tbody tr td:not(:first-child)").each(function () {
+
+        let value = $(this).text().replace(/,/g, '');        
+        if (!isNaN(value) && value !== "") {
+            $(this).attr("data-original", value);
+        }
+    });
+}
+
+function colorizeRowsByLabel(tableSelector, labels) {
+  $(tableSelector).find("tbody tr").each(function () {
+    const $row = $(this);
+
+    // skip hidden rows
+    //if ($row.is(":hidden")) return;
+
+    const label = $row.find("td:first").text().trim();
+
+    if (labels.includes(label)) {
+      $row.find("td:not(:first)").each(function () {
+        let value = $(this).text().replace(/,/g, '').trim();
+
+        if (value === "" || isNaN(value)) return;
+
+        value = parseFloat(value);
+
+        if (value < 0) {
+          $(this).css("color", "red");
+        } else if (value > 0) {
+          $(this).css("color", "green");
+        } else {
+          $(this).css("color", "black");
+        }
+      });
+    }
+  });
+}
+
+function oppcolorizeRowsByLabel(tableSelector, labels) {
+  $(tableSelector).find("tbody tr").each(function () {
+    const $row = $(this);
+
+
+
+    // skip hidden rows
+    //if ($row.is(":hidden")) return;
+
+    const label = $row.find("td:first").text().trim();
+
+    if (labels.includes(label)) {
+      $row.find("td:not(:first)").each(function () {
+        let value = $(this).text().replace(/,/g, '').trim();
+
+
+        if (value === "" || isNaN(value)) return;
+
+        value = parseFloat(value);
+
+        if (value < 0) {
+          $(this).css("color", "green");
+        } else if (value > 0) {
+          $(this).css("color", "red");
+        } else {
+          $(this).css("color", "black");
+        }
+      });
+    }
+  });
+}

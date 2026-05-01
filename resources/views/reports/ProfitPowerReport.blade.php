@@ -48,8 +48,15 @@
   </div>
 <div class="col-lg-12 mt-20 balance-sheet-table-box d-none">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header  d-flex align-items-center justify-content-between">
             <h5 class="card-title mb-0">Profit Power</h5>
+             <select id="figureType" class="form-control" style="width:200px;">
+              <option value="1">Actual</option>
+              <option value="1000" selected>Thousands</option>
+              <option value="100000">Lakhs</option>
+              <option value="10000000">Crores</option>
+              <option value="1000000">Millions</option>
+            </select>
           </div>
           <div class="card-body">
             <div class="table-responsive balance-sheet-table">
@@ -66,36 +73,39 @@
             <div id="columnChart1" class=""></div>
           </div>
         </div>
-        <div class="card mt-20">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Gross Margin % vs Net Margin %</h5>
-          </div>
-          <div class="card-body">
-            <div id="columnChart2" class=""></div>
-          </div>
-        </div>
-        <div class="card mt-20">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Income waterfall — monthly</h5>
-          </div>
-          <div class="card-body">
-            <div id="columnChart3" class=""></div>
-          </div>
-        </div>
-        <div class="card mt-20">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Revenue growth % vs COGS growth %</h5>
-          </div>
-          <div class="card-body">
-            <div id="columnChart4" class=""></div>
-          </div>
-        </div>
+       
+       
         <div class="card mt-20">
           <div class="card-header">
             <h5 class="card-title mb-0">Break Even Sales vs Actual Revenue</h5>
           </div>
           <div class="card-body">
             <div id="columnChart5" class=""></div>
+          </div>
+        </div>
+
+        <div class="card mt-20">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Profitability Parameters</h5>
+          </div>
+          <div class="card-body">
+            <div id="columnChart6" class=""></div>
+          </div>
+        </div>
+        <div class="card mt-20">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Revenue Growth vs. COGS Growth</h5>
+          </div>
+          <div class="card-body">
+            <div id="columnChart7" class=""></div>
+          </div>
+        </div>
+        <div class="card mt-20">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Revenue Growth vs Overheads Growth</h5>
+          </div>
+          <div class="card-body">
+            <div id="columnChart8" class=""></div>
           </div>
         </div>
       </div>

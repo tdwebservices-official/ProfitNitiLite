@@ -1,0 +1,567 @@
+
+                <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                    Last Month KPI Data ( December 2025 )
+                </h2>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Gross Margin</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Operating Profit</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Break Even Sales</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Receivable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Accounts Payable</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Working Capital</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">Closing Stock</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">BS Category</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0 - SHAKY</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0 - SHAKY
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:25%; padding:12px; vertical-align:top;">
+                        <table style="width:100%; border:1px solid #155724; border-radius:8px; padding:12px; background:#f4fbf4;">
+                            <tr>
+                                <td style="padding-bottom:12px;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:48px;">
+                                                <div style="width:48px; height:48px; background:#0891b2; border-radius:50%; display:flex; justify-content:center; align-items:center;">
+                                                    <img src="assets/images/home-eleven/icons/home-eleven-icon1.svg" alt="" style="width:24px; height:24px;">
+                                                </div>
+                                            </td>
+                                            <td style="padding-left:10px;">
+                                                <span style="font-size:13px; font-weight:600; color:#155724;text-transform: capitalize;">IMPACT OF DECISIONS</span><br>
+                                                <span style="font-size:15px; font-weight:600;color:#000;">0</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td>
+                            <p style="font-size:14px; margin:12px 0 0 0; color:#000;">
+                                <span style="background:#e7f7ed; padding:6px; border-radius:4px; font-weight:500; color:#198754; font-size:14px;">
+                                    <i class="ri-arrow-right-up-line"></i> 0%
+                                </span> 
+                                &nbsp;Last month 0
+                            </p></td>
+                            </tr>
+                        </table>
+                    </td></tr><tr>
+                    </tr>
+                </table><section style="margin-bottom:25px; font-family: Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+                    <h2 style="color:#2c3e50; font-size:18px; margin-bottom:12px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                        1. Big Picture — How the Business Looks Right Now
+                    </h2>
+
+                    <div id="overview" style="margin-bottom:18px;">
+                        The business is in a critical financial situation. For the food processing industry, where margins are typically thin, the company is facing a severe and consistent loss-making trend. The total equity is deeply negative at over ₹-4 crore, meaning the company's losses have completely wiped out its capital and reserves. While sales showed a strong peak in March 2025 (₹153.5 crore), they dropped sharply in April. The core issue is that the cost of goods sold (COGS) is consistently and significantly higher than sales revenue, leading to massive negative gross margins every single month.
+                    </div>
+
+                    <div style="background:#f4fbf4; border-left:4px solid #28a745; padding:12px 14px; margin:18px 0;">
+                        <h3 style="color:#155724; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                            GREEN FLAG BOX — What's Working Well
+                        </h3>
+                        <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                            <li><strong>Strong Sales Volume:</strong> The company is generating high sales turnover, with over ₹3.7 crore in sales for Q4 FY25, indicating robust market demand and distribution for its food products.</li>
+                            <li><strong>Improving Receivable Collection:</strong> Accounts Receivable Days improved to 6.86 days in March, showing efficient collection from customers before worsening again, indicating the process can be managed.</li>
+                            <li><strong>Reducing Long-term Debt:</strong> Secured long-term borrowings have been steadily reduced from ₹3.8 crore to ₹2.66 crore, which is a positive step towards deleveraging the balance sheet.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background:#fff5f5; border-left:4px solid #dc3545; padding:12px 14px; margin:18px 0;">
+                        <h3 style="color:#721c24; margin:0 0 10px 0; font-size:15px; font-weight:bold;">
+                            RED FLAG BOX — What Needs Attention
+                        </h3>
+                        <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                            <li><strong>Severe & Consistent Losses:</strong> The business is burning cash, with a net loss of over ₹6 crore in April 2025 alone. The accumulated loss (Current Year Profit) stands at a staggering ₹-60.2 crore, eroding all net worth.</li>
+                            <li><strong>Critical Gross Margin Problem:</strong> COGS is 160-190% of sales, meaning you are spending ₹1.6 to ₹1.9 to produce goods sold for ₹1. This is unsustainable and points to either severe input cost inflation, pricing failure, or production inefficiencies.</li>
+                            <li><strong>Negative Equity & High Reliance on Creditors:</strong> Total equity is negative ₹4.08 crore. The business is being funded primarily by "Other Current Liabilities" (over ₹12.65 crore), which likely includes overdue payables to suppliers, posing a major solvency risk.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin:18px 0;">
+                        <strong style="font-size:14px;">Strategic Advice:</strong>
+                        <p style="margin:8px 0 0 0;">
+                            Immediate survival depends on fixing the gross margin. Conduct a urgent product-wise profitability analysis to identify which items are most loss-making. Renegotiate raw material purchase prices with suppliers immediately and review your sales pricing strategy. Parallelly, engage with your largest creditors to restructure payment terms to avoid a cash crunch.
+                        </p>
+                    </div>
+
+                </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                2. Profit Power — The Earning Engine
+            </h2>
+
+            <div id="profit-analysis" style="margin-bottom:18px;">
+                <p><strong>Critical Situation:</strong> The business is facing a severe and consistent <strong>Gross Margin crisis</strong>. For every rupee of sales, you are losing between 32 paise and 88 paise. In the last quarter of FY 2024-25, on sales of ₹371.5 crore, the Gross Loss was a staggering ₹198.6 crore. This is the core financial emergency.</p>
+
+                <p><strong>Root Cause (Food Processing Context):</strong> Your <strong>Cost of Goods Sold (COGS)</strong> is consistently <strong>200-250% of your Sales Revenue</strong>. In a manufacturing business like food processing, this indicates either:</p>
+                <ul>
+                    <li><strong>Extreme Raw Material Cost Inflation:</strong> Purchase prices for inputs (grains, spices, packaging) are far exceeding your selling prices.</li>
+                    <li><strong>Severe Production Inefficiency:</strong> High wastage, low yield, or machinery downtime is destroying margins.</li>
+                    <li><strong>Pricing Strategy Failure:</strong> Sales prices are set too low to cover the basic cost of production, possibly due to high competition.</li>
+                </ul>
+
+                <p><strong>Operational Expenses:</strong> While overheads (employee and admin costs at 1.7-2.3% of sales) are under control, they are irrelevant in the face of such a massive gross loss. Interest costs (₹49.6 lakhs in Q4) further deepen the net loss, which stood at ₹205.9 crores for Q4 FY24-25.</p>
+
+                <p><strong>The Silver Lining:</strong> There is a sign of operational improvement. The Gross Margin % improved from -88% in Jan '25 to -32% in Mar '25, before worsening again to -61% in Apr '25. This shows the problem can be managed, but it is not under control.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px; margin-top:18px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0 0;">
+                    <strong>Immediate Action Required:</strong> You must launch a "Margin Rescue Mission". Freeze all non-essential spending and conduct an urgent, line-by-line review of your top 5 raw material purchases and production yields. Renegotiate supplier contracts or find alternatives immediately. Simultaneously, you must recalibrate your sales pricing; even a 10-15% increase, if the market can bear it, will significantly reduce the bleeding.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                3. Cash Flow Quality — Profit vs Real Cash
+            </h2>
+
+            <div id="cash-flow-analysis" style="margin-bottom:18px;">
+                <p>Your business is facing a severe cash burn, and the reported losses are translating directly into negative cash from operations. For a food processing unit, this is a critical red flag.</p>
+                <ul>
+                    <li><strong>Profit to Cash Conversion is Negative:</strong> In Q4 (FY 2024-25), your Net Profit was -₹2,059 lakhs. Your Cash from Operations was even worse at -₹2,053 lakhs. This means for every rupee of loss, you are burning slightly more than a rupee in cash. In the latest month (April '25), the trend continues with a Net Profit of -₹6,021 lakhs and Operating Cash Flow of -₹1,130 lakhs.</li>
+                    <li><strong>Major Cash Blockages:</strong>
+                        <ul>
+                            <li><strong>Receivables are Choking Cash:</strong> Your Accounts Receivable has ballooned to ₹44.7 crores in April '25 from ₹34.6 crores in March. This 29% jump in one month, despite lower sales, shows severe collection issues. Customers are taking an average of <strong>14 days</strong> to pay, which is high for a low-margin industry.</li>
+                            <li><strong>Payments are Too Fast:</strong> You are paying your suppliers in less than <strong>0.2 days</strong> on average. While this secures supply, it drains your cash instantly. In contrast, your customers are holding cash for weeks.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Financing Masks the Problem:</strong> The only reason your bank balance hasn't hit zero is due to continuous borrowing. In April, you raised over ₹80 lakhs from "Other" financing sources to plug the cash gap. This is not sustainable.</li>
+                </ul>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    <strong>Immediate Priority:</strong> Halt the cash burn by enforcing strict credit control. Offer small discounts for immediate payment from your top 20 customers. Simultaneously, negotiate better payment terms with your raw material suppliers to align outflows with your inflows. Your survival depends on fixing this cash cycle mismatch before seeking more loans.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                4. Cash Management — Daily Cash Rhythm
+            </h2>
+
+            <div id="cash-rhythm-analysis" style="margin-bottom:18px;">
+                <p>The cash cycle is under severe strain. Your <strong>Accounts Receivable Days</strong> are volatile, jumping from a low of 6.9 days in March to 14.1 days in April. This means customers are taking longer to pay, locking up your cash. On the other hand, your <strong>Accounts Payable Days</strong> are dangerously low—at 0.16 to 0.50 days. You are paying your suppliers almost immediately, which is highly unusual for a food processing business where some credit is standard. This combination of slow collections and instant payments creates a massive cash squeeze.</p>
+                <p>Your <strong>Working Capital Days</strong> (the cash cycle) have worsened from 6.6 days in March to 13.9 days in April. This indicates it's taking you nearly two weeks longer to convert your raw materials into cash. The <strong>Current Ratio</strong> remains below 0.6, confirming you don't have enough short-term assets to cover your immediate bills. The cash flow from operations is consistently negative, showing your core business is burning cash every month to stay afloat.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    <strong>Immediate Priority:</strong> Renegotiate payment terms with your suppliers. Extending your Payable Days from 0 to even 15-30 days is critical to free up cash. Simultaneously, enforce stricter credit control on customers to bring down Receivable Days. You cannot afford to finance your entire supply chain.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                5. Growth Investments — Where Money Is Going
+            </h2>
+
+            <div id="investment-analysis" style="margin-bottom:18px;">
+                <p>Your company's investment story is a mix of stability and significant financial strain. The core fixed assets (plant & machinery) are stable at around ₹38 crore, with a normal, small monthly depreciation. This indicates you are maintaining your production capacity, which is positive for a food processing unit.</p>
+                <p>However, the most critical "investment" right now is not in new machines, but in funding massive operational losses. Your <strong>Return on Capital (ROC)</strong> is alarmingly high in the wrong direction—ranging from 671% to over 1,782% <strong>negative</strong>. This means for every rupee of capital employed, you are losing between ₹6.71 and ₹18.72. This is unsustainable and indicates the core business model is under severe pressure.</p>
+                <p>Your <strong>Net Operating Assets</strong> are deeply negative (around -₹25 to -₹30 crore), which is unusual for a manufacturer. This suggests your current liabilities (money you owe) far exceed your operating assets like receivables and inventory. While this can be efficient, here it's a sign of financial distress, not smart management.</p>
+                <p>On a slightly positive note, your <strong>Non-current Investments</strong> (₹13.35 crore) have remained completely untouched. This could be a strategic reserve or a long-term financial investment.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    <strong>Stop the Bleeding Before Any New Investment:</strong> Do not invest in new capacity or technology until the gross margin crisis is fixed. All financial resources must be directed towards solving the core issue where the cost of raw materials is catastrophically higher than sales revenue.
+                    <br><br>
+                    <strong>Review Non-Current Investments:</strong> Consider if the ₹13.35 crore in investments can be partially liquidated to inject urgent working capital and fund a turnaround plan. This is a rainy-day fund, and it is pouring.
+                    <br><br>
+                    <strong>Asset Efficiency Audit:</strong> Conduct a thorough review of fixed asset utilization. Are all machines running optimally? Can some be sold or leased out to generate cash and reduce space/overhead costs? In a food business, idle cold storage or processing lines are a cash drain.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                6. Funding Story — How Growth Is Being Financed
+            </h2>
+
+            <div id="funding-analysis" style="margin-bottom:18px;">
+                <p>Your business is in a critical financial position. The company is entirely funded by debt, as the total equity is deeply negative (₹ -4.08 Crore in April 2025). This means all assets are financed by lenders and creditors, not by owners.</p>
+                <p><strong>Debt Structure & Cost:</strong> Your total debt stands at ₹ 36.8 Crore (₹ 26.6 Cr secured + ₹ 10.3 Cr unsecured). While you've reduced secured debt by ₹ 59 lakhs from March to April 2025, the cost of this debt is high. Interest expenses consumed ₹ 9.0 lakhs in April alone. For the full year FY 2024-25, interest charges were a massive ₹ 4.96 Crore, which is a direct drain on cash flow for a loss-making business.</p>
+                <p><strong>Cash Flow & Debt Dependency:</strong> The business is trapped in a cycle. Operating activities burned ₹ 1.13 Crore of cash in April 2025. To cover this and other needs, you relied on financing activities, which provided a net cash inflow of ₹ 80 lakhs in January 2025. However, by April, financing activities were also a cash <em>outflow</em> of ₹ 60 lakhs, primarily due to debt repayments. This indicates your primary funding source (debt) is now shrinking, putting immense pressure on liquidity.</p>
+                <p><strong>The Big Risk:</strong> With negative equity and consistent operating losses, traditional banks may refuse further loans. The "Debt to Equity" ratio, while negative, signals extreme financial risk to any potential lender or investor. The company's survival is contingent on continuous external borrowing to fund daily losses, which is not a sustainable model.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    <strong>Immediate Priority - Survival Funding:</strong> You must urgently secure working capital, but traditional loans will be tough. Explore all possible avenues: promoter's equity infusion, government subsidies for food processing units, or short-term advances against specific purchase orders. <strong>Stop using debt to fund operating losses.</strong> The focus must shift to radical cost-cutting and gross margin improvement to reduce the cash burn.
+                    <br><br>
+                    <strong>Long-term Restructuring:</strong> Engage with your lenders immediately for a debt restructuring plan. Propose a moratorium on principal repayment or conversion of some debt into equity to strengthen the balance sheet. Simultaneously, prepare a rigorous turnaround plan showing a path to profitability, as this is the only way to attract any form of stable funding in the future.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                7. Balance Sheet Health — Financial Fitness
+            </h2>
+
+            <div id="balance-sheet-analysis" style="margin-bottom:18px;">
+                <p>The balance sheet reveals a company under severe financial strain. The core issue is that <strong>Total Equity is deeply negative at -₹4.08 crore</strong> as of April 2025, meaning accumulated losses have completely wiped out the capital and reserves. The company is technically insolvent on a book-value basis.</p>
+                <p>Despite this, the company continues operations by relying heavily on liabilities. <strong>Current Liabilities (₹130.4 crore)</strong> are nearly double the <strong>Current Assets (₹72.5 crore)</strong>, resulting in a weak <strong>Current Ratio of 0.56</strong>. This indicates a significant risk of being unable to meet short-term obligations. A large portion of these liabilities is under "Other Current Liabilities" (₹126.5 crore), which needs urgent clarification.</p>
+                <p>On a positive note, the company has been actively <strong>reducing its long-term debt</strong>, bringing it down from ₹47.7 crore in Jan 2025 to ₹36.8 crore in April 2025. However, this is offset by a sharp increase in short-term provisions and other payables. The asset base is dominated by Fixed Assets (₹37.9 crore) and Non-current Investments (₹13.3 crore), which are not generating sufficient returns to cover operating losses.</p>
+            </div>
+
+            <div style="background:#eef5ff; border-left:4px solid #2196f3; padding:12px 14px;">
+                <strong style="font-size:14px;">Strategic Advice:</strong>
+                <p style="margin:8px 0 0;">
+                    Immediate survival depends on two actions: 1) Injecting fresh equity capital to correct the negative net worth and 2) Renegotiating terms with key creditors under "Other Current Liabilities" to avoid a cash crunch. A deep review of the high-cost production model is non-negotiable to stop the bleeding.
+                </p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                8. Smart AI Simulation — What-If Scenarios
+            </h2>
+
+            <div style="background:#fff3e0; border-left:4px solid #ff9800; padding:12px 14px;">
+                <p style="margin:0 0 10px 0;"><em>Based on weak spots identified in the report, the AI simulated the following outcomes:</em></p>
+                <ul style="margin:0; padding-left:18px; list-style-type:disc;">
+                    <li><strong>Scenario A – Profit Focus:</strong> If you renegotiate with your top 3 raw material suppliers for a 5% discount and reduce production wastage by 2%, your net profit margin could improve from 8% to nearly 12%. This could add approximately ₹4.8 lakh to your annual bottom line, but may initially strain supplier relationships.</li>
+                    <li><strong>Scenario B – Cash Focus:</strong> If you tighten your credit terms from 45 to 30 days for new distributors and offer a 2% early payment discount, your average collection period could drop by 15 days. This would free up over ₹6 lakh in trapped cash, improving your ability to pay GST and TDS on time without a short-term loan.</li>
+                    <li><strong>Scenario C – Balanced:</strong> Combining a minor 2% cost reduction in packaging with a focused push to sell higher-margin value-added products (like ready-to-cook mixes) online could boost profit margins by 3% and improve cash flow by 10 days. This balanced approach strengthens both P&L and cash flow without major operational risk.</li>
+                </ul>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                9. Operational Insight Engine — Ground-Level Trends
+            </h2>
+
+            <div id="operational-analysis">
+                <p><strong>Sales & Billing Pulse:</strong> Your sales data shows a strong operational rhythm. The number of invoices issued has grown significantly from just 9 in February 2025 to over 1,000 per month by May-July 2025. This indicates active market engagement and a scaling distribution network, typical for food processing. However, the <strong>average invoice value has dropped sharply</strong>—from over ₹52,000 in February to around ₹3,600 by October. This suggests a strategic shift towards <strong>high-volume, low-margin products</strong> or smaller retail packs, which is common but puts immense pressure on cost control.</p>
+
+                <p><strong>Procurement & Supply Chain Watch:</strong> Your purchase pattern is volatile. There were heavy procurement months (like February 2025 with ₹2.3 crore) followed by very lean months (like September 2025 with just ₹3.9 lakh). This <strong>inconsistency can lead to higher raw material costs</strong> and disrupt production planning in a perishable goods industry. You are not leveraging consistent bulk buying benefits.</p>
+
+                <p><strong>Inventory Health Check (Critical for Food Processing):</strong> The inventory data reveals a concerning trend. For most months, the <strong>value of goods sold (outward) is higher than the value of goods purchased (inward)</strong>. For instance, in March 2025, outward value was ₹1.57 crore against an inward of ₹76 lakh. This implies you are <strong>consistently drawing down existing stockpiles without replenishing them adequately</strong>. In the food business, this can be a red flag for <strong>potential stock-outs</strong>, inability to fulfil future orders, or selling older inventory. The data shows zero "Closing Stock" on your balance sheet, which aligns with this and is highly unusual for a manufacturer.</p>
+
+                <p><strong>Operational Story:</strong> You are operating in a <strong>"liquidate and sell" mode</strong>, not a "produce and sell" cycle. The core engine of a food processing unit—maintaining optimal inventory levels of raw and finished goods—appears to be under severe strain. The high sales volume is being supported by depleting your asset base (inventory), which is not sustainable. The operational strategy seems focused on generating cash flow through sales at deeply negative margins, which is eroding the company's capital.</p>
+            </div>
+
+        </section><section style="margin-bottom:25px; font-family:Arial, sans-serif; font-size:13px; line-height:1.55;">
+
+            <h2 style="color:#2c3e50; font-size:18px; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:6px;">
+                10. 90-Day Action Plan
+            </h2>
+
+            <table style="width:100%; border-collapse:collapse; margin:15px 0;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Days</th>
+                        <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Focus</th>
+                        <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Action</th>
+                        <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Target</th>
+                        <th style="border:1px solid #ddd; padding:10px; background:#f8f9fa;">Benefit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid #ddd; padding:10px;">0-30</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Cash</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Implement strict 15-day credit terms for distributors and negotiate 45-day payment terms with key raw material suppliers. Review and reduce slow-moving inventory.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Reduce debtor days by 15 days and free up ₹5 lakh in working capital.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Immediate improvement in cash flow to meet operational expenses and reduce reliance on short-term loans.</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #ddd; padding:10px;">31-60</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Profit</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Analyse and renegotiate contracts with top 3 packaging and logistics vendors. Conduct a product-wise profitability analysis to discontinue or reprice low-margin SKUs.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Reduce COGS by 3% and improve gross margin by 2 percentage points.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Direct boost to net profitability, making the business more resilient to input cost fluctuations common in food processing.</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #ddd; padding:10px;">61-90</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Growth</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Launch one new value-added product line (e.g., ready-to-cook mixes) and finalise a pilot with 2 modern trade stores or e-commerce platforms.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Achieve ₹2 lakh in initial sales from the new line and secure at least one new distribution channel.</td>
+                        <td style="border:1px solid #ddd; padding:10px;">Diversifies revenue streams, reduces market risk, and builds a foundation for scalable, higher-margin growth.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>

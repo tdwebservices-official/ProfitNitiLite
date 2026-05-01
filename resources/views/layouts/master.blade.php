@@ -44,7 +44,7 @@
   
   <link rel="stylesheet" href="{{asset('assets/css/lib/audioplayer.css')}}">
   <!-- main css -->
-  <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/style.css?ver=1.0.1')}}">
   
    @yield('css')
   <script type="text/javascript">
@@ -584,9 +584,10 @@
           'permissions' => 'reports.impact-of-change-report',
           'sub_menu' => array()
         ),
+        
         array(
           'link' => url('reports/bs-category-reports'),
-          'label' => 'BS Category Report',
+          'label' => 'Business Health Report',
           'key' => 'bs-category-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,

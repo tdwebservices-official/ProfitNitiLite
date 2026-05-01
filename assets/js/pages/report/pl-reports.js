@@ -59,6 +59,16 @@ jQuery(document).ready(function() {
                     if( res.status == 'success' ){
                         jQuery('.pl-sheet-table-box').removeClass('d-none');
                         jQuery('.pl-sheet-table').html(res.table_html);
+ colorizeRowsByLabel(".pl-sheet-table table", [
+                          "Gross Profit", "EBITDA", "PBIT", "Profit after Interest and before Tax", "Profit before Exceptional/Extraordinary Items and Tax", "Profit before Tax", "Profit after Tax", "Retained Profit"
+                      ]);
+                         setDataAttributeTB();
+                        setTimeout(function() {
+                            // Trigger once for default selection
+                            $("#figureType").trigger("change");
+                        },150);
+
+                        
                     } 
                    
                     if( res.status == 'error' ){

@@ -40,6 +40,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
         Route::get('/financing-reports', 'ReportController@FinancingReports')->name('reports.financing-report');
         Route::get('/bs-category-reports', 'ReportController@BSCategoryReports')->name('reports.bs-category-report');
         Route::get('/cashflow-quality-reports', 'ReportController@CashFlowQualityReports')->name('reports.cashflow-quality-report');
+        Route::get('/impact-of-change-reports', 'ReportController@ImpactOfChangeReports')->name('reports.impact-of-change-report');
      });
 
 

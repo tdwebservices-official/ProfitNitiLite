@@ -373,7 +373,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color:#e6f5ff;
   color: var(--text-secondary-light);
   font-family: "Inter", sans-serif;
   font-size: 1rem;

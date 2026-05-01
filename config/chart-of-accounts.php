@@ -394,7 +394,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Tax',
+                    'label' => 'PBT',
                     'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
@@ -411,7 +411,7 @@ return [
                 [
                     'bold' => true,
                     'label' => 'Profit after Tax',
-                    'items' => [ 'Profit before Tax', 'Current Tax', 'Deferred Tax' ],
+                    'items' => [ 'PBT', 'Current Tax', 'Deferred Tax' ],
                     'operators' => [ '+', '-', '-' ],
                 ],
                 [
@@ -542,7 +542,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Tax',
+                    'label' => 'PBT',
                     'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
@@ -561,7 +561,7 @@ return [
                 [
                     'bold' => true,
                     'label' => 'Profit after Tax',
-                    'items' => [ 'Profit before Tax', 'Tax Paid' ],
+                    'items' => [ 'PBT', 'Tax Paid' ],
                     'operators' => [ '+', '-' ],
                 ],
                 [
@@ -930,7 +930,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Tax',
+                    'label' => 'PBT',
                     'hide_tr' => true,
                     'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
@@ -951,7 +951,7 @@ return [
                     'bold' => true,
                     'label' => 'Profit after Tax',
                     'hide_tr' => true,
-                    'items' => [ 'Profit before Tax', 'Tax Paid' ],
+                    'items' => [ 'PBT', 'Tax Paid' ],
                     'operators' => [ '+', '-' ],
                 ],
                 [
@@ -1245,7 +1245,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Tax',
+                    'label' => 'PBT',
                     'hide_tr' => true,
                     'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
@@ -1266,7 +1266,7 @@ return [
                     'bold' => true,
                     'label' => 'Profit after Tax',
                     'hide_tr' => true,
-                    'items' => [ 'Profit before Tax', 'Tax Paid' ],
+                    'items' => [ 'PBT', 'Tax Paid' ],
                     'operators' => [ '+', '-' ],
                 ],
                 [
@@ -1718,7 +1718,7 @@ return [
             'final' => [
                 [
                     'bold' => false,
-                    'label' => 'Profit before Tax',
+                    'label' => 'PBT',
                     'hide_tr' => true,
                     'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
@@ -1737,7 +1737,7 @@ return [
                 [
                     'bold' => false,
                     'label' => 'Net Profit',
-                    'items' => [ 'Profit before Tax', 'Tax Paid' ],
+                    'items' => [ 'PBT', 'Tax Paid' ],
                     'operators' => [ '+', '-' ],
                 ],
                 [
