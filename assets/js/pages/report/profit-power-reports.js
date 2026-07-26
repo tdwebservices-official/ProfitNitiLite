@@ -1,3 +1,12 @@
+
+    // Declare chartInstance outside to persist across clicks
+var globalChartInstance = null;
+
+// Store original data for each chart
+const chartOriginalData = {};
+
+// Store current format for each chart
+const chartCurrentFormat = {};
 var chart2 = {},chart3 = {};
 jQuery(document).ready(function($) {
      $.ajaxSetup({
@@ -7,85 +16,11 @@ jQuery(document).ready(function($) {
 });
 
 
-     
 
-
-     // ================================ Column Charts Chart Start ================================ 
-    var options = {
-        series: [{
-            name: 'Net Profit',
-            data: [20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000, 18000, 22000]
-        },{
-            name: 'Revenue',
-            data: [15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000, 14000, 16000]
-        }],
-        colors: ['#487FFF', '#FF9F29'],
-        labels: ['Active', 'New', 'Total'],
-        legend: {
-            show: false 
-        },
-        chart: {
-            type: 'bar',
-            height: 300,
-            toolbar: {
-                show: false
-            },
-        },
-        grid: {
-            show: true,
-            borderColor: '#D1D5DB',
-            strokeDashArray: 4, // Use a number for dashed style
-            position: 'back',
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 2,
-                columnWidth: '40%',
-                borderRadiusApplication: 'end'
-            },
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            show: true,
-            width: 2,
-            colors: ['transparent']
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        },
-        yaxis: {
-            categories: ['0', '5000', '10,000', '20,000', '30,000', '50,000', '60,000', '60,000', '70,000', '80,000', '90,000', '100,000'],
-        },
-        yaxis: {
-          labels: {
-                formatter: function (val) {
-                    return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-                }
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return val.toLocaleString('en-IN');
-                }
-            }
-        },
-        fill: {
-            opacity: 1,
-            width: 18,
-        },
-    };
-
-    var chart1  = new ApexCharts(document.querySelector("#columnChart1"), options);
-    chart1.render();
    
-
-    createChartTwo('columnChart5', '#487FFF', '#FF9F29');
-    createChartThree('columnChart6', '#487FFF', '#FF9F29', '#e80f0f');
-    createChartTwo('columnChart7', '#487FFF', '#FF9F29');
-    createChartTwo('columnChart8', '#487FFF', '#FF9F29');
+    // createChartThree('columnChart6', '#487FFF', '#FF9F29', '#e80f0f');
+    // createChartTwo('columnChart7', '#487FFF', '#FF9F29');
+    // createChartTwo('columnChart8', '#487FFF', '#FF9F29');
 
 
     $('#profit-power-report-form').validate({
@@ -146,15 +81,15 @@ jQuery(document).ready(function($) {
 
                         var report_itemObj = get_report_item_list();
 
-                        colorizeRowsByLabel(".balance-sheet-table table", [
-                          "Revenue Growth %", "Gross Margin %", "Operating Profit %"
-                      ]);
+                      //   colorizeRowsByLabel(".balance-sheet-table table", [
+                      //     "Revenue Growth %", "Gross Margin %", "Operating Profit %"
+                      // ]);
 
-                        oppcolorizeRowsByLabel(".balance-sheet-table table", [
-                          "Overheads %", "COGS Growth %","Break Even Sales"
-                      ]);
+                      //   oppcolorizeRowsByLabel(".balance-sheet-table table", [
+                      //     "Overheads %", "COGS Growth %","Break Even Sales"
+                      // ]);
 
-                        setDataAttributeTB();
+                        setDataAttributeTB(['Revenue Growth %','COGS Growth %','Gross Margin %','Overheads %','Overheads Growth %','Operating Profit %','Net Profit %']);
 
                         setTimeout(function() {
                             // Trigger once for default selection
@@ -162,98 +97,67 @@ jQuery(document).ready(function($) {
                         },150);
 
 
-                        chart1.updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        revenueCogsTrend( report_itemObj, res.chart_header );
+                        bkSalesVsRevnue( report_itemObj, res.chart_header );
+                        ProfitabilityParameters( report_itemObj, res.chart_header );
+                        salevscogs( report_itemObj, res.chart_header );
+                        salevsoverheads( report_itemObj, res.chart_header );
 
 
-                        chart1.updateSeries([
-                            {
-                                name: 'Revenue',
-                                data: report_itemObj['Revenue']
-                            },
-                            {
-                                name: 'COGS',
-                                data: report_itemObj['COGS']
-                            }
-                        ]);
+                        // chart3['columnChart6'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        
+                        // chart3['columnChart6'].updateSeries([
+                        //     {
+                        //         name: 'Gross Margin %',
+                        //         data: report_itemObj['Gross Margin %']
+                        //     },
+                        //      {
+                        //         name: 'Operating Profit %',
+                        //         data: report_itemObj['Operating Profit %']
+                        //     },
+                        //      {
+                        //         name: 'Net Profit %',
+                        //         data: report_itemObj['Net Profit %']
+                        //     }
+                        // ]);
 
-                        chart2['columnChart5'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        // chart2['columnChart7'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        chart2['columnChart5'].updateSeries([
-                            {
-                                name: 'Break Even Sales',
-                                data: report_itemObj['Break Even Sales']
-                            },
-                             {
-                                name: 'Revenue',
-                                data: report_itemObj['Revenue']
-                            }
-                        ]);
+                        // chart2['columnChart7'].updateSeries([
+                        //     {
+                        //         name: 'Revenue Growth %',
+                        //         data: report_itemObj['Revenue Growth %']
+                        //     },
+                        //      {
+                        //         name: 'COGS Growth %',
+                        //         data: report_itemObj['COGS Growth %']
+                        //     }
+                        // ]);
 
+                        // chart2['columnChart8'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        chart3['columnChart6'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
-
-                        chart3['columnChart6'].updateSeries([
-                            {
-                                name: 'Gross Margin %',
-                                data: report_itemObj['Gross Margin %']
-                            },
-                             {
-                                name: 'Operating Profit %',
-                                data: report_itemObj['Operating Profit %']
-                            },
-                             {
-                                name: 'Net Profit %',
-                                data: report_itemObj['Net Profit %']
-                            }
-                        ]);
-
-                        chart2['columnChart7'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
-
-                        chart2['columnChart7'].updateSeries([
-                            {
-                                name: 'Revenue Growth %',
-                                data: report_itemObj['Revenue Growth %']
-                            },
-                             {
-                                name: 'COGS Growth %',
-                                data: report_itemObj['COGS Growth %']
-                            }
-                        ]);
-
-                        chart2['columnChart8'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
-
-                        chart2['columnChart8'].updateSeries([
-                            {
-                                name: 'Revenue Growth %',
-                                data: report_itemObj['Revenue Growth %']
-                            },
-                             {
-                                name: 'Overheads Growth %',
-                                data: report_itemObj['Overheads Growth %']
-                            }
-                        ]);
+                        // chart2['columnChart8'].updateSeries([
+                        //     {
+                        //         name: 'Revenue Growth %',
+                        //         data: report_itemObj['Revenue Growth %']
+                        //     },
+                        //      {
+                        //         name: 'Overheads Growth %',
+                        //         data: report_itemObj['Overheads Growth %']
+                        //     }
+                        // ]);
                         
 
                         jQuery('.balance-sheet-table-box').removeClass('d-none');
@@ -286,6 +190,127 @@ jQuery(document).ready(function($) {
            
         }
     });
+  jQuery(document).on('change','.chart-value-type',function(){
+        const chartId = $(this).data('chart-id');
+        const format = $(this).val();
+// Update chart with formatted data
+        updateChartFormat(chartId, format);
+    });
+
+    function revenueCogsTrend( report_itemObj, chart_header ){
+        jQuery('#revenue-cogs-trend').empty();       
+        const r_series = [
+            {
+                name: 'Revenue',
+                data: report_itemObj['Revenue']
+            },
+            {
+                name: 'COGS',
+                data: report_itemObj['COGS']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['revenue-cogs-trend'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['revenue-cogs-trend'] = 'lakh';
+        renderChart('revenue-cogs-trend', 'barChart', revenueCogsObj);
+        updateChartFormat('revenue-cogs-trend', 'lakh');
+    }
+
+
+      function bkSalesVsRevnue( report_itemObj, chart_header ){
+        jQuery('#break-even-sales-vs-revnue').empty();       
+        const r_series = [
+            {
+                name: 'Break Even Sales',
+                data: report_itemObj['Break Even Sales']
+            },
+            {
+                name: 'Revenue',
+                data: report_itemObj['Revenue']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['break-even-sales-vs-revnue'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['break-even-sales-vs-revnue'] = 'lakh';
+        renderChart('break-even-sales-vs-revnue', 'barChart', revenueCogsObj);
+        updateChartFormat('break-even-sales-vs-revnue', 'lakh');
+    }
+
+    function ProfitabilityParameters( report_itemObj, chart_header ){
+        jQuery('#columnChart6').empty();       
+
+
+        const r_series = [
+            {
+                name: 'Gross Margin %',
+                data: report_itemObj['Gross Margin %']
+            },
+            {
+                name: 'Operating Profit %',
+                data: report_itemObj['Operating Profit %']
+            },
+            {
+                name: 'Net Profit %',
+                data: report_itemObj['Net Profit %']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart6'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart6'] = 'lakh';
+        renderChart('columnChart6', 'barChart', revenueCogsObj);
+    }
+
+     function salevscogs( report_itemObj, chart_header ){
+        jQuery('#columnChart7').empty();       
+        const r_series = [
+            {
+                name: 'Revenue Growth %',
+                data: report_itemObj['Revenue Growth %']
+            },
+            {
+                name: 'COGS Growth %',
+                data: report_itemObj['COGS Growth %']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart7'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart7'] = 'lakh';
+        renderChart('columnChart7', 'barChart', revenueCogsObj);
+
+    }
+
+     function salevsoverheads( report_itemObj, chart_header ){
+        jQuery('#columnChart8').empty();       
+        const r_series = [
+            {
+                name: 'Revenue Growth %',
+                data: report_itemObj['Revenue Growth %']
+            },
+            {
+                name: 'Overheads Growth %',
+                data: report_itemObj['Overheads Growth %']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart8'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart8'] = 'lakh';
+        renderChart('columnChart8', 'barChart', revenueCogsObj);
+    }
 
     jQuery(document).on( 'click', '.btn-download-report', function () {
          jQuery('#profit-power-report-form .btn-download-report').siblings('.spinner-border').show();
@@ -386,10 +411,10 @@ jQuery(document).ready(function($) {
                     opacity: 0.5
                 },
                 padding: {
-                    top: -20,
-                    right: 0,
-                    bottom: -10,
-                    left: 0
+                    top: 10,
+                    right: 10,
+                    bottom: 10,
+                    left: 40
                 },
             },
             colors: [color1, color2], // Set color for series
@@ -520,10 +545,10 @@ jQuery(document).ready(function($) {
                     opacity: 0.5
                 },
                 padding: {
-                    top: -20,
-                    right: 0,
-                    bottom: -10,
-                    left: 0
+                    top: 10,
+                    right: 10,
+                    bottom: 10,
+                    left: 40
                 },
             },
             colors: [color1, color2,color3], // Set color for series

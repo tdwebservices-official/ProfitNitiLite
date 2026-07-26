@@ -1,0 +1,739 @@
+/* === Unified Premium Fintech Theme — Indian Business Reports Suite === */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* =====================================================================
+   CashFlow Quality Report — Premium Stylesheet
+   Part of the unified Reports Design System for Indian Business Owners
+   Palette: Deep Indigo + Saffron + Emerald + Gold accents
+   Drop this CSS file alongside the HTML and link it in <head>.
+   ===================================================================== */
+
+/* ---------- Design Tokens (same across all reports) ---------- */
+:root {
+  /* Surface */
+  --pl-bg: #f4f6fb;
+  --pl-bg-soft: #fbfcfe;
+  --pl-surface: #ffffff;
+
+  /* Ink */
+  --pl-ink: #0c1628;
+  --pl-ink-soft: #43526e;
+  --pl-muted: #8a93a6;
+  --pl-border: #e4e9f2;
+  --pl-border-strong: #cdd5e3;
+
+  /* Brand */
+  --pl-primary: #0b2a6b;
+  --pl-primary-600: #1741a3;
+  --pl-primary-50: #e8eefb;
+
+  /* Accents */
+  --pl-saffron: #ef7a1b;
+  --pl-saffron-soft: #fdeedb;
+  --pl-gold: #b9883a;
+  --pl-gold-soft: #f4e7c8;
+
+  /* Status */
+  --pl-emerald: #0b7a55;
+  --pl-emerald-soft: #dcf2e7;
+  --pl-rose: #b6342a;
+  --pl-rose-soft: #fbe1dc;
+
+  /* Gradients */
+  --pl-gradient-hero: linear-gradient(125deg, #0b2a6b 0%, #1741a3 50%, #2a64d2 100%);
+  --pl-gradient-gold: linear-gradient(135deg, #d6a64a 0%, #f1cf7d 100%);
+  --pl-gradient-card: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+  --pl-gradient-accent: linear-gradient(135deg, #ef7a1b 0%, #f5a256 100%);
+
+  /* Elevation */
+  --pl-shadow-sm: 0 1px 2px rgba(11, 42, 107, .06), 0 1px 3px rgba(11, 42, 107, .04);
+  --pl-shadow-md: 0 8px 22px -10px rgba(11, 42, 107, .18), 0 2px 6px rgba(11, 42, 107, .05);
+  --pl-shadow-lg: 0 24px 48px -22px rgba(11, 42, 107, .32);
+
+  /* Shape */
+  --pl-radius: 16px;
+  --pl-radius-sm: 12px;
+
+  /* Type */
+  --pl-font-display: "Manrope", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --pl-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --pl-font-num: "JetBrains Mono", "SF Mono", "Roboto Mono", ui-monospace, monospace;
+}
+.balance-sheet-table div table{
+      table-layout: unset;
+}
+
+/* ---------- Base ---------- */
+.dashboard-main-body {
+  background:
+    radial-gradient(1100px 500px at -8% -18%, rgba(239, 122, 27, .07), transparent 62%),
+    radial-gradient(900px 600px at 108% -4%, rgba(11, 42, 107, .10), transparent 64%),
+    var(--pl-bg);
+  font-family: var(--pl-font-body);
+  color: var(--pl-ink);
+  padding: 28px 26px 60px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Hero / Breadcrumb ---------- */
+.dashboard-main-body > .d-flex.mb-24 {
+  background: var(--pl-gradient-hero);
+  border-radius: var(--pl-radius);
+  padding: 22px 28px;
+  box-shadow: var(--pl-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.dashboard-main-body > .d-flex.mb-24::before {
+  content: "";
+  position: absolute;
+  inset: -50% -10% auto auto;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(240, 138, 36, .35), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold {
+  font-family: var(--pl-font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  color: #fff;
+  position: relative;
+  margin: 0;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold::before {
+  content: "₹";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 14px;
+  background: var(--pl-gradient-gold);
+  color: var(--pl-primary);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  box-shadow: 0 6px 16px rgba(201, 161, 74, .35);
+}
+.dashboard-main-body > .d-flex.mb-24 ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.dashboard-main-body > .d-flex.mb-24 ul li,
+.dashboard-main-body > .d-flex.mb-24 ul a {
+  color: rgba(255, 255, 255, .85);
+  font-size: .82rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+.dashboard-main-body > .d-flex.mb-24 ul a:hover,
+.hover-text-primary:hover { color: var(--pl-saffron) !important; }
+.dashboard-main-body > .d-flex.mb-24 ul li:last-child { color: #fff; font-weight: 600; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--pl-gradient-card);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  box-shadow: var(--pl-shadow-md);
+  overflow: hidden;
+  margin-top: 20px;
+}
+.card.h-100.p-0.radius-12 { background: var(--pl-surface); }
+.card .card { box-shadow: none; margin-top: 0; border-color: var(--pl-border); }
+.card-body { padding: 24px 26px; }
+
+
+/* ---------- Filter Form (.cashflow-quality-report-form) ---------- */
+.cashflow-quality-report-form { position: relative; }
+.cashflow-quality-report-form::before {
+  content: "";
+  position: absolute;
+  top: -24px; left: -26px; right: -26px;
+  height: 4px;
+  background: var(--pl-gradient-gold);
+  border-radius: 2px;
+}
+
+.cashflow-quality-report-form label,
+.cashflow-quality-report-form label strong {
+  font-family: var(--pl-font-display);
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--pl-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 6px !important;
+}
+
+.cashflow-quality-report-form .form-control,
+.cashflow-quality-report-form .select2-selection {
+  height: 46px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--pl-border-strong) !important;
+  background: #fff !important;
+  font-family: var(--pl-font-body);
+  font-size: .9rem;
+  color: var(--pl-ink);
+  padding: 0 14px !important;
+  display: flex;
+  align-items: center;
+  transition: border-color .2s, box-shadow .2s;
+}
+.cashflow-quality-report-form .form-control:focus,
+.cashflow-quality-report-form .select2-selection:focus {
+  outline: none;
+  border-color: var(--pl-primary) !important;
+  box-shadow: 0 0 0 4px rgba(31, 42, 85, .1) !important;
+}
+.cashflow-quality-report-form .select2-selection__rendered {
+  line-height: 44px !important;
+  color: var(--pl-ink) !important;
+  padding: 0 !important;
+}
+.cashflow-quality-report-form .select2-selection__arrow { height: 44px !important; }
+.cashflow-quality-report-form .select2-selection__arrow b {
+  border-color: var(--pl-primary) transparent transparent transparent !important;
+}
+
+#date_filter > div { flex: 1; }
+#date_filter input[type="text"] {
+  cursor: pointer;
+  background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231f2a55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>") no-repeat right 12px center !important;
+  padding-right: 38px !important;
+}
+
+
+/* ---------- Action Buttons ---------- */
+.btn-view-report,
+.btn-download-report {
+  height: 46px;
+  padding: 0 28px !important;
+  border-radius: 10px !important;
+  font-family: var(--pl-font-display);
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .02em;
+  border: none !important;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.btn-view-report {
+  background: var(--pl-gradient-hero) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px -8px rgba(31, 42, 85, .55);
+}
+.btn-view-report::before { content: "▸"; font-size: .85rem; }
+.btn-download-report {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+  box-shadow: 0 8px 20px -8px rgba(201, 161, 74, .6);
+}
+.btn-download-report::before { content: "⬇"; font-size: .9rem; }
+.btn-view-report:hover,
+.btn-download-report:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+
+/* ---------- Report Card Header (.balance-sheet-table-box) ---------- */
+.balance-sheet-table-box .card-header {
+  background: linear-gradient(90deg, #fbf9f3 0%, #fff 100%);
+  border-bottom: 2px solid var(--pl-border);
+  padding: 20px 26px;
+}
+.balance-sheet-table-box .card-title {
+  font-family: var(--pl-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pl-primary);
+  letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.balance-sheet-table-box .card-title::before {
+  content: "";
+  width: 5px;
+  height: 24px;
+  background: var(--pl-gradient-gold);
+  border-radius: 3px;
+}
+
+
+/* ---------- Figure-units selector ---------- */
+#figureType {
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid var(--pl-border-strong);
+  line-height: 40px;
+  background: #fff;
+  font-weight: 600;
+  color: var(--pl-primary);
+  font-size: .85rem;
+  padding: 0 36px 0 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231f2a55' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+#figureType:focus {
+  outline: none;
+  border-color: var(--pl-primary);
+  box-shadow: 0 0 0 4px rgba(31, 42, 85, .1);
+}
+
+
+/* ---------- Data Table (.balance-sheet-table & friends) ---------- */
+.balance-sheet-table,
+.pl-sheet-table {
+  border-radius: 12px;
+  border: 1px solid var(--pl-border);
+  overflow: auto;
+  max-height: 78vh;
+  background: #fff;
+}
+.balance-sheet-table::-webkit-scrollbar,
+.pl-sheet-table::-webkit-scrollbar { height: 10px; width: 10px; }
+.balance-sheet-table::-webkit-scrollbar-thumb,
+.pl-sheet-table::-webkit-scrollbar-thumb {
+  background: var(--pl-border-strong);
+  border-radius: 6px;
+}
+.balance-sheet-table::-webkit-scrollbar-thumb:hover,
+.pl-sheet-table::-webkit-scrollbar-thumb:hover { background: var(--pl-primary); }
+
+.balance-sheet-table .table.bordered-table,
+.pl-sheet-table .table.bordered-table {
+  margin: 0 !important;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: .85rem;
+}
+
+/* ---- Header row ---- */
+.balance-sheet-table thead th,
+.pl-sheet-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: linear-gradient(180deg, #0b2a6b 0%, #14387f 100%) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display);
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: right;
+  padding: 14px 16px;
+  border: none;
+  white-space: nowrap;
+}
+.balance-sheet-table thead th:first-child,
+.pl-sheet-table thead th:first-child {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  min-width: 320px;
+  background: var(--pl-primary) !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, .12);
+}
+
+/* Highlight quarter & YTD columns (only for the 14-col reports) */
+.balance-sheet-table thead th:nth-child(11),
+.balance-sheet-table thead th:nth-child(12),
+.balance-sheet-table thead th:nth-child(13),
+.pl-sheet-table thead th:nth-child(11),
+.pl-sheet-table thead th:nth-child(12),
+.pl-sheet-table thead th:nth-child(13) {
+  background: linear-gradient(180deg, #2a3870 0%, #1f2a55 100%) !important;
+  color: var(--pl-gold-soft) !important;
+}
+.balance-sheet-table thead th:nth-child(14),
+.pl-sheet-table thead th:nth-child(14) {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+}
+
+/* ---- Body cells ---- */
+.balance-sheet-table tbody td,
+.pl-sheet-table tbody td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0ede4;
+  font-family: var(--pl-font-num);
+  font-size: .82rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--pl-ink);
+  background: #fff;
+  
+  transition: background .15s;
+}
+.balance-sheet-table tbody td:first-child,
+.pl-sheet-table tbody td:first-child {
+  font-family: var(--pl-font-body);
+  text-align: left;
+  font-weight: 500;
+  color: var(--pl-ink);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  min-width: 320px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, .04);
+}
+
+/* Hover row */
+.balance-sheet-table tbody tr:hover td,
+.balance-sheet-table tbody tr:hover td:first-child,
+.pl-sheet-table tbody tr:hover td,
+.pl-sheet-table tbody tr:hover td:first-child {
+  background: var(--pl-saffron-soft) !important;
+}
+
+/* Quarter / YTD column tinting */
+.balance-sheet-table tbody td:nth-child(11),
+.balance-sheet-table tbody td:nth-child(12),
+.balance-sheet-table tbody td:nth-child(13),
+.pl-sheet-table tbody td:nth-child(11),
+.pl-sheet-table tbody td:nth-child(12),
+.pl-sheet-table tbody td:nth-child(13) {
+  background: #f7f5ee;
+  font-weight: 600;
+}
+.balance-sheet-table tbody td:nth-child(14),
+.pl-sheet-table tbody td:nth-child(14) {
+  background: var(--pl-gold-soft);
+  font-weight: 700;
+  color: var(--pl-primary);
+}
+
+/* Total / heading rows (rows where the first cell contains <b>) */
+.balance-sheet-table tbody tr:has(td:first-child b) td,
+.pl-sheet-table tbody tr:has(td:first-child b) td {
+  background: linear-gradient(90deg, #eef0f8 0%, #f5f7fc 100%) !important;
+  font-weight: 700;
+  color: var(--pl-primary);
+  border-top: 2px solid var(--pl-primary);
+  border-bottom: 2px solid var(--pl-primary);
+  font-size: .87rem;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td:first-child,
+.pl-sheet-table tbody tr:has(td:first-child b) td:first-child {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .78rem;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td:nth-child(14),
+.pl-sheet-table tbody tr:has(td:first-child b) td:nth-child(14) {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+}
+
+/* Expandable parent rows */
+.balance-sheet-table tbody tr.main-tr-inner td,
+.pl-sheet-table tbody tr.main-tr-inner td {
+  background: #fbf6ea !important;
+  font-weight: 600;
+  color: var(--pl-primary);
+  border-top: 1px solid var(--pl-gold);
+}
+.balance-sheet-table tbody tr.main-tr-inner td:first-child::before,
+.pl-sheet-table tbody tr.main-tr-inner td:first-child::before {
+  content: "▾ ";
+  color: var(--pl-saffron);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* Sub rows */
+.balance-sheet-table tbody tr.sub-row td,
+.pl-sheet-table tbody tr.sub-row td {
+  background: #fbfbf7;
+  color: var(--pl-ink-soft);
+  font-size: .8rem;
+}
+.balance-sheet-table tbody tr.sub-row td:first-child,
+.pl-sheet-table tbody tr.sub-row td:first-child {
+  background: #fbfbf7;
+  font-weight: 400;
+  color: var(--pl-ink-soft);
+  border-left: 3px solid var(--pl-gold-soft);
+}
+
+/* Inline green / red text styling */
+.balance-sheet-table tbody td[style*="green"],
+.pl-sheet-table tbody td[style*="green"] {
+  color: var(--pl-emerald) !important;
+  font-weight: 700;
+}
+.balance-sheet-table tbody td[style*="red"],
+.pl-sheet-table tbody td[style*="red"] {
+  color: var(--pl-rose) !important;
+  font-weight: 700;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td[style*="green"],
+.pl-sheet-table tbody tr:has(td:first-child b) td[style*="green"] {
+  background: linear-gradient(90deg, var(--pl-emerald-soft), #eaf6f0) !important;
+  color: var(--pl-emerald) !important;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td[style*="red"],
+.pl-sheet-table tbody tr:has(td:first-child b) td[style*="red"] {
+  background: linear-gradient(90deg, var(--pl-rose-soft), #fbe9e6) !important;
+  color: var(--pl-rose) !important;
+}
+
+/* Quiet zero values */
+.balance-sheet-table tbody td[data-original="0"],
+.pl-sheet-table tbody td[data-original="0"] { color: var(--pl-muted); }
+
+
+/* ---------- CashFlow Quality table styling ---------- */
+.balance-sheet-table table.basic-border-table tbody td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0ede4;
+  font-family: var(--pl-font-num);
+  font-variant-numeric: tabular-nums;
+  font-size: .85rem;
+  text-align: right;
+  color: green;
+  background: #fff;
+}
+.balance-sheet-table table.basic-border-table tbody td:first-child {
+  text-align: left;
+  font-family: var(--pl-font-body);
+  font-weight: 500;
+  color: var(--pl-ink);
+}
+.balance-sheet-table table.basic-border-table tbody tr:first-child td:first-child {
+  background: linear-gradient(90deg, var(--pl-primary), var(--pl-primary-600)) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display) !important;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+}
+.balance-sheet-table table.basic-border-table tbody tr:nth-child(2) td {
+  background: #faf8f3 !important;
+  color: transparent !important;
+  height: 6px;
+  padding: 0 !important;
+  border: none;
+}
+.balance-sheet-table table.basic-border-table tbody tr:nth-child(3) td {
+  background: var(--pl-primary) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display) !important;
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 12px 16px;
+  text-align: right;
+}
+.balance-sheet-table table.basic-border-table tbody tr:nth-child(3) td:first-child { text-align: left; }
+
+/* The IMPACT OF MANAGEMENT DECISION final row */
+.balance-sheet-table table.basic-border-table tbody tr:last-child td {
+  background: linear-gradient(90deg, #eef0f8, #f5f7fc) !important;
+  color: var(--pl-primary) !important;
+  font-weight: 700 !important;
+  border-top: 2px solid var(--pl-primary) !important;
+  border-bottom: 2px solid var(--pl-primary) !important;
+  font-size: .9rem !important;
+}
+.balance-sheet-table table.basic-border-table tbody tr:last-child td:first-child {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-family: var(--pl-font-display) !important;
+}
+
+/* Negative numbers — soft red pill */
+.balance-sheet-table table.basic-border-table tbody td.negative {
+  color: var(--pl-rose) !important;
+  font-weight: 700;
+  position: relative;
+}
+.balance-sheet-table table.basic-border-table tbody td.negative::before {
+  content: "▼ ";
+  font-size: .65rem;
+  margin-right: 2px;
+  vertical-align: 1px;
+}
+
+
+/* ---------- Spinner ---------- */
+.spinner-border {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--pl-saffron);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Helper utilities used in markup ---------- */
+.radius-12 { border-radius: var(--pl-radius) !important; }
+.radius-8  { border-radius: 10px !important; }
+.mb-24 { margin-bottom: 24px; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-0  { margin-bottom: 0; }
+.mb-1  { margin-bottom: .35rem; }
+.fw-semibold { font-weight: 600; }
+.fw-medium   { font-weight: 500; }
+.text-lg { font-size: 1.05rem; }
+.text-md { font-size: .9rem; }
+.gap-1 { gap: .25rem; }
+.gap-2 { gap: .5rem; }
+.gap-3 { gap: 1rem; }
+.px-56 { padding-left: 28px; padding-right: 28px; }
+.py-12 { padding-top: 10px; padding-bottom: 10px; }
+.d-block { display: block; }
+.d-flex  { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.align-items-center { align-items: center; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-center  { justify-content: center; }
+.bg-white { background: #fff; }
+.text-primary { color: var(--pl-primary); }
+.border-primary-600 { border-color: var(--pl-primary-600) !important; }
+
+/* Bootstrap-like grid fallback */
+.row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+.row > [class*="col-"] { padding: 0 10px; }
+.col-md-3 { flex: 0 0 25%;  max-width: 25%; }
+.col-md-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-md-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-md-6 { flex: 0 0 50%;    max-width: 50%; }
+.col-lg-12, .col-xl-12, .col-xxl-12, .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+@media (max-width: 991px) {
+  .col-md-3, .col-md-4, .col-md-5, .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .dashboard-main-body { padding: 16px 12px 40px; }
+  .dashboard-main-body > .d-flex.mb-24 { padding: 18px 18px; flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  .dashboard-main-body > .d-flex.mb-24 h6.fw-semibold { font-size: 1.25rem; }
+  .card-body { padding: 18px 16px; }
+  .card-header { flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  #figureType { width: 100% !important; }
+  .balance-sheet-table thead th:first-child,
+  .balance-sheet-table tbody td:first-child,
+  .pl-sheet-table thead th:first-child,
+  .pl-sheet-table tbody td:first-child { min-width: 220px; }
+  .btn-view-report, .btn-download-report { width: 100%; padding: 0 18px !important; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .dashboard-main-body { background: #fff; padding: 0; }
+  .dashboard-main-body > .d-flex.mb-24 { background: #1f2a55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .btn-view-report, .btn-download-report, #figureType { display: none !important; }
+  form[id$="-report-form"] { display: none !important; }
+  .balance-sheet-table, .pl-sheet-table { max-height: none; overflow: visible; border: none; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}
+
+
+/* ---------- Unified Polish Layer (no new classes) ---------- */
+.dashboard-main-body { letter-spacing: -.005em; }
+
+.dashboard-main-body > .d-flex.mb-24 {
+  background: var(--pl-gradient-hero);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.dashboard-main-body > .d-flex.mb-24::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -40% -10%;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(245, 162, 86, .22), transparent 65%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.card {
+  border-radius: var(--pl-radius);
+  box-shadow: var(--pl-shadow-md);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.card:hover { box-shadow: var(--pl-shadow-lg); }
+
+.btn-view-report, .btn-download-report {
+  letter-spacing: .015em;
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+}
+.btn-view-report::after, .btn-download-report::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform .6s ease;
+}
+.btn-view-report:hover::after, .btn-download-report:hover::after { transform: translateX(100%); }
+
+.balance-sheet-table, .pl-sheet-table {
+  border-radius: 14px;
+  border: 1px solid var(--pl-border);
+  box-shadow: inset 0 0 0 1px rgba(11, 42, 107, .02);
+}
+
+.balance-sheet-table thead th, .pl-sheet-table thead th {
+  font-size: .76rem;
+  letter-spacing: .07em;
+  padding: 16px 18px;
+}
+.balance-sheet-table tbody td, .pl-sheet-table tbody td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #eef1f7;
+}
+.balance-sheet-table tbody tr:nth-child(even) td:not(:first-child),
+.pl-sheet-table tbody tr:nth-child(even) td:not(:first-child) {
+  background: #fafbfd;
+}
+.balance-sheet-table tbody tr:hover td,
+.balance-sheet-table tbody tr:hover td:first-child,
+.pl-sheet-table tbody tr:hover td,
+.pl-sheet-table tbody tr:hover td:first-child {
+  background: var(--pl-primary-50) !important;
+}
+
+/* Form fields — softer focus ring */
+.form-control:focus, .select2-selection:focus, #figureType:focus {
+  box-shadow: 0 0 0 4px rgba(11, 42, 107, .12) !important;
+  border-color: var(--pl-primary) !important;
+}
+
+/* Section/category subtle dividers */
+.card .card-header { border-bottom: 1px solid var(--pl-border); }

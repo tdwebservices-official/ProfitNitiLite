@@ -33,13 +33,442 @@
         main.dashboard-main * {
     font-family: Inter, sans-serif !important;
 }
+
+
+/* === Unified Premium Fintech Theme — Indian Business Reports Suite === */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* =====================================================================
+   Impact of Change Report — Premium Stylesheet
+   Part of the unified Reports Design System for Indian Business Owners
+   Palette: Deep Indigo + Saffron + Emerald + Gold accents
+   No HTML tags or class names are added/removed — visual treatment only.
+   ===================================================================== */
+
+/* ---------- Design Tokens (shared across all reports) ---------- */
+:root {
+  --pl-bg: #f4f6fb;
+  --pl-bg-soft: #fbfcfe;
+  --pl-surface: #ffffff;
+
+  --pl-ink: #0c1628;
+  --pl-ink-soft: #43526e;
+  --pl-muted: #8a93a6;
+  --pl-border: #e4e9f2;
+  --pl-border-strong: #cdd5e3;
+
+  --pl-primary: #0b2a6b;
+  --pl-primary-600: #1741a3;
+  --pl-primary-50: #e8eefb;
+
+  --pl-saffron: #ef7a1b;
+  --pl-saffron-soft: #fdeedb;
+  --pl-gold: #b9883a;
+  --pl-gold-soft: #f4e7c8;
+
+  --pl-emerald: #0b7a55;
+  --pl-emerald-soft: #dcf2e7;
+  --pl-rose: #b6342a;
+  --pl-rose-soft: #fbe1dc;
+
+  --pl-gradient-hero: linear-gradient(125deg, #0b2a6b 0%, #1741a3 50%, #2a64d2 100%);
+  --pl-gradient-card: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+  --pl-gradient-accent: linear-gradient(135deg, #ef7a1b 0%, #f5a256 100%);
+  --pl-gradient-emerald: linear-gradient(135deg, #0b7a55 0%, #2aa57c 100%);
+  --pl-gradient-purple: linear-gradient(135deg, #4b2a8a 0%, #7a4dcf 100%);
+
+  --pl-shadow-sm: 0 1px 2px rgba(11,42,107,.06), 0 1px 3px rgba(11,42,107,.04);
+  --pl-shadow-md: 0 8px 22px -10px rgba(11,42,107,.18), 0 2px 6px rgba(11,42,107,.05);
+  --pl-shadow-lg: 0 24px 48px -22px rgba(11,42,107,.32);
+
+  --pl-radius: 16px;
+  --pl-radius-sm: 12px;
+
+  --pl-font-display: "Manrope","Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+  --pl-font-body: "Inter","Segoe UI",system-ui,sans-serif;
+  --pl-font-num: "JetBrains Mono","SF Mono","Roboto Mono",ui-monospace,monospace;
+}
+
+/* ---------- Base canvas ---------- */
+.dashboard-main,
+.dashboard-main-body {
+  background:
+    radial-gradient(1100px 500px at -8% -18%, rgba(239,122,27,.07), transparent 62%),
+    radial-gradient(900px 600px at 108% -4%, rgba(11,42,107,.10), transparent 64%),
+    var(--pl-bg);
+  font-family: var(--pl-font-body);
+  color: var(--pl-ink);
+  padding: 24px 26px 60px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Top navbar (reused across the suite) ---------- */
+.navbar-header,
+.dashboard-main > .d-flex:first-child {
+  background: var(--pl-surface);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  padding: 12px 18px;
+  box-shadow: var(--pl-shadow-sm);
+  margin-bottom: 22px;
+}
+.sidebar-toggle, .sidebar-mobile-toggle {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--pl-primary-50); color: var(--pl-primary);
+  border: 1px solid var(--pl-border);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .18s ease, transform .18s ease;
+}
+.sidebar-toggle:hover, .sidebar-mobile-toggle:hover { background: #dbe5fa; transform: translateY(-1px); }
+
+.navbar-search {
+  position: relative; display: inline-flex; align-items: center;
+  background: var(--pl-bg-soft); border: 1px solid var(--pl-border);
+  border-radius: 999px; padding: 6px 16px 6px 40px; min-width: 280px;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.navbar-search .icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--pl-muted); }
+.navbar-search input { border: 0; background: transparent; outline: none; font-size: 14px; color: var(--pl-ink); width: 100%; font-family: var(--pl-font-body); }
+.navbar-search:focus-within { border-color: var(--pl-primary-600); box-shadow: 0 0 0 4px rgba(23,65,163,.12); background: #fff; }
+
+[data-theme-toggle] {
+  background: var(--pl-gold-soft) !important;
+  color: var(--pl-gold) !important;
+  border: 1px solid var(--pl-border) !important;
+  font-weight: 600;
+}
+
+img.rounded-circle { border: 2px solid var(--pl-primary-50); box-shadow: var(--pl-shadow-sm); }
+
+.dropdown-menu, .to-top-list {
+  background: var(--pl-surface); border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius-sm); box-shadow: var(--pl-shadow-md);
+  padding: 12px 16px;
+}
+.dropdown-item { color: var(--pl-ink-soft); border-radius: 8px; padding: 10px 12px; font-family: var(--pl-font-body); transition: background .15s ease, color .15s ease; }
+.dropdown-item:hover { background: var(--pl-primary-50); color: var(--pl-primary) !important; }
+.hover-text-danger:hover { color: var(--pl-rose) !important; }
+
+/* ---------- Page heading + breadcrumb ---------- */
+h6.fw-semibold {
+  font-family: var(--pl-font-display);
+  font-weight: 800; font-size: 22px; letter-spacing: -.01em;
+  color: var(--pl-ink); margin-bottom: 4px;
+}
+ul.d-flex.align-items-center.gap-2 {
+  list-style: none; padding: 0; margin: 0 0 18px;
+  display: flex; gap: 8px; align-items: center;
+  font-size: 13px; color: var(--pl-muted);
+}
+ul.d-flex.align-items-center.gap-2 a { color: var(--pl-primary-600); text-decoration: none; }
+ul.d-flex.align-items-center.gap-2 a:hover { color: var(--pl-saffron); }
+
+/* ---------- Filter form ---------- */
+.impact-of-change-report-form {
+  background: var(--pl-gradient-card);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  box-shadow: var(--pl-shadow-md);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end;
+}
+.impact-of-change-report-form label,
+form label {
+  font-family: var(--pl-font-display);
+  font-weight: 600; font-size: 12px;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: var(--pl-ink-soft); margin-bottom: 6px;
+  display: block;
+}
+.form-control, .impact-of-change-report-form .select2-selection {
+  border: 1px solid var(--pl-border-strong) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  font-family: var(--pl-font-body); color: var(--pl-ink);
+  height: 42px !important; padding: 8px 14px !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.form-control:focus, .impact-of-change-report-form .select2-selection:focus {
+  border-color: var(--pl-primary-600) !important;
+  box-shadow: 0 0 0 4px rgba(23,65,163,.12) !important;
+  outline: none;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 26px !important; color: var(--pl-ink) !important;
+}
+
+/* Buttons */
+.btn-view-report, .btn.btn-primary, button.btn-primary {
+  background: var(--pl-gradient-hero) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 12px !important;
+  font-family: var(--pl-font-display); font-weight: 700; letter-spacing: .02em;
+  padding: 12px 36px !important;
+  box-shadow: 0 10px 22px -12px rgba(11,42,107,.6);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn-view-report:hover, .btn.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+.btn-download-report {
+  background: var(--pl-gradient-accent) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 12px !important;
+  font-family: var(--pl-font-display); font-weight: 700;
+  padding: 12px 36px !important;
+  box-shadow: 0 10px 22px -12px rgba(239,122,27,.6);
+  transition: transform .18s ease, filter .18s ease;
+}
+.btn-download-report:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+/* Add product / add expense buttons */
+#addProductBtn, #addMultipleProductsBtn {
+  background: var(--pl-gradient-hero) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  font-weight: 700;
+  padding: 8px 14px !important;
+  box-shadow: var(--pl-shadow-sm);
+}
+#addExpenseBtn, #addMultipleExpensesBtn {
+  background: var(--pl-gradient-accent) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  font-weight: 700;
+  padding: 8px 14px !important;
+  box-shadow: var(--pl-shadow-sm);
+}
+#clearAllExpensesBtn {
+  background: #fff !important;
+  border: 1px solid var(--pl-rose) !important;
+  color: var(--pl-rose) !important;
+  border-radius: 10px !important;
+  padding: 6px 14px !important;
+  font-weight: 600;
+}
+#clearAllExpensesBtn:hover { background: var(--pl-rose-soft) !important; }
+
+/* ---------- Section headings ---------- */
+.dashboard-main h2, .dashboard-main h3, .dashboard-main h4,
+.dashboard-main-body h2, .dashboard-main-body h3, .dashboard-main-body h4 {
+  font-family: var(--pl-font-display);
+  color: var(--pl-ink); letter-spacing: -.01em;
+  margin: 26px 0 14px;
+}
+.dashboard-main h2 { font-size: 20px !important; font-weight: 800; }
+.dashboard-main h3 { font-size: 17px !important; font-weight: 700; color: var(--pl-primary); }
+.dashboard-main h4 { font-size: 15px !important; font-weight: 700; color: var(--pl-primary-600); }
+
+/* ---------- Card sections ---------- */
+.section-card,
+.position-card,
+.combined-impact-card,
+.transformation-card,
+.dashboard-main > div.card,
+.dashboard-main > section {
+  background: var(--pl-surface);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  box-shadow: var(--pl-shadow-md);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+}
+
+/* ---------- "Your Current Position" KPI tiles ---------- */
+.current-position-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.position-tile {
+  background: var(--pl-gradient-card);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius-sm);
+  padding: 18px;
+  position: relative; overflow: hidden;
+  box-shadow: var(--pl-shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.position-tile:hover { transform: translateY(-2px); box-shadow: var(--pl-shadow-md); }
+.position-tile::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--pl-gradient-accent);
+}
+.position-tile .label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--pl-muted); font-weight: 600;
+}
+.position-tile .value {
+  font-family: var(--pl-font-display);
+  font-size: 26px; font-weight: 800; color: var(--pl-ink);
+  margin: 6px 0 4px; font-variant-numeric: tabular-nums;
+}
+.position-tile .sub { font-size: 12px; color: var(--pl-ink-soft); }
+
+/* ---------- Tables (products, expenses, summary) ---------- */
+.dashboard-main table, .dashboard-main-body table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: var(--pl-surface);
+  border-radius: var(--pl-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--pl-shadow-sm);
+  font-family: var(--pl-font-body); font-size: 13.5px;
+  margin: 14px 0 22px;
+}
+.dashboard-main table thead th, .dashboard-main-body table thead th,
+.dashboard-main thead.sticky th, .dashboard-main thead.bg-gray-100 th {
+  background: var(--pl-gradient-hero) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display);
+  font-weight: 700; font-size: 12px;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 12px 14px !important; text-align: left;
+  border: 0 !important;
+}
+.dashboard-main table tbody td, .dashboard-main-body table tbody td {
+  padding: 10px 12px;
+  border: 1px solid var(--pl-border) !important;
+  color: var(--pl-ink); vertical-align: middle;
+}
+.dashboard-main table tbody tr:nth-child(even) td { background: var(--pl-bg-soft); }
+.dashboard-main table tbody tr:hover td,
+.dashboard-main tr.hover\:bg-gray-50:hover td { background: var(--pl-primary-50) !important; }
+
+/* Inline inputs inside tables */
+.dashboard-main table input[type="text"],
+.dashboard-main table input[type="number"],
+.dashboard-main table select {
+  border: 1px solid var(--pl-border-strong) !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  background: #fff !important;
+  font-family: var(--pl-font-body); color: var(--pl-ink);
+  font-size: 12.5px;
+}
+.dashboard-main table input.bg-yellow-50 { background: var(--pl-saffron-soft) !important; }
+.dashboard-main table input:focus, .dashboard-main table select:focus {
+  border-color: var(--pl-primary-600) !important;
+  box-shadow: 0 0 0 3px rgba(23,65,163,.12) !important; outline: none;
+}
+
+/* Numeric cells right-aligned */
+.font-mono, td.text-right { font-family: var(--pl-font-num); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Highlight totals row */
+.bg-green-100.font-bold td,
+tr.bg-green-100 td {
+  background: var(--pl-emerald-soft) !important;
+  color: var(--pl-emerald) !important;
+  font-weight: 700;
+}
+
+/* ---------- Status pills (Products / Expenses count badges) ---------- */
+#productCount, .bg-green-100.text-green-800 {
+  background: var(--pl-emerald-soft) !important;
+  color: var(--pl-emerald) !important;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+#expenseCount, .bg-red-100.text-red-800 {
+  background: var(--pl-rose-soft) !important;
+  color: var(--pl-rose) !important;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+
+/* ---------- Working capital sub-panels ---------- */
+.text-blue-700 { color: var(--pl-primary) !important; font-family: var(--pl-font-display); }
+.text-gray-700 { color: var(--pl-ink-soft) !important; }
+.text-gray-600 { color: var(--pl-muted) !important; }
+
+/* ---------- Combined Impact Summary ---------- */
+.overall-combined-impact,
+.combined-impact-card {
+  background: linear-gradient(135deg, #f4ecff 0%, #faf5ff 100%);
+  border: 1px solid #d8c8f0;
+  border-radius: var(--pl-radius);
+  padding: 22px 24px;
+  box-shadow: var(--pl-shadow-md);
+  margin-bottom: 22px;
+}
+.overall-combined-impact h4,
+.text-purple-800 {
+  color: #4b2a8a !important;
+  font-family: var(--pl-font-display);
+  font-weight: 800;
+}
+
+/* ---------- Transformation Results Summary ---------- */
+.transformation-card {
+  background: linear-gradient(135deg, #ecfaf3 0%, #f6fffb 100%);
+  border: 1px solid #b9e5cf;
+}
+.transformation-card h3 { color: var(--pl-emerald); }
+
+/* Improvement deltas */
+.improvement-positive, .text-green-700, .text-green-600 {
+  color: var(--pl-emerald) !important;
+  font-weight: 700;
+  font-family: var(--pl-font-num);
+}
+.improvement-negative, .text-red-700, .text-red-600 {
+  color: var(--pl-rose) !important;
+  font-weight: 700;
+  font-family: var(--pl-font-num);
+}
+
+/* ---------- Note / informational text ---------- */
+.note,
+.dashboard-main p em,
+.text-xs.text-gray-600 {
+  background: var(--pl-saffron-soft);
+  border-left: 4px solid var(--pl-saffron);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--pl-ink-soft);
+  font-size: 13px;
+  display: block;
+  margin: 10px 0 16px;
+}
+
+/* ---------- Footer ---------- */
+.d-footer, footer.d-footer {
+  margin-top: 30px;
+  padding: 18px 22px;
+  background: var(--pl-surface);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  color: var(--pl-muted);
+  font-size: 12px; text-align: center;
+  box-shadow: var(--pl-shadow-sm);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1440px) {
+
+.text-xl {
+    font-size: 16px !important;
+}
+}
+@media (max-width: 720px) {
+  .dashboard-main, .dashboard-main-body { padding: 16px 14px 40px; }
+  .navbar-search { min-width: 0; flex: 1; }
+  .impact-of-change-report-form { padding: 16px; }
+  .btn-view-report, .btn-download-report { width: 100%; }
+}
 </style>
 @endsection
 
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Impact Of Change Report</h6>
+    <h6 class="fw-semibold mb-0">Impact Of Change</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -48,7 +477,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">Impact Of Change Report</li>
+      <li class="fw-medium">Impact Of Change</li>
     </ul>
   </div>
 
@@ -126,7 +555,7 @@
                             0.0%
                         </div>
                         <div class="text-xs text-gray-500 mt-1">
-                            <span>GP: </span><span id="grossProfitAmount" class="font-medium">₹0</span>
+                            <span id="grossProfitAmount" class="font-medium">₹0</span>
                         </div>
                     </div>
                 </div>

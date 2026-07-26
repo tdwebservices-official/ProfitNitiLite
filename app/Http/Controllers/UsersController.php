@@ -321,8 +321,10 @@ class UsersController extends Controller
         
         $request->validate([
             'name' => 'required',
+            'company_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'username' => 'required|unique:users,username,'.$user->id,    
+            'mobile'       => 'required|digits:10|unique:users,mobile',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',      
         ]);
 
@@ -330,7 +332,8 @@ class UsersController extends Controller
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->username = $request->username;
-
+        $user->mobile = $request->mobile;
+        $user->company_name = $request->company_name;
         
         if ($request->hasFile('image')) {
             $image = $request->file('image');

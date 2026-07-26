@@ -18,7 +18,7 @@ class DeepSeekService
     {
         $url = $this->baseUrl . '/chat/completions';
 
-        $response = Http::timeout(3000)->withHeaders([
+        $response = Http::timeout(5000)->withHeaders([
             'Authorization' => 'Bearer ' . $this->apiKey,
             'Content-Type' => 'application/json',
         ])->post($url, [

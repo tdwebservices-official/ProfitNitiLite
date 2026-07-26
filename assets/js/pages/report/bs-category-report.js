@@ -62,6 +62,21 @@ jQuery(document).ready(function() {
                         //jQuery('.balance-sheet-table').html(res.table_html);
                         jQuery('.balance-sheet-table').html(hg_table_create(res.cellArray));
 
+                        $(".custom-table-box table tbody tr:nth-child(4) td:not(:first-child)").each(function () {
+    var bscore = parseFloat(jQuery(this).text().trim());
+    var bg_color = 'green';
+    if( parseFloat(bscore) >= 81 ){
+        bg_color = 'green';
+    }else if( parseFloat(bscore) >= 61 && parseFloat(bscore) <= 80 ){                        
+        bg_color = 'orange';
+    }else{                       
+        bg_color = 'red';
+    }
+    jQuery(this).css('color',bg_color);
+    jQuery(this).css('font-weight','bold');
+});
+
+
 
                     }
                     if( res.status == 'error' ){

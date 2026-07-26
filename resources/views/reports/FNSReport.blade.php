@@ -1,12 +1,13 @@
 @extends('layouts.master')
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/css/pages/reports/comman-reports.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/pages/reports/new/financial-summary.css?ver=1234')}}">
 @endsection
 
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Financial Summary Report</h6>
+    <h6 class="fw-semibold mb-0">Financial Summary</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -15,7 +16,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">Financial Summary Report</li>
+      <li class="fw-medium">Financial Summary</li>
     </ul>
   </div>
 

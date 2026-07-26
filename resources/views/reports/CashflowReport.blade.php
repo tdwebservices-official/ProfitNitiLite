@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
-<link rel="stylesheet" href="{{asset('assets/css/pages/reports/comman-reports.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('assets/css/pages/reports/comman-reports.css')}}"> -->
+<link rel="stylesheet" href="{{asset('assets/css/pages/reports/new/cashflow.css?ver='.time())}}">
 <style>
 .balance-sheet-table table.gridlines tr.row0, .balance-sheet-table table.gridlines tr.row1 {
        display: table-row;
@@ -14,6 +15,19 @@
 .balance-sheet-table table.gridlines tr td {
   font-size: 14.5px !important;
 }
+.chart-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+.chart-value-type{
+  width: auto;
+  display: inline-block;
+}
 </style>
 
 @endsection
@@ -21,7 +35,7 @@
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Cashflow Report</h6>
+    <h6 class="fw-semibold mb-0">Cashflow</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -30,7 +44,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">Cashflow Report</li>
+      <li class="fw-medium">Cashflow</li>
     </ul>
   </div>
 
@@ -81,19 +95,31 @@
           </div>
         </div><!-- card end -->
         <div class="card mt-20">
-          <div class="card-header">
+          <div class="card-header chart-card-header ">
             <h5 class="card-title mb-0">Cash Flow Waterfall</h5>
+            <select class="form-control chart-value-type" data-chart-id="cash-flow-waterfall">
+                <option value="original">Original</option>
+                <option value="thousand">Thousand (K)</option>
+                <option value="lakh" selected="">Lakh (L)</option>
+                <option value="crore">Crore (Cr)</option>
+              </select>
           </div>
           <div class="card-body">
-            <div id="columnChart1" class=""></div>
+            <div id="cash-flow-waterfall" class=""></div>
           </div>
         </div>
         <div class="card mt-20">
-          <div class="card-header">
+          <div class="card-header chart-card-header ">
             <h5 class="card-title mb-0">Cash Inflows vs Outflows</h5>
+            <select class="form-control chart-value-type" data-chart-id="inflow-outflow-chart">
+                <option value="original">Original</option>
+                <option value="thousand">Thousand (K)</option>
+                <option value="lakh" selected="">Lakh (L)</option>
+                <option value="crore">Crore (Cr)</option>
+              </select>
           </div>
           <div class="card-body">
-            <div id="columnChart2" class=""></div>
+            <div id="inflow-outflow-chart" class=""></div>
           </div>
         </div>
         

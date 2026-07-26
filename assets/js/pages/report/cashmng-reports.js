@@ -1,141 +1,22 @@
-var chart3 = null;
-var GaugeCharts = {};
-jQuery(document).ready(function() {
-     $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
 
+    // Declare chartInstance outside to persist across clicks
+    var globalChartInstance = null;
 
+    // Store original data for each chart
+    const chartOriginalData = {};
 
-     var options5 = {
-      series: [
-          {
-            name: 'This Day',
-            data: [18, 25, 20, 35, 25, 55, 45, 50, 40],
-          },
-      ],
-      chart: {
-          type: 'area',
-          width: '100%',
-          height: 360,
-          sparkline: {
-            enabled: false // Remove whitespace
-          },
-          toolbar: {
-              show: false
-          },
-          padding: {
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0
-          }
-      },
-      dataLabels: {
-          enabled: false
-      },
-      stroke: {
-          curve: 'smooth',
-          width: 4,
-          colors: ['#487fff'],
-          lineCap: 'round'
-      },
-      grid: {
-          show: true,
-          borderColor: '#D1D5DB',
-          strokeDashArray: 1,
-          position: 'back',
-          xaxis: {
-              lines: {
-                  show: false
-              }
-          },   
-          yaxis: {
-              lines: {
-                  show: true
-              }
-          },  
-          row: {
-              colors: undefined,
-              opacity: 0.5
-          },  
-          column: {
-              colors: undefined,
-              opacity: 0.5
-          },  
-          padding: {
-              top: -30,
-              right: 0,
-              bottom: -10,
-              left: 0
-          },  
-      },
-      colors: ['#487fff'], // Set color for series
-      fill: {
-          type: 'gradient',
-          colors: ['#487fff'], // Set the starting color (top color) here
-          gradient: {
-              shade: 'light', // Gradient shading type
-              type: 'vertical',  // Gradient direction (vertical)
-              shadeIntensity: 0.5, // Intensity of the gradient shading
-              gradientToColors: [`${'#487fff'}00`], // Bottom gradient color (with transparency)
-              inverseColors: false, // Do not invert colors
-              opacityFrom: .6, // Starting opacity
-              opacityTo: 0.3,  // Ending opacity
-              stops: [0, 100],
-          },
-      },
-      // Customize the circle marker color on hover
-      markers: {
-        colors: ['#487fff'],
-        strokeWidth: 3,
-        size: 0,
-        hover: {
-          size: 10
+    // Store current format for each chart
+    const chartCurrentFormat = {};
+    var chart2 = {},chart3 = {};
+
+    var chart3 = null;
+    var GaugeCharts = {};
+    jQuery(document).ready(function() {
+         $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-      },
-      xaxis: {
-          labels: {
-              show: false
-          },
-          categories: [`Jan`, `Feb`, `Mar`, `Apr`, `May`, `Jun`, `Jul`, `Aug`, `Sep`, `Oct`, `Nov`, `Dec`],
-          tooltip: {
-              enabled: false,
-          },
-          tooltip: {
-            enabled: false
-          },
-          labels: {
-            formatter: function (value) {
-              return value;
-            },
-            style: {
-              fontSize: "14px"
-            }
-          },
-      },
-     
-      yaxis: {
-          labels: {
-                formatter: function (val) {
-                    return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-                }
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return val.toLocaleString('en-IN');
-                }
-            }
-        },
-      
-    };
-
-    var chart5 = new ApexCharts(document.querySelector('#columnChart5'), options5);
-    chart5.render();
+    });
 
 
     $('#cashmng-report-form').validate({
@@ -194,15 +75,16 @@ jQuery(document).ready(function() {
                         jQuery('.balance-sheet-table').html(res.table_html);
                         var report_itemObj = get_report_item_list();
                         
-                         colorizeRowsByLabel(".balance-sheet-table table", [
-                          "AP Days"
-                      ]);
+                      //    colorizeRowsByLabel(".balance-sheet-table table", [
+                      //     "AP Days"
+                      // ]);
 
-                        oppcolorizeRowsByLabel(".balance-sheet-table table", [
-                          "A/R Days"
-                      ]);
+                      //   oppcolorizeRowsByLabel(".balance-sheet-table table", [
+                      //     "A/R Days"
+                      // ]);
 
-                        setDataAttributeTB();
+
+                        setDataAttributeTB(['A/R Days','Inventory Days','AP Days','Working Capital Days','Current Ratio','Quick Ratio','Working Capital per ₹100','Working Capital Turnover','Marginal Cash Flow']);
 
                         setTimeout(function() {
                             // Trigger once for default selection
@@ -256,18 +138,20 @@ jQuery(document).ready(function() {
 
                        
 
-                        chart5.updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        wcCapital100( report_itemObj, res.chart_header );
 
-                        chart5.updateSeries([
-                            {
-                                name: 'Working Capital per ₹100',
-                                data: report_itemObj['Working Capital per ₹100']
-                            }
-                        ]);
+                        // chart5.updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
+
+                        // chart5.updateSeries([
+                        //     {
+                        //         name: 'Working Capital per ₹100',
+                        //         data: report_itemObj['Working Capital per ₹100']
+                        //     }
+                        // ]);
 
                     }
                     if( res.status == 'error' ){
@@ -296,6 +180,23 @@ jQuery(document).ready(function() {
            
         }
     });
+
+     function wcCapital100( report_itemObj, chart_header ){
+        jQuery('#columnChart5').empty();       
+        const r_series = [
+            {
+                name: 'Working Capital per ₹100',
+                                data: report_itemObj['Working Capital per ₹100']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart5'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart5'] = 'lakh';
+        renderChart('columnChart5', 'areaChart', revenueCogsObj);
+    }
 
     jQuery(document).on( 'click', '.btn-download-report', function () {
          jQuery('#cashmng-report-form .btn-download-report').siblings('.spinner-border').show();

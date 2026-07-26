@@ -1,12 +1,52 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 Route::group(['namespace' => 'App\Http\Controllers'], function() {   
+    
+
+
+    Route::get('/test-mailss', function () {
+        try {
+            Mail::raw('Test Email', function ($message) {
+                $message->to('viviw47772@epaynine.com') // Replace with your email
+                        ->subject('Laravel Mail Test');
+            });
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Mail sent successfully.'
+            ]);
+    
+        } catch (\Exception $e) {
+    
+            Log::error('Test mail failed.', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+    
+            return response()->json([
+                'success' => false,
+                'message' => 'Mail sending failed.',
+                'error' => $e->getMessage(), // Remove this in production
+            ], 500);
+        }
+    });
+    
     Route::get('/', 'DashboardController@index')->name('home.index');
     Route::group(['middleware' => ['guest']], function() {
        
        Route::get('/login', 'LoginController@show')->name('login.show');
        Route::post('/login', 'LoginController@login')->name('login.perform');
+       
+        // Register
+        Route::get('/register', 'RegisterController@show')->name('register.show');
+        Route::post('/register', 'RegisterController@register')->name('register.perform');
+    
+        // Forgot Password
+        Route::get('/forgot-password', 'ForgotPasswordController@show')->name('forgot-password.show');
+        Route::post('/forgot-password', 'ForgotPasswordController@sendNewPassword')->name('forgot-password.send');
     });
     Route::group(['middleware' => ['web','auth', 'permission404']], function() {
        Route::group(['prefix' => 'users'], function() {
@@ -17,10 +57,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
         Route::post('/{user}/update', 'UsersController@update')->name('users.update');  
 
      });
+
+      Route::get('/help', 'DashboardController@help')->name('help.perform');
        
-
-
-
        Route::group(['prefix' => 'kpi-records'], function() {       
         Route::get('/', 'KPIDataControlller@index')->name('kpi-records.index');
         Route::get('/create', 'KPIDataControlller@create')->name('kpi-record.create');
