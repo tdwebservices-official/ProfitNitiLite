@@ -44,7 +44,7 @@
   
   <link rel="stylesheet" href="{{asset('assets/css/lib/audioplayer.css')}}">
   <!-- main css -->
-  <link rel="stylesheet" href="{{asset('assets/css/style.css?ver=1.0.1')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/style.css?ver=1.0.7')}}">
   
    @yield('css')
   <script type="text/javascript">
@@ -52,6 +52,7 @@
 
     @auth
     var user_id = "{{auth()->user()->id}}";
+    var ratio_info = @json(config('chart-of-accounts.ratio_info'));
     @endauth
   </script>
 </head>
@@ -494,18 +495,10 @@
       'icon' => '<i class="ri-file-chart-line text-xl me-14 d-flex w-auto"></i>',
       'top_menu' => true,
       'sub_menu' => array(
-        array(
-          'link' => url('reports/ai-reports'),
-          'label' => 'AI Report',
-          'key' => 'ai-reports',
-          'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
-          'top_menu' => true,
-          'permissions' => 'reports.ai-report',
-          'sub_menu' => array()
-        ),
+        
         array(
           'link' => url('reports/bl-reports'),
-          'label' => 'Balance Sheet Report',
+          'label' => 'Balance Sheet',
           'key' => 'bl-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -514,7 +507,7 @@
         ),
         array(
           'link' => url('reports/pl-reports'),
-          'label' => 'Profit & Loss Report',
+          'label' => 'Profit & Loss',
           'key' => 'pl-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -523,7 +516,7 @@
         ),
         array(
           'link' => url('reports/fns-reports'),
-          'label' => 'Financial Summary Report',
+          'label' => 'Financial Summary',
           'key' => 'fns-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -532,7 +525,7 @@
         ),
         array(
           'link' => url('reports/cashflow-reports'),
-          'label' => 'Cash Flow Report',
+          'label' => 'Cash Flow',
           'key' => 'cashflow-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -541,7 +534,7 @@
         ),
         array(
           'link' => url('reports/profit-power-reports'),
-          'label' => 'Profit Power Report',
+          'label' => 'Profit Power',
           'key' => 'profit-power-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -550,7 +543,7 @@
         ),
         array(
           'link' => url('reports/cash-mng-reports'),
-          'label' => 'Cash Management Report',
+          'label' => 'Cash Management',
           'key' => 'cash-mng-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -559,7 +552,7 @@
         ),
         array(
           'link' => url('reports/capex-reports'),
-          'label' => 'Capex Report',
+          'label' => 'Capex',
           'key' => 'capex-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -568,7 +561,7 @@
         ),
          array(
           'link' => url('reports/financing-reports'),
-          'label' => 'Financing Report',
+          'label' => 'Financing',
           'key' => 'financing-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -577,7 +570,7 @@
         ),
         array(
           'link' => url('reports/impact-of-change-reports'),
-          'label' => 'Impact Of Change Report',
+          'label' => 'Impact Of Change',
           'key' => 'impact-of-change-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -587,7 +580,7 @@
         
         array(
           'link' => url('reports/bs-category-reports'),
-          'label' => 'Business Health Report',
+          'label' => 'Business Health',
           'key' => 'bs-category-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -596,7 +589,7 @@
         ),
         array(
           'link' => url('reports/cashflow-quality-reports'),
-          'label' => 'CashFlow Quality Report',
+          'label' => 'CashFlow Quality',
           'key' => 'cashflow-quality-reports',
           'icon' => '<i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>',
           'top_menu' => true,
@@ -607,6 +600,15 @@
         
       ),
     ),
+  'menu_5664' => array(
+    'link' => url('help'),
+    'label' => 'Help',
+    'key' => 'users',
+    'permissions' => 'menu.help',
+    'icon' => '<i class="ri-information-line"></i>',
+    'top_menu' => true,
+    'sub_menu' => array(),
+  ),
     'menu_2' => array(
       'link' => "javascript:void(0)",
       'label' => 'Permission',
@@ -1023,7 +1025,7 @@
   
   <!-- main js -->
   <script src="{{asset('assets/js/app.js?ver=1.2')}}"></script>
-
+<script src="{{asset('assets/js/comman-charts.js?ver='.time())}}" type="text/javascript"></script>
   <script src="{{asset('assets/js/comman-script.js?ver='.time())}}"></script>
   @yield('scripts')
 </body>

@@ -1,3 +1,12 @@
+
+    // Declare chartInstance outside to persist across clicks
+var globalChartInstance = null;
+
+// Store original data for each chart
+const chartOriginalData = {};
+
+// Store current format for each chart
+const chartCurrentFormat = {};
 var chart1 = {};
 jQuery(document).ready(function() {
      $.ajaxSetup({
@@ -5,9 +14,6 @@ jQuery(document).ready(function() {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-
-     createChartTwo('columnChart1', '#487FFF', '#FF9F29');
-
 
     $('#financing-report-form').validate({
         // Validate only visible fields
@@ -66,24 +72,8 @@ jQuery(document).ready(function() {
 
                         var report_itemObj = get_report_item_list();
 
-                        setDataAttributeTB();
-
-                        chart1['columnChart1'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
-
-                        chart1['columnChart1'].updateSeries([
-                            {
-                                name: 'Operating Cash Profit',
-                                data: report_itemObj['Operating Cash Profit']
-                            },
-                             {
-                                name: 'Operating Cash Flow',
-                                data: report_itemObj['Operating Cash Flow']
-                            }
-                        ]);
+                        setDataAttributeTB(['Marginal Cash Flow','Debt to Equity','Debt to Capital','Interest Cover','Debt Payback','Operating CF Margin','Cash Flow Coverage','Cash Flow to Debt','Capex Coverage']);
+                        cashprofitVSCashflow( report_itemObj, res.chart_header );
 
                         setTimeout(function() {
                             // Trigger once for default selection
@@ -116,6 +106,35 @@ jQuery(document).ready(function() {
         });
         }
     });
+
+    jQuery(document).on('change','.chart-value-type',function(){
+        const chartId = $(this).data('chart-id');
+        const format = $(this).val();
+    // Update chart with formatted data
+        updateChartFormat(chartId, format);
+    });
+
+    function cashprofitVSCashflow( report_itemObj, chart_header ){
+        jQuery('#cashprofit-vs-cashflow').empty();       
+        const r_series = [
+            {
+                name: 'Operating Cash Profit',
+                data: report_itemObj['Operating Cash Profit']
+            },
+            {
+                name: 'Operating Cash Flow',
+                data: report_itemObj['Operating Cash Flow']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['cashprofit-vs-cashflow'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['cashprofit-vs-cashflow'] = 'lakh';
+        renderChart('cashprofit-vs-cashflow', 'barChart', revenueCogsObj);
+        updateChartFormat('cashprofit-vs-cashflow', 'lakh');
+    }
 
     jQuery(document).on( 'click', '.btn-download-report', function () {
          jQuery('#financing-report-form .btn-download-report').siblings('.spinner-border').show();
@@ -154,138 +173,6 @@ jQuery(document).ready(function() {
             }
         });
     } );  
-
-
-    function createChartTwo(chartId, color1, color2) {
-        var options = {
-            series: [{
-                name: 'Income',
-                data: [48, 35, 55, 32, 48, 30, 55, 50, 57]
-            }, {
-                name: 'Expense',
-                data: [12, 20, 15, 26, 22, 60, 40, 48, 25]
-            }],
-            legend: {
-                show: false 
-            },
-            chart: {
-                type: 'area',
-                width: '100%',
-                height: 200,
-                toolbar: {
-                    show: false
-                },
-                padding: {
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 3,
-                colors: [color1, color2], // Use two colors for the lines
-                lineCap: 'round'
-            },
-            grid: {
-                show: true,
-                borderColor: '#D1D5DB',
-                strokeDashArray: 1,
-                position: 'back',
-                xaxis: {
-                    lines: {
-                        show: false
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                row: {
-                    colors: undefined,
-                    opacity: 0.5
-                },
-                column: {
-                    colors: undefined,
-                    opacity: 0.5
-                },
-                padding: {
-                    top: -20,
-                    right: 0,
-                    bottom: -10,
-                    left: 0
-                },
-            },
-            colors: [color1, color2], // Set color for series
-            fill: {
-                type: 'gradient',
-                colors: [color1, color2], // Use two colors for the gradient
-                gradient: {
-                    shade: 'light',
-                    type: 'vertical',
-                    shadeIntensity: 0.5,
-                    gradientToColors: [undefined, `${color2}00`], // Apply transparency to both colors
-                    inverseColors: false,
-                    opacityFrom: [0, 0], // Starting opacity for both colors
-                    opacityTo: [0, 0], // Ending opacity for both colors
-                    stops: [0, 100],
-                },
-            },
-            markers: {
-                colors: [color1, color2], // Use two colors for the markers
-                strokeWidth: 3,
-                size: 0,
-                hover: {
-                    size: 10
-                }
-            },
-            xaxis: {
-                labels: {
-                    show: false
-                },
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                tooltip: {
-                    enabled: false
-                },
-                labels: {
-                    formatter: function (value) {
-                        return value;
-                    },
-                    style: {
-                        fontSize: "14px"
-                    }
-                }
-            },
-           
-            yaxis: {
-          labels: {
-                formatter: function (val) {
-                    return ((val / 1000).toFixed(0) > 0) ? (val / 1000).toFixed(0) + 'k' : val;
-                }
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return val.toLocaleString('en-IN');
-                }
-            }
-        },
-            tooltip: {
-                x: {
-                    format: 'dd/MM/yy HH:mm'
-                }
-            }
-        };
-
-        chart1[chartId] = new ApexCharts(document.querySelector(`#${chartId}`), options);
-        chart1[chartId].render();
-    }
-	
+   
     
 });

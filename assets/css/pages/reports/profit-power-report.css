@@ -1,0 +1,530 @@
+/* ============================================================
+   Profit Power Report — Premium UI Theme
+   Designed for Indian Business Owners
+   Palette: Deep Indigo · Saffron · Emerald · Gold · Cream
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+:root {
+  --pp-indigo-deep: #1e1b4b;
+  --pp-indigo: #312e81;
+  --pp-indigo-soft: #4338ca;
+  --pp-saffron: #f59e0b;
+  --pp-saffron-soft: #fbbf24;
+  --pp-emerald: #059669;
+  --pp-emerald-soft: #10b981;
+  --pp-rose: #dc2626;
+  --pp-rose-soft: #ef4444;
+  --pp-gold: #d4a017;
+  --pp-cream: #fefce8;
+  --pp-bg: #f7f6f3;
+  --pp-surface: #ffffff;
+  --pp-surface-alt: #faf8f3;
+  --pp-ink: #0f172a;
+  --pp-ink-soft: #334155;
+  --pp-muted: #64748b;
+  --pp-border: #e7e5e0;
+  --pp-border-strong: #d6d3cd;
+
+  --pp-grad-hero: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  --pp-grad-gold: linear-gradient(135deg, #f59e0b 0%, #d4a017 100%);
+  --pp-grad-emerald: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --pp-grad-rose: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --pp-grad-card: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
+  --pp-grad-saffron-soft: linear-gradient(135deg, rgba(245,158,11,0.10) 0%, rgba(212,160,23,0.04) 100%);
+
+  --pp-shadow-sm: 0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.06);
+  --pp-shadow-md: 0 4px 12px -2px rgba(30,27,75,0.08), 0 2px 6px -2px rgba(30,27,75,0.05);
+  --pp-shadow-lg: 0 20px 40px -12px rgba(30,27,75,0.18), 0 8px 16px -8px rgba(30,27,75,0.10);
+  --pp-shadow-glow: 0 0 28px rgba(245,158,11,0.28);
+
+  --pp-radius: 14px;
+  --pp-radius-sm: 10px;
+  --pp-radius-lg: 20px;
+}
+
+/* -------- Base -------- */
+.dashboard-main-body {
+  background:
+    radial-gradient(1200px 600px at 100% -10%, rgba(245,158,11,0.06), transparent 60%),
+    radial-gradient(900px 500px at -10% 0%, rgba(67,56,202,0.05), transparent 60%),
+    var(--pp-bg);
+  min-height: 100vh;
+  padding: 28px 24px 56px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--pp-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -------- Header / Breadcrumb -------- */
+.dashboard-main-body > .d-flex.justify-content-between.mb-24 {
+  background: var(--pp-grad-hero);
+  padding: 26px 32px;
+  border-radius: var(--pp-radius-lg);
+  box-shadow: var(--pp-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px !important;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.dashboard-main-body > .d-flex.justify-content-between.mb-24::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(245,158,11,0.30), transparent 70%);
+  pointer-events: none;
+}
+.dashboard-main-body > .d-flex.justify-content-between.mb-24::after {
+  content: 'Insightful financial intelligence • FY 2025-26';
+  position: absolute;
+  bottom: 10px; right: 32px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.dashboard-main-body h6.fw-semibold.mb-0 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-left: 16px;
+}
+.dashboard-main-body h6.fw-semibold.mb-0::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 6px; bottom: 6px;
+  width: 4px;
+  background: var(--pp-grad-gold);
+  border-radius: 4px;
+  box-shadow: var(--pp-shadow-glow);
+}
+
+.dashboard-main-body ul.d-flex.align-items-center.gap-2 {
+  list-style: none;
+  padding: 8px 16px;
+  margin: 0;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.dashboard-main-body ul.d-flex li,
+.dashboard-main-body ul.d-flex li.fw-medium {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+}
+.dashboard-main-body ul.d-flex li a.hover-text-primary {
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color .2s;
+}
+.dashboard-main-body ul.d-flex li a.hover-text-primary:hover {
+  color: var(--pp-saffron-soft);
+}
+.dashboard-main-body ul.d-flex li a iconify-icon { font-size: 16px; }
+
+/* -------- Card -------- */
+.card,
+.dashboard-main-body .card {
+  background: var(--pp-grad-card);
+  border: 1px solid var(--pp-border);
+  border-radius: var(--pp-radius-lg);
+  box-shadow: var(--pp-shadow-md);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.card-body, .dashboard-main-body .card-body { padding: 28px; }
+.card-header,
+.dashboard-main-body .card-header {
+  background: var(--pp-surface);
+  border-bottom: 1px solid var(--pp-border);
+  padding: 20px 28px;
+}
+
+.card-title, .dashboard-main-body .card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--pp-indigo-deep);
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-left: 14px;
+}
+.card-title::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 3px;
+  background: var(--pp-grad-gold);
+  border-radius: 3px;
+}
+
+/* -------- Form / Filters -------- */
+.profit-power-report-form {
+  background: var(--pp-surface);
+  border-radius: var(--pp-radius);
+  padding: 22px 24px;
+  box-shadow: var(--pp-shadow-sm);
+  border: 1px solid var(--pp-border);
+}
+
+label, .dashboard-main-body label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pp-ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+label strong { font-weight: 700; color: var(--pp-indigo-deep); }
+
+.form-control {
+  border: 1.5px solid var(--pp-border);
+  border-radius: var(--pp-radius-sm) !important;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--pp-ink);
+  background: var(--pp-surface);
+  transition: all .2s;
+  width: 100%;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--pp-indigo-soft);
+  box-shadow: 0 0 0 3px rgba(67,56,202,0.12);
+  background: #fff;
+}
+.form-control.radius-8 { border-radius: var(--pp-radius-sm) !important; }
+
+/* Select2 */
+.select2-container--default .select2-selection--single {
+  height: 44px !important;
+  border: 1.5px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-sm) !important;
+  background: var(--pp-surface) !important;
+  display: flex; align-items: center;
+  padding: 0 14px;
+  transition: all .2s;
+}
+.select2-container--default .select2-selection--single:hover { border-color: var(--pp-indigo-soft) !important; }
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 14px; font-weight: 500;
+  color: var(--pp-ink) !important;
+  line-height: 44px !important;
+  padding-left: 0 !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 44px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: var(--pp-indigo-soft) transparent transparent transparent !important;
+}
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--open .select2-selection--single {
+  border-color: var(--pp-indigo-soft) !important;
+  box-shadow: 0 0 0 3px rgba(67,56,202,0.12) !important;
+}
+.select2-dropdown {
+  border: 1.5px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-sm) !important;
+  box-shadow: var(--pp-shadow-lg) !important;
+  overflow: hidden;
+}
+.select2-results__option--highlighted[aria-selected] {
+  background: var(--pp-grad-hero) !important;
+  color: #fff !important;
+}
+
+/* Datepicker inputs */
+.hasDatepicker {
+  background: var(--pp-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23312e81' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E") no-repeat right 14px center;
+  padding-right: 40px !important;
+  cursor: pointer;
+}
+
+/* -------- Buttons -------- */
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--pp-radius-sm) !important;
+  transition: all .25s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary,
+.btn.btn-primary {
+  background: var(--pp-grad-hero) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: var(--pp-shadow-md);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pp-shadow-lg), 0 0 24px rgba(67,56,202,0.30);
+}
+.btn-view-report {
+  background: var(--pp-grad-hero) !important;
+}
+.btn-download-report {
+  background: var(--pp-grad-gold) !important;
+  color: var(--pp-indigo-deep) !important;
+  border-color: transparent !important;
+}
+.btn-download-report:hover {
+  box-shadow: var(--pp-shadow-lg), var(--pp-shadow-glow);
+  transform: translateY(-2px);
+}
+.text-md { font-size: 14px !important; }
+.px-56 { padding-left: 32px !important; padding-right: 32px !important; }
+.py-12 { padding-top: 12px !important; padding-bottom: 12px !important; }
+.radius-8 { border-radius: var(--pp-radius-sm) !important; }
+
+/* Figure type select */
+#figureType {
+  border: 1.5px solid var(--pp-border);
+  border-radius: var(--pp-radius-sm);
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--pp-indigo-deep);
+  background: var(--pp-grad-saffron-soft);
+  cursor: pointer;
+}
+#figureType:focus {
+  outline: none;
+  border-color: var(--pp-saffron);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.18);
+}
+
+/* -------- Spreadsheet Table (PHPSpreadsheet output) -------- */
+#sheet0,
+table.sheet0 {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  background: var(--pp-surface);
+  border-radius: var(--pp-radius);
+  overflow: hidden;
+  box-shadow: var(--pp-shadow-md);
+  border: 1px solid var(--pp-border);
+}
+#sheet0 td, #sheet0 th,
+table.sheet0 td, table.sheet0 th {
+  padding: 12px 14px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--pp-border) !important;
+  border-right: 1px solid var(--pp-border) !important;
+  vertical-align: middle !important;
+  font-family: 'Inter', sans-serif !important;
+}
+#sheet0 td:last-child, #sheet0 th:last-child { border-right: none !important; }
+#sheet0 tr:last-child td { border-bottom: none !important; }
+
+/* Numeric cells use mono font */
+#sheet0 td.n,
+#sheet0 td[data-original] {
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-weight: 600 !important;
+  font-variant-numeric: tabular-nums;
+  text-align: right !important;
+  color: var(--pp-ink);
+}
+
+/* Style 1 — Big report title row */
+#sheet0 td.style1, #sheet0 th.style1 {
+  background: var(--pp-grad-hero) !important;
+  color: #fff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+  text-align: center !important;
+  padding: 22px 16px !important;
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--pp-saffron) !important;
+}
+
+/* Style 2 — Column headers (months / quarters) */
+#sheet0 td.style2, #sheet0 th.style2 {
+  background: linear-gradient(180deg, #f1efe8 0%, #e7e5dc 100%) !important;
+  color: var(--pp-indigo-deep) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  text-align: center !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 12px !important;
+  border-bottom: 2px solid var(--pp-indigo-deep) !important;
+}
+
+/* Style 3 — Primary data row (highlighted band) */
+#sheet0 td.style3, #sheet0 th.style3 {
+  background: rgba(199, 228, 219, 0.35) !important;
+  color: var(--pp-ink) !important;
+  font-weight: 600 !important;
+}
+#sheet0 td.style3.s {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--pp-indigo-deep) !important;
+  font-size: 13px !important;
+  border-left: 3px solid var(--pp-emerald) !important;
+}
+
+/* Style 4 — Secondary / sub row */
+#sheet0 td.style4, #sheet0 th.style4 {
+  background: rgba(227, 241, 237, 0.45) !important;
+  color: var(--pp-ink-soft) !important;
+}
+#sheet0 td.style4.s {
+  font-weight: 600 !important;
+  color: var(--pp-indigo) !important;
+  padding-left: 28px !important;
+}
+
+/* Zebra rows for unspecified */
+#sheet0 tbody tr:nth-child(even) td:not([class*="style"]) {
+  background: var(--pp-surface-alt);
+}
+#sheet0 tbody tr:hover td {
+  background: rgba(245,158,11,0.06) !important;
+  transition: background .15s;
+}
+
+/* Sticky first column */
+#sheet0 td.col0, #sheet0 th.col0,
+#sheet0 td:first-child, #sheet0 th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--pp-surface);
+  text-align: left !important;
+  font-weight: 600;
+  border-right: 2px solid var(--pp-border-strong) !important;
+  min-width: 240px;
+}
+#sheet0 td.style1:first-child, #sheet0 th.style1:first-child { background: var(--pp-grad-hero) !important; }
+#sheet0 td.style2:first-child, #sheet0 th.style2:first-child {
+  background: linear-gradient(180deg, #f1efe8 0%, #e7e5dc 100%) !important;
+  z-index: 3;
+}
+#sheet0 td.style3:first-child { background: linear-gradient(90deg, rgba(5,150,105,0.10), rgba(199,228,219,0.35)) !important; }
+#sheet0 td.style4:first-child { background: rgba(227, 241, 237, 0.55) !important; }
+
+/* Negative / positive number coloring (in addition to inline) */
+#sheet0 td[style*="color: red"] {
+  color: var(--pp-rose) !important;
+  background: rgba(220,38,38,0.05) !important;
+}
+#sheet0 td[style*="color: green"] {
+  color: var(--pp-emerald) !important;
+  background: rgba(5,150,105,0.06) !important;
+}
+
+/* Scrollable container */
+.table-responsive,
+.dashboard-main-body div:has(> #sheet0) {
+  overflow-x: auto;
+  border-radius: var(--pp-radius);
+  scrollbar-width: thin;
+  scrollbar-color: var(--pp-indigo-soft) transparent;
+}
+.table-responsive::-webkit-scrollbar { height: 10px; }
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--pp-grad-hero);
+  border-radius: 10px;
+}
+
+/* -------- ApexCharts (Profit Power chart, Break Even chart) -------- */
+.apexcharts-canvas {
+  background: var(--pp-grad-card) !important;
+  border-radius: var(--pp-radius);
+  padding: 8px;
+}
+.apexcharts-tooltip {
+  background: var(--pp-indigo-deep) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--pp-radius-sm) !important;
+  box-shadow: var(--pp-shadow-lg) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+.apexcharts-tooltip-title {
+  background: rgba(245,158,11,0.15) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+  font-weight: 700 !important;
+}
+.apexcharts-xaxis-label, .apexcharts-yaxis-label {
+  fill: var(--pp-muted) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+}
+.apexcharts-legend-text {
+  color: var(--pp-ink-soft) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* -------- Utility (preserve Bootstrap-like classes) -------- */
+.fw-semibold { font-weight: 600 !important; }
+.fw-medium { font-weight: 500 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-24 { margin-bottom: 24px !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+.gap-2 { gap: 0.5rem !important; }
+.gap-3 { gap: 1rem !important; }
+.gap-1 { gap: 0.25rem !important; }
+.d-flex { display: flex !important; }
+.d-block { display: block !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.text-lg { font-size: 1.125rem; }
+.hover-text-primary:hover { color: var(--pp-saffron) !important; }
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .dashboard-main-body { padding: 16px 12px 40px; }
+  .dashboard-main-body > .d-flex.justify-content-between.mb-24 { padding: 20px; }
+  .dashboard-main-body h6.fw-semibold.mb-0 { font-size: 20px; }
+  .dashboard-main-body > .d-flex.justify-content-between.mb-24::after { display: none; }
+  .card-body { padding: 18px; }
+  #sheet0 { font-size: 12px !important; }
+  #sheet0 td, #sheet0 th { padding: 9px 10px !important; }
+  #sheet0 td:first-child, #sheet0 th:first-child { min-width: 180px; }
+  .btn { width: 100%; }
+}
+
+/* -------- Print -------- */
+@media print {
+  .dashboard-main-body { background: #fff; padding: 0; }
+  .dashboard-main-body > .d-flex.justify-content-between.mb-24 {
+    background: #fff !important;
+    color: var(--pp-ink) !important;
+    box-shadow: none;
+    border-bottom: 3px solid var(--pp-indigo-deep);
+    border-radius: 0;
+  }
+  .dashboard-main-body h6.fw-semibold.mb-0 { color: var(--pp-indigo-deep) !important; }
+  .btn, .profit-power-report-form { display: none !important; }
+  .card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  #sheet0 { box-shadow: none; font-size: 10pt !important; }
+  #sheet0 td, #sheet0 th { padding: 6px 8px !important; }
+}

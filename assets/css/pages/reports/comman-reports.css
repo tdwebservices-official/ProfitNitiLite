@@ -26,7 +26,10 @@ a.extra-row-btn {
 a.extra-row-btn.active i::before {
     content: "\f1af";
 }
-
+.view-toggle-btn {
+    display: inline-block;
+    margin-left: 5px;
+}
 a.show-acc-edit {
     display: inline-block;
     text-decoration: none;

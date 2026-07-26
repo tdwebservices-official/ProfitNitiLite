@@ -1,0 +1,747 @@
+/* =====================================================================
+   Cashflow Report — Premium Stylesheet
+   Part of the unified Reports Design System for Indian Business Owners
+   Palette: Deep Indigo + Saffron + Emerald + Gold accents
+   Drop this CSS file alongside the HTML and link it in <head>.
+   ===================================================================== */
+
+/* ---------- Design Tokens (same across all reports) ---------- */
+:root {
+  --pl-bg: #f5f3ee;
+  --pl-bg-soft: #faf8f3;
+  --pl-surface: #ffffff;
+  --pl-ink: #1a1f3a;
+  --pl-ink-soft: #4b5170;
+  --pl-muted: #8a8fa6;
+  --pl-border: #e7e3d8;
+  --pl-border-strong: #d8d2c2;
+
+  --pl-primary: #1f2a55;
+  --pl-primary-600: #2a3870;
+  --pl-primary-50: #eef0f8;
+
+  --pl-saffron: #f08a24;
+  --pl-saffron-soft: #fdecd6;
+  --pl-gold: #c9a14a;
+  --pl-gold-soft: #f6ecd2;
+
+  --pl-emerald: #0f8a5f;
+  --pl-emerald-soft: #e3f5ec;
+  --pl-rose: #c0392b;
+  --pl-rose-soft: #fbe6e2;
+
+  --pl-gradient-hero: linear-gradient(135deg, #1f2a55 0%, #2a3870 55%, #f08a24 140%);
+  --pl-gradient-gold: linear-gradient(135deg, #c9a14a 0%, #f0c46a 100%);
+  --pl-gradient-card: linear-gradient(180deg, #ffffff 0%, #fbf9f3 100%);
+
+  --pl-shadow-sm: 0 1px 2px rgba(31, 42, 85, .06), 0 1px 3px rgba(31, 42, 85, .04);
+  --pl-shadow-md: 0 6px 18px -8px rgba(31, 42, 85, .18), 0 2px 6px rgba(31, 42, 85, .06);
+  --pl-shadow-lg: 0 18px 40px -18px rgba(31, 42, 85, .28);
+
+  --pl-radius: 14px;
+  --pl-radius-sm: 10px;
+
+  --pl-font-display: "Plus Jakarta Sans", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --pl-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --pl-font-num: "JetBrains Mono", "SF Mono", "Roboto Mono", ui-monospace, monospace;
+}
+
+
+/* ---------- Base ---------- */
+.dashboard-main-body {
+  background:
+    radial-gradient(1200px 400px at -10% -20%, rgba(240, 138, 36, .08), transparent 60%),
+    radial-gradient(900px 500px at 110% 0%, rgba(31, 42, 85, .08), transparent 60%),
+    var(--pl-bg);
+  font-family: var(--pl-font-body);
+  color: var(--pl-ink);
+  padding: 28px 26px 60px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Hero / Breadcrumb ---------- */
+.dashboard-main-body > .d-flex.mb-24 {
+  background: var(--pl-gradient-hero);
+  border-radius: var(--pl-radius);
+  padding: 22px 28px;
+  box-shadow: var(--pl-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.dashboard-main-body > .d-flex.mb-24::before {
+  content: "";
+  position: absolute;
+  inset: -50% -10% auto auto;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(240, 138, 36, .35), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold {
+  font-family: var(--pl-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+  position: relative;
+  margin: 0;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold::before {
+  content: "₹";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-right: 12px;
+  background: var(--pl-gradient-gold);
+  color: var(--pl-primary);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  box-shadow: 0 6px 16px rgba(201, 161, 74, .35);
+}
+.dashboard-main-body > .d-flex.mb-24 ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.dashboard-main-body > .d-flex.mb-24 ul li,
+.dashboard-main-body > .d-flex.mb-24 ul a {
+  color: rgba(255, 255, 255, .85);
+  font-size: .82rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+.dashboard-main-body > .d-flex.mb-24 ul a:hover,
+.hover-text-primary:hover { color: var(--pl-saffron) !important; }
+.dashboard-main-body > .d-flex.mb-24 ul li:last-child { color: #fff; font-weight: 600; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--pl-gradient-card);
+  border: 1px solid var(--pl-border);
+  border-radius: var(--pl-radius);
+  box-shadow: var(--pl-shadow-md);
+  overflow: hidden;
+  margin-top: 20px;
+}
+.card.h-100.p-0.radius-12 { background: var(--pl-surface); }
+.card .card { box-shadow: none; margin-top: 0; border-color: var(--pl-border); }
+.card-body { padding: 24px 26px; }
+
+
+/* ---------- Filter Form (.cashflow-report-form) ---------- */
+.cashflow-report-form { position: relative; }
+.cashflow-report-form::before {
+  content: "";
+  position: absolute;
+  top: -24px; left: -26px; right: -26px;
+  height: 4px;
+  background: var(--pl-gradient-gold);
+  border-radius: 2px;
+}
+
+.cashflow-report-form label,
+.cashflow-report-form label strong {
+  font-family: var(--pl-font-display);
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--pl-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 6px !important;
+}
+
+.cashflow-report-form .form-control,
+.cashflow-report-form .select2-selection {
+  height: 46px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--pl-border-strong) !important;
+  background: #fff !important;
+  font-family: var(--pl-font-body);
+  font-size: .9rem;
+  color: var(--pl-ink);
+  padding: 0 14px !important;
+  display: flex;
+  align-items: center;
+  transition: border-color .2s, box-shadow .2s;
+}
+.cashflow-report-form .form-control:focus,
+.cashflow-report-form .select2-selection:focus {
+  outline: none;
+  border-color: var(--pl-primary) !important;
+  box-shadow: 0 0 0 4px rgba(31, 42, 85, .1) !important;
+}
+.cashflow-report-form .select2-selection__rendered {
+  line-height: 44px !important;
+  color: var(--pl-ink) !important;
+  padding: 0 !important;
+}
+.cashflow-report-form .select2-selection__arrow { height: 44px !important; }
+.cashflow-report-form .select2-selection__arrow b {
+  border-color: var(--pl-primary) transparent transparent transparent !important;
+}
+
+#date_filter > div { flex: 1; }
+#date_filter input[type="text"] {
+  cursor: pointer;
+  background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231f2a55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>") no-repeat right 12px center !important;
+  padding-right: 38px !important;
+}
+
+
+/* ---------- Action Buttons ---------- */
+.btn-view-report,
+.btn-download-report {
+  height: 46px;
+  padding: 0 28px !important;
+  border-radius: 10px !important;
+  font-family: var(--pl-font-display);
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .02em;
+  border: none !important;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.btn-view-report {
+  background: var(--pl-gradient-hero) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px -8px rgba(31, 42, 85, .55);
+}
+.btn-view-report::before { content: "▸"; font-size: .85rem; }
+.btn-download-report {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+  box-shadow: 0 8px 20px -8px rgba(201, 161, 74, .6);
+}
+.btn-download-report::before { content: "⬇"; font-size: .9rem; }
+.btn-view-report:hover,
+.btn-download-report:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+
+/* ---------- Report Card Header (.balance-sheet-table-box) ---------- */
+.balance-sheet-table-box .card-header {
+  background: linear-gradient(90deg, #fbf9f3 0%, #fff 100%);
+  border-bottom: 2px solid var(--pl-border);
+  padding: 20px 26px;
+}
+.balance-sheet-table-box .card-title {
+  font-family: var(--pl-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pl-primary);
+  letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.balance-sheet-table-box .card-title::before {
+  content: "";
+  width: 5px;
+  height: 24px;
+  background: var(--pl-gradient-gold);
+  border-radius: 3px;
+}
+
+
+/* ---------- Figure-units selector ---------- */
+#figureType {
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid var(--pl-border-strong);
+  background: #fff;
+  font-weight: 600;
+  color: var(--pl-primary);
+  font-size: .85rem;
+  padding: 0 36px 0 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231f2a55' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+#figureType:focus {
+  outline: none;
+  border-color: var(--pl-primary);
+  box-shadow: 0 0 0 4px rgba(31, 42, 85, .1);
+}
+
+
+/* ---------- Data Table (.balance-sheet-table & friends) ---------- */
+.balance-sheet-table,
+.pl-sheet-table {
+  border-radius: 12px;
+  border: 1px solid var(--pl-border);
+  overflow: auto;
+  max-height: 78vh;
+  background: #fff;
+}
+.balance-sheet-table::-webkit-scrollbar,
+.pl-sheet-table::-webkit-scrollbar { height: 10px; width: 10px; }
+.balance-sheet-table::-webkit-scrollbar-thumb,
+.pl-sheet-table::-webkit-scrollbar-thumb {
+  background: var(--pl-border-strong);
+  border-radius: 6px;
+}
+.balance-sheet-table::-webkit-scrollbar-thumb:hover,
+.pl-sheet-table::-webkit-scrollbar-thumb:hover { background: var(--pl-primary); }
+
+.balance-sheet-table .table.bordered-table,
+.pl-sheet-table .table.bordered-table {
+  margin: 0 !important;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: .85rem;
+}
+
+/* ---- Header row ---- */
+.balance-sheet-table thead th,
+.pl-sheet-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--pl-primary) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display);
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: right;
+  padding: 14px 16px;
+  border: none;
+  white-space: nowrap;
+}
+.balance-sheet-table thead th:first-child,
+.pl-sheet-table thead th:first-child {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  min-width: 320px;
+  background: var(--pl-primary) !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, .12);
+}
+
+/* Highlight quarter & YTD columns (only for the 14-col reports) */
+.balance-sheet-table thead th:nth-child(11),
+.balance-sheet-table thead th:nth-child(12),
+.balance-sheet-table thead th:nth-child(13),
+.pl-sheet-table thead th:nth-child(11),
+.pl-sheet-table thead th:nth-child(12),
+.pl-sheet-table thead th:nth-child(13) {
+  background: linear-gradient(180deg, #2a3870 0%, #1f2a55 100%) !important;
+  color: var(--pl-gold-soft) !important;
+}
+.balance-sheet-table thead th:nth-child(14),
+.pl-sheet-table thead th:nth-child(14) {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+}
+
+/* ---- Body cells ---- */
+.balance-sheet-table tbody td,
+.pl-sheet-table tbody td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0ede4;
+  font-family: var(--pl-font-num);
+  font-size: .82rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--pl-ink);
+  background: #fff;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.balance-sheet-table tbody td:first-child,
+.pl-sheet-table tbody td:first-child {
+  font-family: var(--pl-font-body);
+  text-align: left;
+  font-weight: 500;
+  color: var(--pl-ink);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  min-width: 320px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, .04);
+}
+
+/* Hover row */
+.balance-sheet-table tbody tr:hover td,
+.balance-sheet-table tbody tr:hover td:first-child,
+.pl-sheet-table tbody tr:hover td,
+.pl-sheet-table tbody tr:hover td:first-child {
+  background: var(--pl-saffron-soft) !important;
+}
+
+/* Quarter / YTD column tinting */
+.balance-sheet-table tbody td:nth-child(11),
+.balance-sheet-table tbody td:nth-child(12),
+.balance-sheet-table tbody td:nth-child(13),
+.pl-sheet-table tbody td:nth-child(11),
+.pl-sheet-table tbody td:nth-child(12),
+.pl-sheet-table tbody td:nth-child(13) {
+  background: #f7f5ee;
+  font-weight: 600;
+}
+.balance-sheet-table tbody td:nth-child(14),
+.pl-sheet-table tbody td:nth-child(14) {
+  background: var(--pl-gold-soft);
+  font-weight: 700;
+  color: var(--pl-primary);
+}
+
+/* Total / heading rows (rows where the first cell contains <b>) */
+.balance-sheet-table tbody tr:has(td:first-child b) td,
+.pl-sheet-table tbody tr:has(td:first-child b) td {
+  background: linear-gradient(90deg, #eef0f8 0%, #f5f7fc 100%) !important;
+  font-weight: 700;
+  color: var(--pl-primary);
+  border-top: 2px solid var(--pl-primary);
+  border-bottom: 2px solid var(--pl-primary);
+  font-size: .87rem;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td:first-child,
+.pl-sheet-table tbody tr:has(td:first-child b) td:first-child {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .78rem;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td:nth-child(14),
+.pl-sheet-table tbody tr:has(td:first-child b) td:nth-child(14) {
+  background: var(--pl-gradient-gold) !important;
+  color: var(--pl-primary) !important;
+}
+
+/* Expandable parent rows */
+.balance-sheet-table tbody tr.main-tr-inner td,
+.pl-sheet-table tbody tr.main-tr-inner td {
+  background: #fbf6ea !important;
+  font-weight: 600;
+  color: var(--pl-primary);
+  border-top: 1px solid var(--pl-gold);
+}
+.balance-sheet-table tbody tr.main-tr-inner td:first-child::before,
+.pl-sheet-table tbody tr.main-tr-inner td:first-child::before {
+  content: "▾ ";
+  color: var(--pl-saffron);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* Sub rows */
+.balance-sheet-table tbody tr.sub-row td,
+.pl-sheet-table tbody tr.sub-row td {
+  background: #fbfbf7;
+  color: var(--pl-ink-soft);
+  font-size: .8rem;
+}
+.balance-sheet-table tbody tr.sub-row td:first-child,
+.pl-sheet-table tbody tr.sub-row td:first-child {
+  background: #fbfbf7;
+  font-weight: 400;
+  color: var(--pl-ink-soft);
+  border-left: 3px solid var(--pl-gold-soft);
+}
+
+/* Inline green / red text styling */
+.balance-sheet-table tbody td[style*="green"],
+.pl-sheet-table tbody td[style*="green"] {
+  color: var(--pl-emerald) !important;
+  font-weight: 700;
+}
+.balance-sheet-table tbody td[style*="red"],
+.pl-sheet-table tbody td[style*="red"] {
+  color: var(--pl-rose) !important;
+  font-weight: 700;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td[style*="green"],
+.pl-sheet-table tbody tr:has(td:first-child b) td[style*="green"] {
+  background: linear-gradient(90deg, var(--pl-emerald-soft), #eaf6f0) !important;
+  color: var(--pl-emerald) !important;
+}
+.balance-sheet-table tbody tr:has(td:first-child b) td[style*="red"],
+.pl-sheet-table tbody tr:has(td:first-child b) td[style*="red"] {
+  background: linear-gradient(90deg, var(--pl-rose-soft), #fbe9e6) !important;
+  color: var(--pl-rose) !important;
+}
+
+/* Quiet zero values */
+.balance-sheet-table tbody td[data-original="0"],
+.pl-sheet-table tbody td[data-original="0"] { color: var(--pl-muted); }
+
+
+/* ---------- Excel-export-style table override ---------- */
+/* The HTML for these reports has inline <style> defining .style0–7 with
+   loud Excel colors (#bfbfbf headers, #00FF00 green, etc.). We outweigh those
+   with high-specificity rules so the report blends into the design system. */
+
+.balance-sheet-table table[class*="basic-border-table"],
+.balance-sheet-table table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
+/* Drop ugly inline borders from the Excel export */
+.balance-sheet-table td.style2,
+.balance-sheet-table th.style2,
+.balance-sheet-table td.style3,
+.balance-sheet-table th.style3,
+.balance-sheet-table td.style4,
+.balance-sheet-table th.style4,
+.balance-sheet-table td.style5,
+.balance-sheet-table th.style5,
+.balance-sheet-table td.style6,
+.balance-sheet-table th.style6,
+.balance-sheet-table td.style7,
+.balance-sheet-table th.style7 {
+  border: none !important;
+  border-bottom: 1px solid #f0ede4 !important;
+  font-family: var(--pl-font-body) !important;
+  font-size: .82rem !important;
+}
+
+/* style1: report title row → make it a brand banner */
+.balance-sheet-table td.style1,
+.balance-sheet-table th.style1 {
+  background: linear-gradient(90deg, var(--pl-primary), var(--pl-primary-600)) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 14px 16px !important;
+  border: none !important;
+}
+
+/* style2: secondary heading band */
+.balance-sheet-table td.style2,
+.balance-sheet-table th.style2 {
+  background: var(--pl-primary) !important;
+  color: #fff !important;
+  font-family: var(--pl-font-display) !important;
+  font-weight: 600 !important;
+  font-size: .78rem !important;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 12px 16px !important;
+  text-align: left !important;
+}
+.balance-sheet-table td.style7 {
+  /* month-name header cells */
+  background: var(--pl-primary-600) !important;
+  color: var(--pl-gold-soft) !important;
+  font-family: var(--pl-font-display) !important;
+  font-weight: 600 !important;
+  font-size: .75rem !important;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: right !important;
+  padding: 12px 16px !important;
+}
+
+/* style3: highlight rows (Opening Cash / Closing Cash etc.) — was lurid green */
+.balance-sheet-table td.style3 {
+  background: linear-gradient(90deg, var(--pl-emerald-soft), #eaf6f0) !important;
+  color: var(--pl-primary) !important;
+  font-weight: 700 !important;
+  font-family: var(--pl-font-num) !important;
+  font-variant-numeric: tabular-nums;
+  text-align: right !important;
+  padding: 12px 16px !important;
+  border-top: 1px solid var(--pl-emerald) !important;
+  border-bottom: 1px solid var(--pl-emerald) !important;
+}
+.balance-sheet-table td.style3.s,
+.balance-sheet-table td.style3:first-child {
+  font-family: var(--pl-font-display) !important;
+  text-align: left !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .78rem !important;
+  color: var(--pl-emerald) !important;
+}
+
+/* style4: regular numeric body cells */
+.balance-sheet-table td.style4 {
+  background: #fff !important;
+  color: var(--pl-ink) !important;
+  font-family: var(--pl-font-num) !important;
+  font-variant-numeric: tabular-nums;
+  text-align: right !important;
+  font-size: .82rem !important;
+  padding: 11px 16px !important;
+}
+
+/* style5: light-teal text rows in Excel — turn into subtle alt rows */
+.balance-sheet-table td.style5 {
+  background: #fbfbf7 !important;
+  color: var(--pl-ink-soft) !important;
+  font-family: var(--pl-font-body) !important;
+  text-align: left !important;
+  padding-left: 24px !important;
+}
+
+/* style6: section sub-totals (was teal+bold) */
+.balance-sheet-table td.style6 {
+  background: linear-gradient(90deg, #eef0f8, #f5f7fc) !important;
+  color: var(--pl-primary) !important;
+  font-weight: 700 !important;
+  font-family: var(--pl-font-display) !important;
+  border-top: 2px solid var(--pl-primary) !important;
+  border-bottom: 2px solid var(--pl-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .8rem !important;
+}
+
+/* Keep first-column sticky in these tables too */
+.balance-sheet-table table tbody td.column0 {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  box-shadow: 2px 0 6px rgba(0,0,0,.04);
+}
+.balance-sheet-table table thead td.column0,
+.balance-sheet-table table thead th.column0 {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+}
+
+
+/* ---------- Secondary Chart Cards (charts under main table) ---------- */
+.dashboard-main-body .card.mt-20 .card-header {
+  background: linear-gradient(90deg, #fbf9f3 0%, #fff 100%);
+  border-bottom: 2px solid var(--pl-border);
+  padding: 18px 24px;
+}
+.dashboard-main-body .card.mt-20 .card-title {
+  font-family: var(--pl-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pl-primary);
+  letter-spacing: -.005em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.dashboard-main-body .card.mt-20 .card-title::before {
+  content: "📊";
+  font-size: 1rem;
+  filter: saturate(.85);
+}
+.dashboard-main-body .card.mt-20 .card-body {
+  padding: 18px 22px;
+}
+.dashboard-main-body .apexcharts-canvas {
+  font-family: var(--pl-font-body) !important;
+}
+.dashboard-main-body .apexcharts-text tspan,
+.dashboard-main-body .apexcharts-legend-text {
+  font-family: var(--pl-font-body) !important;
+  fill: var(--pl-ink-soft) !important;
+  color: var(--pl-ink-soft) !important;
+}
+
+
+/* ---------- Spinner ---------- */
+.spinner-border {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--pl-saffron);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Helper utilities used in markup ---------- */
+.radius-12 { border-radius: var(--pl-radius) !important; }
+.radius-8  { border-radius: 10px !important; }
+.mb-24 { margin-bottom: 24px; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-0  { margin-bottom: 0; }
+.mb-1  { margin-bottom: .35rem; }
+.fw-semibold { font-weight: 600; }
+.fw-medium   { font-weight: 500; }
+.text-lg { font-size: 1.05rem; }
+.text-md { font-size: .9rem; }
+.gap-1 { gap: .25rem; }
+.gap-2 { gap: .5rem; }
+.gap-3 { gap: 1rem; }
+.px-56 { padding-left: 28px; padding-right: 28px; }
+.py-12 { padding-top: 10px; padding-bottom: 10px; }
+.d-block { display: block; }
+.d-flex  { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.align-items-center { align-items: center; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-center  { justify-content: center; }
+.bg-white { background: #fff; }
+.text-primary { color: var(--pl-primary); }
+.border-primary-600 { border-color: var(--pl-primary-600) !important; }
+
+/* Bootstrap-like grid fallback */
+.row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+.row > [class*="col-"] { padding: 0 10px; }
+.col-md-3 { flex: 0 0 25%;  max-width: 25%; }
+.col-md-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-md-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-md-6 { flex: 0 0 50%;    max-width: 50%; }
+.col-lg-12, .col-xl-12, .col-xxl-12, .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+@media (max-width: 991px) {
+  .col-md-3, .col-md-4, .col-md-5, .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .dashboard-main-body { padding: 16px 12px 40px; }
+  .dashboard-main-body > .d-flex.mb-24 { padding: 18px 18px; flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  .dashboard-main-body > .d-flex.mb-24 h6.fw-semibold { font-size: 1.25rem; }
+  .card-body { padding: 18px 16px; }
+  .card-header { flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  #figureType { width: 100% !important; }
+  .balance-sheet-table thead th:first-child,
+  .balance-sheet-table tbody td:first-child,
+  .pl-sheet-table thead th:first-child,
+  .pl-sheet-table tbody td:first-child { min-width: 220px; }
+  .btn-view-report, .btn-download-report { width: 100%; padding: 0 18px !important; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .dashboard-main-body { background: #fff; padding: 0; }
+  .dashboard-main-body > .d-flex.mb-24 { background: #1f2a55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .btn-view-report, .btn-download-report, #figureType { display: none !important; }
+  form[id$="-report-form"] { display: none !important; }
+  .balance-sheet-table, .pl-sheet-table { max-height: none; overflow: visible; border: none; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}

@@ -821,7 +821,7 @@ function profit_loss_output( $previous = 0, $current = 0 ){
     return [ 'percentage' => $change, 'value' => $value ];
 }
 
-function different_ratio_output( $key = '', $data_arr = [] ){
+function different_ratio_output( $key = '', $data_arr = [], $decimal = 0 ){
     $sales_data = isset($data_arr[$key]) ? $data_arr[$key] : [];
     $current_data = 0;
     $last_month_data = 0;
@@ -831,9 +831,9 @@ function different_ratio_output( $key = '', $data_arr = [] ){
         $lastKey = end($arr_keys);
         $lastSec = $lastKey - 1;
         
-        $current_data = isset($sales_data[$lastKey]) ? round((float)str_replace(',','',$sales_data[$lastKey]),0) : 0;
+        $current_data = isset($sales_data[$lastKey]) ? round((float)str_replace(',','',$sales_data[$lastKey]),$decimal) : 0;
         if( $lastSec ){
-            $last_month_data = isset($sales_data[$lastSec]) ? round((float)str_replace(',','',$sales_data[$lastSec]),0) : 0;    
+            $last_month_data = isset($sales_data[$lastSec]) ? round((float)str_replace(',','',$sales_data[$lastSec]),$decimal) : 0;    
         }else{
             $last_month_data = 0;
         }
@@ -1064,5 +1064,161 @@ function remove_comma_format_data_by_monthwise( $sheetData = [] ){
     return $newSheedata;
 }
 
+function getOptionDta( $userId, $optionName, $default = null ) {
+   $option = \App\Models\Options::where('user_id', $userId)
+   ->where('option_name', $optionName)
+   ->first();
 
+   return $option
+   ? unserialize($option->option_value)
+   : $default;
+}
 
+function setOptionDta($userId, $optionName, $value) {
+    return \App\Models\Options::updateOrCreate(
+        [
+            'user_id'     => $userId,
+            'option_name' => $optionName,
+        ],
+        [
+            'option_value' => serialize($value),
+        ]
+    );
+}
+
+function getAIHistoryData( $userId, $historyName, $run_date, $default = null ) {
+   $option = \App\Models\AIHistory::where('user_id', $userId)
+   ->where('history_name', $historyName)
+   ->where('run_date', $run_date)
+   ->first();
+
+   return $option
+   ? unserialize($option->history_value)
+   : $default;
+}
+
+function setAIHistoryData($userId, $historyName, $value, $run_date ) {
+    return \App\Models\AIHistory::updateOrCreate(
+        [
+            'user_id'     => $userId,
+            'history_name' => $historyName,
+            'run_date' => $run_date,
+        ],
+        [
+            'history_value' => serialize($value),
+            'run_date' => $run_date,
+        ]
+    );
+}
+
+function pfnitiJsonToText($data): string
+{
+    // Accept JSON string or PHP array
+    if (is_string($data)) {
+        $data = json_decode($data, true);
+    }
+
+    if (!is_array($data)) {
+        return '';
+    }
+
+    return pfnitiConvertArrayToText($data);
+}
+
+function pfnitiConvertArrayToText(array $array): string
+{
+    $lines = [];
+
+    foreach ($array as $key => $value) {
+
+        if (is_array($value)) {
+
+            // Sequential array (e.g. segments)
+            if (array_is_list($value)) {
+
+                $items = [];
+
+                foreach ($value as $item) {
+
+                    if (is_array($item)) {
+
+                        $pairs = [];
+
+                        foreach ($item as $k => $v) {
+                            $pairs[] = is_array($v)
+                                ? "$k: [" . pfnitiConvertInline($v) . "]"
+                                : "$k: " . pfnitiFormatValue($v);
+                        }
+
+                        $items[] = implode(", ", $pairs);
+
+                    } else {
+
+                        $items[] = pfnitiFormatValue($item);
+
+                    }
+                }
+
+                $lines[] = "$key: " . implode(" | ", $items);
+
+            } else {
+
+                // Associative array
+                $pairs = [];
+
+                foreach ($value as $k => $v) {
+
+                    if (is_array($v)) {
+                        $pairs[] = "$k: [" . pfnitiConvertInline($v) . "]";
+                    } else {
+                        $pairs[] = "$k: " . pfnitiFormatValue($v);
+                    }
+
+                }
+
+                $lines[] = "$key: " . implode(", ", $pairs);
+            }
+
+        } else {
+
+            $lines[] = "$key: " . pfnitiFormatValue($value);
+
+        }
+    }
+
+    return implode("\n\n", $lines);
+}
+
+function pfnitiConvertInline(array $array): string
+{
+    $parts = [];
+
+    foreach ($array as $key => $value) {
+
+        if (is_array($value)) {
+            $parts[] = "$key: [" . pfnitiConvertInline($value) . "]";
+        } else {
+            $parts[] = "$key: " . pfnitiFormatValue($value);
+        }
+
+    }
+
+    return implode(", ", $parts);
+}
+
+function pfnitiFormatValue($value): string
+{
+    if (is_string($value)) {
+        return "\"{$value}\"";
+    }
+
+    if (is_bool($value)) {
+        return $value ? 'true' : 'false';
+    }
+
+    if ($value === null) {
+        return 'null';
+    }
+
+    return (string) $value;
+}

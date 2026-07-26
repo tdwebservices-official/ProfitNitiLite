@@ -1,0 +1,629 @@
+/* =============================================================================
+   Add KPI Record — Data Entry Form Stylesheet
+   Built for Indian Business Owners · Indigo + Saffron + Emerald + Gold palette
+   ----------------------------------------------------------------------------
+   No HTML changed. Drop this CSS file in your assets and link it in <head>.
+   Includes Bootstrap-like grid + utility fallbacks so it works standalone.
+   ============================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #f3f5fb; --bg-soft: #f9fafd; --surface: #ffffff;
+  --ink: #0a1228; --ink-soft: #3a4561; --muted: #7c8499; --faint: #b8c0d0;
+  --border: #e4e9f2; --border-strong: #cdd5e3;
+  --primary: #0b2a6b; --primary-600: #1741a3; --primary-700: #0f3490;
+  --primary-50: #eaf0fb; --primary-100: #d4dffa;
+  --saffron: #ef7a1b; --saffron-soft: #fdeedb; --saffron-dark: #c75d05;
+  --gold: #b9883a; --gold-rich: #d6a64a; --gold-soft: #f4e7c8;
+  --emerald: #0b7a55; --success: #0b7a55; --emerald-soft: #dcf2e7;
+  --rose: #b6342a; --danger: #b6342a; --rose-soft: #fbe1dc;
+  --danger-600: #b6342a; --danger-200: #fbe1dc;
+  --amber: #b87708; --warning: #b87708; --amber-soft: #fef0d2;
+
+  --grad-hero: linear-gradient(125deg, #0b2a6b 0%, #1741a3 55%, #2a64d2 100%);
+  --grad-gold: linear-gradient(135deg, #d6a64a 0%, #f1cf7d 100%);
+  --grad-emerald: linear-gradient(135deg, #0b7a55 0%, #2cb389 100%);
+  --grad-saffron: linear-gradient(135deg, #ef7a1b 0%, #f5a256 100%);
+  --grad-card: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+
+  --shadow-xs: 0 1px 2px rgba(11,42,107,.05);
+  --shadow-sm: 0 2px 4px rgba(11,42,107,.06), 0 1px 3px rgba(11,42,107,.04);
+  --shadow-md: 0 8px 24px -12px rgba(11,42,107,.2), 0 2px 6px rgba(11,42,107,.05);
+  --shadow-lg: 0 24px 48px -22px rgba(11,42,107,.32);
+  --shadow-glow: 0 12px 28px -10px rgba(11,42,107,.55);
+
+  --radius: 16px; --radius-sm: 12px; --radius-xs: 8px; --radius-pill: 999px;
+
+  --font-display: "Manrope","Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+  --font-body: "Inter","Segoe UI",system-ui,sans-serif;
+  --font-num: "JetBrains Mono","SF Mono","Roboto Mono",ui-monospace,monospace;
+
+  --trans: 0.2s ease;
+}
+
+* { box-sizing: border-box; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+html, body {
+  margin: 0; padding: 0; background: var(--bg);
+  font-family: var(--font-body); color: var(--ink);
+  -webkit-font-smoothing: antialiased; line-height: 1.5; font-size: 14px;
+}
+
+iconify-icon { display: inline-block; vertical-align: middle; }
+button { font-family: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+table { border-collapse: collapse; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. SHELL — Ambient canvas
+   ───────────────────────────────────────────────────────────────────────── */
+.dashboard-main-body {
+  background:
+    radial-gradient(1200px 600px at -8% -10%, rgba(239,122,27,.08), transparent 60%),
+    radial-gradient(1000px 700px at 110% -5%, rgba(11,42,107,.10), transparent 60%),
+    var(--bg);
+  min-height: 100vh;
+  padding: 22px 28px 60px;
+  position: relative;
+}
+.dashboard-main-body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(11,42,107,.018) 1px, transparent 1px);
+  background-size: 4px 4px; z-index: 0;
+}
+.dashboard-main-body > * { position: relative; z-index: 1; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. BREADCRUMB HEADER
+   ───────────────────────────────────────────────────────────────────────── */
+.dashboard-main-body > .d-flex.mb-24 {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 24px;
+  box-shadow: var(--shadow-sm); margin-bottom: 22px;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold {
+  font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  letter-spacing: -.02em; color: var(--ink); margin: 0;
+  display: flex; align-items: center; gap: 12px;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold::before {
+  content: "₹"; display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; background: var(--grad-gold); color: var(--primary);
+  border-radius: 10px; font-family: var(--font-display); font-weight: 900;
+  font-size: 17px; box-shadow: 0 6px 16px rgba(214,166,74,.32);
+}
+.dashboard-main-body > .d-flex.mb-24 ul {
+  list-style: none; padding: 6px 14px; margin: 0;
+  display: flex; gap: 8px; align-items: center;
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-pill); font-size: 12.5px; color: var(--muted);
+  font-family: var(--font-num); letter-spacing: .02em;
+}
+.dashboard-main-body > .d-flex.mb-24 ul a { color: var(--primary-600); display: inline-flex; align-items: center; gap: 4px; }
+.dashboard-main-body > .d-flex.mb-24 ul li:last-child { color: var(--ink); font-weight: 600; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. MAIN CARD
+   ───────────────────────────────────────────────────────────────────────── */
+.card.p-0.radius-12 {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+.card.p-0.radius-12::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: var(--grad-gold); z-index: 1;
+}
+.card.p-0.radius-12 .card-body { padding: 24px 26px; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. TOP ACTION BAR — Dates + Load Table + Save + Reset (sticky)
+   ───────────────────────────────────────────────────────────────────────── */
+.action-box.top-action-box {
+  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  position: sticky; top: 16px; z-index: 50;
+  box-shadow: var(--shadow-sm);
+  display: flex; align-items: center;
+}
+.action-box.top-action-box::before {
+  content: "Enter your data";
+  position: absolute; top: -10px; left: 22px;
+  background: var(--grad-hero); color: #fff;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+}
+
+/* Date inputs */
+input.hasDatepicker, #fromDate, #toDate {
+  width: 100%;
+  height: 44px !important;
+  border: 1.5px solid var(--border-strong) !important;
+  border-radius: 10px !important;
+  background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230b2a6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>") no-repeat right 12px center !important;
+  padding: 0 38px 0 14px !important;
+  font-family: var(--font-body); font-size: 13.5px; color: var(--ink);
+  cursor: pointer;
+  transition: border-color var(--trans), box-shadow var(--trans);
+}
+input.hasDatepicker:hover { border-color: var(--primary-600) !important; }
+input.hasDatepicker:focus {
+  border-color: var(--primary-600) !important;
+  box-shadow: 0 0 0 4px rgba(23,65,163,.12) !important; outline: none;
+}
+input.hasDatepicker::placeholder { color: var(--muted); }
+
+/* Load Table button */
+#generate-kpi {
+  width: 100%;
+  background: var(--grad-hero) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 11px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: .04em; padding: 12px 24px !important; height: 44px;
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--trans), filter var(--trans);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  text-transform: uppercase; cursor: pointer;
+}
+#generate-kpi::before { content: "⚡"; font-size: 14px; }
+#generate-kpi:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+/* Save / Reset on right */
+.save-box {
+  display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+}
+.save-box > .align-items-center { display: flex; gap: 10px; }
+.save-kpi-record {
+  background: var(--grad-emerald) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 11px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: .04em; padding: 12px 28px !important; height: 44px;
+  box-shadow: 0 12px 28px -10px rgba(11,122,85,.5);
+  transition: transform var(--trans), filter var(--trans);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  text-transform: uppercase; cursor: pointer; position: relative;
+}
+.save-kpi-record::before { content: "✓"; font-size: 14px; font-weight: 900; }
+.save-kpi-record:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.save-kpi-record .spinner-border {
+  width: 16px; height: 16px; border-width: 2px;
+  position: static !important; margin-left: 6px;
+}
+
+.reset-btn {
+  background: #fff !important;
+  color: var(--danger-600) !important;
+  border: 1.5px solid var(--danger-600) !important;
+  border-radius: 11px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: .04em; padding: 12px 24px !important; height: 44px;
+  transition: all var(--trans);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  text-transform: uppercase; cursor: pointer;
+}
+.reset-btn::before { content: "↻"; font-size: 15px; font-weight: 700; }
+.reset-btn:hover {
+  background: var(--rose-soft) !important;
+  transform: translateY(-1px);
+}
+
+.spinner-border {
+  width: 22px; height: 22px;
+  border: 3px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. CSV UPLOAD — Alternate quick path
+   ───────────────────────────────────────────────────────────────────────── */
+.action-box.csv-load {
+  background: linear-gradient(135deg, var(--emerald-soft) 0%, var(--bg-soft) 100%);
+  border: 1px dashed rgba(11,122,85,.35);
+  border-radius: var(--radius);
+  padding: 18px 22px 14px;
+  margin-bottom: 22px;
+  position: relative;
+}
+.action-box.csv-load::before {
+  content: "Shortcut · paste a month's data in one click";
+  position: absolute; top: -10px; left: 22px;
+  background: var(--grad-emerald); color: #fff;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+.action-box.csv-load .load-kpi-records-form {
+  width: 100%;
+}
+.action-box.csv-load .form-label {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 6px;
+}
+.action-box.csv-load input[type="file"] {
+  height: 42px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  background: #fff;
+  font-family: var(--font-body); font-size: 13px;
+  color: var(--ink-soft);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: border-color var(--trans);
+}
+.action-box.csv-load input[type="file"]:hover { border-color: var(--emerald); }
+.action-box.csv-load input[type="file"]::file-selector-button {
+  margin-right: 12px; padding: 6px 14px;
+  border: 0; border-radius: 7px;
+  background: var(--emerald-soft); color: var(--emerald);
+  font-family: var(--font-display); font-weight: 700; font-size: 11.5px;
+  letter-spacing: .04em; cursor: pointer;
+  transition: background var(--trans);
+}
+.action-box.csv-load input[type="file"]::file-selector-button:hover {
+  background: rgba(11,122,85,.18);
+}
+#loadCSVFIle {
+  background: var(--grad-emerald) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 10px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 12.5px;
+  letter-spacing: .04em; padding: 10px 22px !important; height: 42px;
+  box-shadow: 0 8px 20px -8px rgba(11,122,85,.45);
+  transition: transform var(--trans), filter var(--trans);
+  display: inline-flex; align-items: center; gap: 6px;
+  text-transform: uppercase; cursor: pointer; position: relative;
+}
+#loadCSVFIle::before { content: "↑"; font-size: 13px; }
+#loadCSVFIle:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+#downloadSample {
+  background: #fff !important;
+  color: var(--emerald) !important;
+  border: 1.5px solid var(--emerald) !important;
+  border-radius: 10px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 12.5px;
+  letter-spacing: .04em; padding: 9px 18px !important; height: 42px;
+  transition: all var(--trans);
+  display: inline-flex; align-items: center; gap: 6px;
+  cursor: pointer;
+}
+#downloadSample::before { content: "↓"; font-size: 13px; font-weight: 700; }
+#downloadSample:hover {
+  background: var(--emerald-soft) !important;
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. KPI DATA-ENTRY TABLE
+   ───────────────────────────────────────────────────────────────────────── */
+.kpi-tableArea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+.balance-sheet-table {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.balance-sheet-table table.bordered-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: var(--surface);
+}
+
+/* Sticky header */
+.balance-sheet-table thead th {
+  position: sticky; top: 0; z-index: 5;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  text-align: left;
+  padding: 14px 18px;
+  border: 0;
+  white-space: nowrap;
+}
+.balance-sheet-table thead th:first-child {
+  position: sticky; left: 0; z-index: 6;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%);
+  box-shadow: 4px 0 8px -4px rgba(11,42,107,.15);
+  min-width: 280px;
+}
+.balance-sheet-table thead th:not(:first-child) {
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.12);
+}
+.balance-sheet-table thead th:not(:first-child)::before {
+  content: "📅 ";
+  font-size: 12px; margin-right: 6px;
+}
+
+/* Body cells */
+.balance-sheet-table tbody td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  background: var(--surface);
+  transition: background var(--trans);
+}
+.balance-sheet-table tbody td:first-child {
+  position: sticky; left: 0; z-index: 2;
+  background: var(--surface);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  border-right: 2px solid var(--border);
+  box-shadow: 4px 0 8px -4px rgba(11,42,107,.08);
+  min-width: 280px;
+  padding: 12px 18px;
+}
+.balance-sheet-table tbody tr:hover td { background: var(--bg-soft); }
+.balance-sheet-table tbody tr:hover td:first-child { background: var(--bg-soft); }
+
+/* Number inputs */
+.balance-sheet-table tbody td:not(:first-child) { position: relative; padding: 8px 14px; }
+.balance-sheet-table tbody td:not(:first-child)::after {
+  content: "₹";
+  position: absolute;
+  left: 24px;
+  top: 50%; transform: translateY(-50%);
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 13px;
+  pointer-events: none; z-index: 2;
+}
+
+.balance-sheet-table input[type="number"] {
+  width: 100%;
+  height: 42px;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 10px !important;
+  background: var(--bg-soft) !important;
+  font-family: var(--font-num);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 0 14px 0 32px !important;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  transition: all var(--trans);
+  -moz-appearance: textfield;
+}
+.balance-sheet-table input[type="number"]::-webkit-outer-spin-button,
+.balance-sheet-table input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; margin: 0;
+}
+.balance-sheet-table input[type="number"]:hover {
+  border-color: var(--primary-100) !important;
+  background: #fff !important;
+}
+.balance-sheet-table input[type="number"]:focus {
+  border-color: var(--primary-600) !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 4px rgba(23,65,163,.12);
+  outline: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   8. SECTION GROUPING — Auto-inject labels every N rows
+   ───────────────────────────────────────────────────────────────────────── */
+.balance-sheet-table tbody tr:nth-child(1) td,
+.balance-sheet-table tbody tr:nth-child(5) td,
+.balance-sheet-table tbody tr:nth-child(10) td,
+.balance-sheet-table tbody tr:nth-child(16) td,
+.balance-sheet-table tbody tr:nth-child(21) td,
+.balance-sheet-table tbody tr:nth-child(29) td,
+.balance-sheet-table tbody tr:nth-child(31) td,
+.balance-sheet-table tbody tr:nth-child(36) td,
+.balance-sheet-table tbody tr:nth-child(41) td,
+.balance-sheet-table tbody tr:nth-child(43) td {
+  padding-top: 40px !important;
+}
+
+.balance-sheet-table tbody tr:nth-child(5) td,
+.balance-sheet-table tbody tr:nth-child(10) td,
+.balance-sheet-table tbody tr:nth-child(16) td,
+.balance-sheet-table tbody tr:nth-child(21) td,
+.balance-sheet-table tbody tr:nth-child(29) td,
+.balance-sheet-table tbody tr:nth-child(31) td,
+.balance-sheet-table tbody tr:nth-child(36) td,
+.balance-sheet-table tbody tr:nth-child(41) td,
+.balance-sheet-table tbody tr:nth-child(43) td {
+  border-top: 2px solid var(--primary-100);
+}
+
+/* Section labels — first td of section-starter row */
+.balance-sheet-table tbody tr:nth-child(1) td:first-child,
+.balance-sheet-table tbody tr:nth-child(5) td:first-child,
+.balance-sheet-table tbody tr:nth-child(10) td:first-child,
+.balance-sheet-table tbody tr:nth-child(16) td:first-child,
+.balance-sheet-table tbody tr:nth-child(21) td:first-child,
+.balance-sheet-table tbody tr:nth-child(29) td:first-child,
+.balance-sheet-table tbody tr:nth-child(31) td:first-child,
+.balance-sheet-table tbody tr:nth-child(36) td:first-child,
+.balance-sheet-table tbody tr:nth-child(41) td:first-child,
+.balance-sheet-table tbody tr:nth-child(43) td:first-child {
+  position: relative;
+}
+.balance-sheet-table tbody tr:nth-child(1)  td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(5)  td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(10) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(16) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(21) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(29) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(31) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(36) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(41) td:first-child::before,
+.balance-sheet-table tbody tr:nth-child(43) td:first-child::before {
+  position: absolute;
+  top: 10px; left: 18px;
+  font-family: var(--font-display);
+  font-size: 10px; font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  z-index: 3;
+}
+/* Section colors + labels (in plain English for owners) */
+.balance-sheet-table tbody tr:nth-child(1)  td:first-child::before { content: "OWN MONEY IN BUSINESS";   background: var(--primary-50);   color: var(--primary); }
+.balance-sheet-table tbody tr:nth-child(5)  td:first-child::before { content: "LONG-TERM LOANS";          background: var(--amber-soft);   color: var(--amber); }
+.balance-sheet-table tbody tr:nth-child(10) td:first-child::before { content: "SHORT-TERM DUES TO PAY";   background: var(--saffron-soft); color: var(--saffron-dark); }
+.balance-sheet-table tbody tr:nth-child(16) td:first-child::before { content: "LONG-TERM ASSETS";         background: var(--emerald-soft); color: var(--emerald); }
+.balance-sheet-table tbody tr:nth-child(21) td:first-child::before { content: "CASH, STOCK & CUSTOMER DUES"; background: var(--gold-soft); color: var(--gold); }
+.balance-sheet-table tbody tr:nth-child(29) td:first-child::before { content: "SALES & STOCK";            background: var(--grad-emerald); color: #fff; }
+.balance-sheet-table tbody tr:nth-child(31) td:first-child::before { content: "BUSINESS EXPENSES";        background: var(--rose-soft);    color: var(--rose); }
+.balance-sheet-table tbody tr:nth-child(36) td:first-child::before { content: "INTEREST & OTHER ITEMS";   background: var(--primary-50);   color: var(--primary-600); }
+.balance-sheet-table tbody tr:nth-child(41) td:first-child::before { content: "TAXES";                    background: var(--bg);           color: var(--ink-soft); border: 1px solid var(--border-strong); }
+.balance-sheet-table tbody tr:nth-child(43) td:first-child::before { content: "DIVIDENDS PAID";           background: var(--grad-gold);    color: var(--primary); font-weight: 800; }
+
+/* Subtle left-border accent on each section's first row */
+.balance-sheet-table tbody tr:nth-child(1)  td:first-child,
+.balance-sheet-table tbody tr:nth-child(5)  td:first-child,
+.balance-sheet-table tbody tr:nth-child(10) td:first-child,
+.balance-sheet-table tbody tr:nth-child(16) td:first-child,
+.balance-sheet-table tbody tr:nth-child(21) td:first-child,
+.balance-sheet-table tbody tr:nth-child(29) td:first-child,
+.balance-sheet-table tbody tr:nth-child(31) td:first-child,
+.balance-sheet-table tbody tr:nth-child(36) td:first-child,
+.balance-sheet-table tbody tr:nth-child(41) td:first-child,
+.balance-sheet-table tbody tr:nth-child(43) td:first-child {
+  padding-left: 24px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   9. UTILITY CLASSES (Bootstrap-ish fallback)
+   ───────────────────────────────────────────────────────────────────────── */
+.d-flex { display: flex; } .d-block { display: block; }
+.flex-wrap { flex-wrap: wrap; }
+.align-items-center { align-items: center; }
+.align-items-end { align-items: flex-end; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-center { justify-content: center; }
+.text-end { text-align: right; }
+.text-md { font-size: 14px; } .text-lg { font-size: 15px; }
+.fw-semibold { font-weight: 600; } .fw-medium { font-weight: 500; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+.mb-0 { margin-bottom: 0; } .mb-10 { margin-bottom: 10px; }
+.mb-24 { margin-bottom: 24px; } .mt-3 { margin-top: 16px; }
+.px-56 { padding-left: 28px; padding-right: 28px; }
+.py-11 { padding-top: 11px; padding-bottom: 11px; }
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+.p-0 { padding: 0; }
+.radius-8 { border-radius: 10px; } .radius-12 { border-radius: var(--radius); }
+.bg-white { background: #fff; }
+.text-white { color: #fff; }
+.text-danger-600 { color: var(--danger-600); }
+.border { border: 1px solid var(--border); }
+.border-primary-600 { border-color: var(--primary-600) !important; }
+.border-danger-600 { border-color: var(--danger-600) !important; }
+.bg-hover-danger-200:hover { background: var(--danger-200); }
+.position-absolute { position: absolute; }
+.text-success { color: var(--emerald); }
+.hover-text-primary:hover { color: var(--primary) !important; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.btn-primary {
+  background: var(--grad-hero) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 11px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: .04em; padding: 12px 28px !important; height: 44px;
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--trans), filter var(--trans);
+  text-transform: uppercase;
+}
+.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.btn-success {
+  background: var(--grad-emerald) !important;
+  color: #fff !important; border: 0 !important;
+  border-radius: 11px !important;
+  font-family: var(--font-display); font-weight: 700; font-size: 12.5px;
+  letter-spacing: .04em; padding: 9px 22px !important;
+  box-shadow: 0 8px 20px -8px rgba(11,122,85,.45);
+  transition: transform var(--trans), filter var(--trans);
+  text-transform: uppercase;
+}
+.btn-success:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 42px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  background: #fff;
+  font-family: var(--font-body); font-size: 13.5px;
+  color: var(--ink);
+  padding: 0 14px;
+  transition: border-color var(--trans), box-shadow var(--trans);
+}
+.form-control:focus {
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 4px rgba(23,65,163,.12); outline: none;
+}
+
+/* Grid */
+.row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+.row > [class*="col-"] { padding: 0 10px; }
+.col-md-3 { flex: 0 0 25%; max-width: 25%; }
+.col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-md-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-md-9 { flex: 0 0 75%; max-width: 75%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   10. RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .col-md-3, .col-md-4, .col-md-8, .col-md-9 { flex: 0 0 100%; max-width: 100%; }
+  .col-md-3.save-box { margin-top: 14px; text-align: left !important; }
+  .save-box > .align-items-center { justify-content: flex-start; }
+  .action-box.top-action-box { flex-direction: column; align-items: stretch; }
+}
+@media (max-width: 720px) {
+  .dashboard-main-body { padding: 16px 12px 40px; }
+  .card.p-0.radius-12 .card-body { padding: 18px 14px; }
+  .save-kpi-record, .reset-btn, #generate-kpi { width: 100%; }
+  .action-box.csv-load .col-md-8 { flex-direction: column; align-items: stretch !important; }
+  .action-box.csv-load .col-md-8 > div { width: 100%; margin-bottom: 8px; }
+  #loadCSVFIle, #downloadSample { width: 100%; }
+  .balance-sheet-table thead th:first-child,
+  .balance-sheet-table tbody td:first-child { min-width: 200px; }
+}

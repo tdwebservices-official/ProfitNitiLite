@@ -1,4 +1,13 @@
-var chart1 = {};
+
+    // Declare chartInstance outside to persist across clicks
+var globalChartInstance = null;
+
+// Store original data for each chart
+const chartOriginalData = {};
+
+// Store current format for each chart
+const chartCurrentFormat = {};
+var chart2 = {},chart3 = {};
 jQuery(document).ready(function() {
      $.ajaxSetup({
     headers: {
@@ -7,9 +16,9 @@ jQuery(document).ready(function() {
 });
 
 
-    createSingleBarChart('columnChart1', '#487FFF');
-    createSingleBarChart('columnChart2', '#FF9F29');
-    createSingleBarChart('columnChart3', '#e80f0f');
+    // createSingleBarChart('columnChart1', '#487FFF');
+    // createSingleBarChart('columnChart2', '#FF9F29');
+    // createSingleBarChart('columnChart3', '#e80f0f');
 
     $('#capex-report-form').validate({
         // Validate only visible fields
@@ -68,48 +77,51 @@ jQuery(document).ready(function() {
 
                         var report_itemObj = get_report_item_list();
 
-                        setDataAttributeTB();
+                        setDataAttributeTB(['Other Capital %','Net Operating Assets %','Other Capital Turnover','Asset Turnover','Return on Capital %','Return on Total Assets','Return on Equity %']);
 
 
-                        chart1['columnChart1'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        returnCapitalChart( report_itemObj, res.chart_header );
+                        returnEquityChart( report_itemObj, res.chart_header );
+                        returnAssetTurnoverChart( report_itemObj, res.chart_header );
+                        // chart1['columnChart1'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        chart1['columnChart1'].updateSeries([
-                            {
-                                name: 'Return on Capital %',
-                                data: report_itemObj['Return on Capital %']
-                            }
-                        ]);
+                        // chart1['columnChart1'].updateSeries([
+                        //     {
+                        //         name: 'Return on Capital %',
+                        //         data: report_itemObj['Return on Capital %']
+                        //     }
+                        // ]);
 
 
-                        chart1['columnChart2'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        // chart1['columnChart2'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        chart1['columnChart2'].updateSeries([
-                            {
-                                name: 'Return on Equity %',
-                                data: report_itemObj['Return on Equity %']
-                            }
-                        ]);
+                        // chart1['columnChart2'].updateSeries([
+                        //     {
+                        //         name: 'Return on Equity %',
+                        //         data: report_itemObj['Return on Equity %']
+                        //     }
+                        // ]);
 
-                        chart1['columnChart3'].updateOptions({
-                            xaxis: {
-                                categories: res.chart_header
-                            }
-                        });
+                        // chart1['columnChart3'].updateOptions({
+                        //     xaxis: {
+                        //         categories: res.chart_header
+                        //     }
+                        // });
 
-                        chart1['columnChart3'].updateSeries([
-                            {
-                                name: 'Asset Turnover',
-                                data: report_itemObj['Asset Turnover']
-                            }
-                        ]);
+                        // chart1['columnChart3'].updateSeries([
+                        //     {
+                        //         name: 'Asset Turnover',
+                        //         data: report_itemObj['Asset Turnover']
+                        //     }
+                        // ]);
 
                         setTimeout(function() {
                             // Trigger once for default selection
@@ -143,6 +155,58 @@ jQuery(document).ready(function() {
 
         }
     });
+
+   function returnCapitalChart( report_itemObj, chart_header ){
+        jQuery('#columnChart1').empty();       
+        const r_series = [
+            {
+                 name: 'Return on Capital %',
+                 data: report_itemObj['Return on Capital %']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart1'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart1'] = 'lakh';
+        renderChart('columnChart1', 'barChart', revenueCogsObj);
+    }
+
+     function returnEquityChart( report_itemObj, chart_header ){
+        jQuery('#columnChart2').empty();       
+        const r_series = [
+            {
+                 name: 'Return on Equity %',
+                 data: report_itemObj['Return on Equity %']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart2'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart2'] = 'lakh';
+        renderChart('columnChart2', 'barChart', revenueCogsObj);
+    }
+
+     function returnAssetTurnoverChart( report_itemObj, chart_header ){
+        jQuery('#columnChart3').empty();       
+        const r_series = [
+            {
+                 name: 'Asset Turnover',
+                 data: report_itemObj['Asset Turnover']
+            }
+        ];
+        var revenueCogsObj = {
+            series: r_series,
+            categories: chart_header
+        };
+        chartOriginalData['columnChart3'] = JSON.parse(JSON.stringify(revenueCogsObj));
+        chartCurrentFormat['columnChart3'] = 'lakh';
+        renderChart('columnChart3', 'barChart', revenueCogsObj);
+    }
+
 
     jQuery(document).on( 'click', '.btn-download-report', function () {
          jQuery('#capex-report-form .btn-download-report').siblings('.spinner-border').show();
@@ -230,7 +294,13 @@ jQuery(document).ready(function() {
 
             grid: {
                 borderColor: '#D1D5DB',
-                strokeDashArray: 2
+                strokeDashArray: 2,
+                padding: {
+                    top: 10,
+                    right: 10,
+                    bottom: 10,
+                    left: 50
+              },
             },
 
             tooltip: {

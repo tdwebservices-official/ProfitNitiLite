@@ -1,0 +1,545 @@
+/* === Profit Power Report — Premium Stylesheet ===
+   Part of the Unified Indian Business Reports Suite
+   Matches the Cash Management Report theme:
+   Deep Indigo + Saffron + Emerald + Gold accents
+   ================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* ---------- Design Tokens (shared across all reports) ---------- */
+:root {
+  --pp-bg: #f4f6fb;
+  --pp-bg-soft: #fbfcfe;
+  --pp-surface: #ffffff;
+
+  --pp-ink: #0c1628;
+  --pp-ink-soft: #43526e;
+  --pp-muted: #8a93a6;
+  --pp-border: #e4e9f2;
+  --pp-border-strong: #cdd5e3;
+
+  --pp-primary: #0b2a6b;
+  --pp-primary-600: #1741a3;
+  --pp-primary-50: #e8eefb;
+
+  --pp-saffron: #ef7a1b;
+  --pp-saffron-soft: #fdeedb;
+  --pp-gold: #b9883a;
+  --pp-gold-soft: #f4e7c8;
+
+  --pp-emerald: #0b7a55;
+  --pp-emerald-soft: #dcf2e7;
+  --pp-rose: #b6342a;
+  --pp-rose-soft: #fbe1dc;
+
+  --pp-gradient-hero: linear-gradient(125deg, #0b2a6b 0%, #1741a3 50%, #2a64d2 100%);
+  --pp-gradient-gold: linear-gradient(135deg, #d6a64a 0%, #f1cf7d 100%);
+  --pp-gradient-card: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+  --pp-gradient-accent: linear-gradient(135deg, #ef7a1b 0%, #f5a256 100%);
+
+  --pp-shadow-sm: 0 1px 2px rgba(11, 42, 107, .06), 0 1px 3px rgba(11, 42, 107, .04);
+  --pp-shadow-md: 0 8px 22px -10px rgba(11, 42, 107, .18), 0 2px 6px rgba(11, 42, 107, .05);
+  --pp-shadow-lg: 0 24px 48px -22px rgba(11, 42, 107, .32);
+
+  --pp-radius: 16px;
+  --pp-radius-sm: 12px;
+
+  --pp-font-display: "Manrope", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --pp-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --pp-font-num: "JetBrains Mono", "SF Mono", "Roboto Mono", ui-monospace, monospace;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.dashboard-main-body {
+  background:
+    radial-gradient(1100px 500px at -8% -18%, rgba(239, 122, 27, .07), transparent 62%),
+    radial-gradient(900px 600px at 108% -4%, rgba(11, 42, 107, .10), transparent 64%),
+    var(--pp-bg);
+  font-family: var(--pp-font-body);
+  color: var(--pp-ink);
+  padding: 28px 26px 60px;
+  min-height: 100vh;
+  letter-spacing: -.005em;
+  -webkit-font-smoothing: antialiased;
+}
+table.sheet0 tr.row1 {
+    display: none;
+}
+/* ---------- Hero / Breadcrumb ---------- */
+.dashboard-main-body > .d-flex.mb-24 {
+  background: var(--pp-gradient-hero);
+  border-radius: var(--pp-radius);
+  padding: 22px 28px;
+  box-shadow: var(--pp-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+.dashboard-main-body > .d-flex.mb-24::before {
+  content: "";
+  position: absolute;
+  inset: -50% -10% auto auto;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(240, 138, 36, .35), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.dashboard-main-body > .d-flex.mb-24::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -40% -10%;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(245, 162, 86, .22), transparent 65%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold {
+  font-family: var(--pp-font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  color: #fff;
+  position: relative;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.dashboard-main-body > .d-flex.mb-24 h6.fw-semibold::before {
+  content: "₹";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  margin-right: 14px;
+  background: var(--pp-gradient-gold);
+  color: var(--pp-primary);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 16px rgba(201, 161, 74, .35);
+}
+.dashboard-main-body > .d-flex.mb-24 ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, .12);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  position: relative;
+}
+.dashboard-main-body > .d-flex.mb-24 ul li,
+.dashboard-main-body > .d-flex.mb-24 ul a {
+  color: rgba(255, 255, 255, .85);
+  font-size: .82rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+.dashboard-main-body > .d-flex.mb-24 ul a:hover,
+.hover-text-primary:hover { color: var(--pp-saffron) !important; }
+.dashboard-main-body > .d-flex.mb-24 ul li:last-child {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--pp-gradient-card);
+  border: 1px solid var(--pp-border);
+  border-radius: var(--pp-radius);
+  box-shadow: var(--pp-shadow-md);
+  overflow: hidden;
+  margin-top: 20px;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.card:hover { box-shadow: var(--pp-shadow-lg); }
+
+.card-header {
+  background: linear-gradient(90deg, #fbf9f3 0%, #fff 100%);
+  border-bottom: 1px solid var(--pp-border);
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card-title {
+  font-family: var(--pp-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pp-primary);
+  letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.card-title::before {
+  content: "";
+  width: 5px; height: 24px;
+  background: var(--pp-gradient-gold);
+  border-radius: 3px;
+}
+.card-body { padding: 24px 26px; }
+
+/* ---------- Filter Form ---------- */
+.profit-power-report-form {
+  position: relative;
+  background: var(--pp-surface);
+  border: 1px solid var(--pp-border);
+  border-radius: var(--pp-radius);
+  box-shadow: var(--pp-shadow-md);
+  padding: 22px 24px;
+  overflow: hidden;
+}
+.profit-power-report-form::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--pp-gradient-gold);
+}
+.profit-power-report-form label,
+.profit-power-report-form label strong {
+  display: block;
+  font-family: var(--pp-font-display);
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--pp-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+
+.profit-power-report-form .form-control,
+.profit-power-report-form select,
+#figureType {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  border: 1.5px solid var(--pp-border-strong);
+  background: #fff;
+  font-family: var(--pp-font-body);
+  font-size: .9rem;
+  line-height: 40px;
+  color: var(--pp-ink);
+  padding: 0 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.profit-power-report-form .form-control:focus,
+.profit-power-report-form select:focus,
+#figureType:focus {
+  outline: none;
+  border-color: var(--pp-primary);
+  box-shadow: 0 0 0 4px rgba(11, 42, 107, .12);
+}
+
+.profit-power-report-form input.hasDatepicker {
+  cursor: pointer;
+  background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230b2a6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>") no-repeat right 12px center;
+  padding-right: 38px;
+}
+
+#figureType {
+  appearance: none;
+  font-weight: 600;
+  color: var(--pp-primary);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230b2a6b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* ---------- Action Buttons ---------- */
+.btn {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--pp-font-display);
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-view-report,
+.btn-download-report {
+  height: 46px;
+  padding: 0 28px !important;
+  border-radius: 12px !important;
+  font-size: .9rem;
+  letter-spacing: .015em;
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s ease, filter .2s ease;
+}
+.btn-view-report {
+  background: var(--pp-gradient-hero) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px -8px rgba(11, 42, 107, .55);
+}
+.btn-download-report {
+  background: var(--pp-gradient-gold) !important;
+  color: var(--pp-primary) !important;
+  box-shadow: 0 8px 20px -8px rgba(201, 161, 74, .6);
+}
+.btn-view-report:hover,
+.btn-download-report:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+.btn-view-report::after,
+.btn-download-report::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform .6s ease;
+}
+.btn-view-report:hover::after,
+.btn-download-report:hover::after { transform: translateX(100%); }
+
+/* ---------- Data Table — generic wrapper ---------- */
+.table-responsive {
+  border-radius: 14px;
+  border: 1px solid var(--pp-border);
+  overflow: auto;
+  max-height: 78vh;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(11, 42, 107, .02);
+}
+.table-responsive::-webkit-scrollbar { height: 10px; width: 10px; }
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--pp-border-strong);
+  border-radius: 6px;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover { background: var(--pp-primary); }
+
+table.sheet0,
+.profit-power-report-form ~ .card table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: .85rem;
+  margin: 0;
+}
+
+/* ---------- Excel-style overrides for .style1–.style4 ---------- */
+
+/* style1 — report title banner */
+.sheet0 td.style1,
+.sheet0 th.style1 {
+  background: linear-gradient(90deg, var(--pp-primary), var(--pp-primary-600)) !important;
+  color: #fff !important;
+  font-family: var(--pp-font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 16px 18px !important;
+  border: none !important;
+  text-align: left;
+}
+
+/* style2 — column headers */
+.sheet0 td.style2,
+.sheet0 th.style2 {
+ 
+  background: linear-gradient(180deg, #0b2a6b 0%, #14387f 100%) !important;
+  color: #fff !important;
+  font-family: var(--pp-font-display) !important;
+  font-weight: 600 !important;
+  font-size: .76rem !important;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  text-align: left !important;
+  padding: 16px 18px !important;
+  border: none !important;
+  white-space: nowrap;
+}
+
+
+/* style3 — emphasized rows (Revenue / Gross Profit / Net Profit) */
+.sheet0 td.style3 {
+  background: linear-gradient(90deg, var(--pp-emerald-soft), #eaf6f0) !important;
+  color: var(--pp-primary) !important;
+  font-weight: 700 !important;
+  font-family: var(--pp-font-num) !important;
+  font-variant-numeric: tabular-nums;
+  text-align: left !important;
+  padding: 14px 18px !important;
+  border: none !important;
+}
+.sheet0 td.style3.s,
+.sheet0 td.style3.col0 {
+  font-family: var(--pp-font-display) !important;
+  text-align: left !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .8rem !important;
+  color: var(--pp-emerald) !important;
+}
+.sheet0 td.column0 {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, .04);
+}
+
+/* style4 — regular numeric body rows */
+.sheet0 td.style4 {
+  background: #fff !important;
+  color: var(--pp-ink) !important;
+  font-family: var(--pp-font-num) !important;
+  font-variant-numeric: tabular-nums;
+  text-align: left !important;
+  font-size: .85rem !important;
+  padding: 12px 18px !important;
+  border: none !important;
+  transition: background .15s;
+}
+.sheet0 td.style4.s,
+.sheet0 td.style4.col0 {
+  font-family: var(--pp-font-body) !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+  color: var(--pp-ink) !important;
+ 
+  background: #fff !important;
+  min-width: 280px;
+}
+
+.sheet0 tbody td.style3,.sheet0 tbody td.style4{
+    border-bottom: 1px solid var(--pp-emerald) !important;
+
+}
+
+/* Zebra striping for normal rows */
+.sheet0 tbody tr:nth-child(even) td.style4 { background: #fafbfd !important; }
+.sheet0 tbody tr:nth-child(even) td.style4.col0 { background: #fafbfd !important; }
+
+/* Hover highlight */
+.sheet0 tbody tr:hover td.style4,
+.sheet0 tbody tr:hover td.style4.col0 {
+  background: var(--pp-saffron-soft) !important;
+}
+.sheet0 tbody tr:hover td.style3,
+.sheet0 tbody tr:hover td.style3.col0 {
+  filter: brightness(1.02);
+}
+
+/* Inline green / red overrides (Net Profit / Finance Costs) */
+.sheet0 td[style*="green"] {
+  color: var(--pp-emerald) !important;
+  font-weight: 700 !important;
+}
+.sheet0 td[style*="red"] {
+  color: var(--pp-rose) !important;
+  font-weight: 700 !important;
+}
+.sheet0 td.style3[style*="green"] {
+  background: linear-gradient(90deg, var(--pp-emerald-soft), #eaf6f0) !important;
+}
+
+/* Highlight Total column (last column) in gold */
+.sheet0 thead th.style2:last-child,
+.sheet0 tbody tr td.style3:last-child,
+.sheet0 tbody tr td.style4:last-child {
+  font-weight: 700 !important;
+}
+.sheet0 thead th.style2:last-child {
+  background: var(--pp-gradient-gold) !important;
+  color: var(--pp-primary) !important;
+}
+.sheet0 tbody td.style4:last-child {
+  background: var(--pp-gold-soft) !important;
+  color: var(--pp-primary) !important;
+}
+.sheet0 tbody tr:nth-child(even) td.style4:last-child {
+  background: #efe1be !important;
+}
+
+/* ---------- Key Observations / Insight card ---------- */
+.card .card-body p {
+  font-family: var(--pp-font-body);
+  color: var(--pp-ink-soft);
+  line-height: 1.7;
+  font-size: .92rem;
+  margin: 0;
+  padding: 4px 0;
+  position: relative;
+}
+.card .card-body p strong { color: var(--pp-emerald); }
+
+/* Pretty insight callout — second card after the table */
+.card + .card .card-body {
+  background:
+    linear-gradient(135deg, rgba(11, 42, 107, .03), rgba(239, 122, 27, .04)),
+    #fff;
+  border-left: 4px solid var(--pp-saffron);
+  border-radius: 0 12px 12px 0;
+  margin: 0;
+}
+
+/* ---------- Helpers (mirror utility classes used in markup) ---------- */
+.radius-12 { border-radius: var(--pp-radius) !important; }
+.radius-8  { border-radius: 10px !important; }
+.mb-24 { margin-bottom: 24px; }
+.mt-20 { margin-top: 20px; }
+.mb-0  { margin-bottom: 0; }
+.fw-semibold { font-weight: 600; }
+.fw-medium   { font-weight: 500; }
+.text-md { font-size: .9rem; }
+.gap-1 { gap: .25rem; }
+.gap-2 { gap: .5rem; }
+.gap-3 { gap: 1rem; }
+.px-56 { padding-left: 28px; padding-right: 28px; }
+.py-12 { padding-top: 10px; padding-bottom: 10px; }
+.d-flex  { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.align-items-center { align-items: center; }
+.align-items-end    { align-items: flex-end; }
+.justify-content-between { justify-content: space-between; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .dashboard-main-body { padding: 16px 12px 40px; }
+  .dashboard-main-body > .d-flex.mb-24 {
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  .dashboard-main-body > .d-flex.mb-24 h6.fw-semibold { font-size: 1.25rem; }
+  .card-body { padding: 18px 16px; }
+  .card-header { flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  .btn-view-report, .btn-download-report { width: 100%; }
+  .sheet0 thead th.style2.col0,
+  .sheet0 tbody td.style3.col0,
+  .sheet0 tbody td.style4.col0 { min-width: 200px; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .dashboard-main-body { background: #fff; padding: 0; }
+  .btn-view-report, .btn-download-report, #figureType,
+  .profit-power-report-form { display: none !important; }
+  .table-responsive { max-height: none; overflow: visible; border: none; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}
+
+
+table.sheet0 td {
+    font-size: 14px !important;
+    padding: 14px 18px !important;
+    border-top: 0 !important;
+    border-color: var(--pp-emerald) !important;
+    border-right: 0 !important;
+        font-weight: 600 !important;
+}

@@ -247,8 +247,9 @@ class ReportController extends Controller{
             $userId = $user->id;
 
            $profit_lossdata = $this->getPLReport($request, 1);
+                     $retain_profit_arr = [];
+
             $retain_profit_arr = isset($profit_lossdata[26]) ? $profit_lossdata[26] : [];
-            $retain_profit_arr = [];
 
             $pl_query = KPIRecords::select(
                 DB::raw("DATE_FORMAT(tbdate, '%Y-%m-%d') as tbdate"),
@@ -562,10 +563,11 @@ class ReportController extends Controller{
                                         $retain_total = isset($retain_profit_arr[$tbdate_column_group['column']]) ? str_replace(',', '', $retain_profit_arr[$tbdate_column_group['column']]) : 0;
                                         if ($retain_total == null) {
                                             $retain_total = 0;
-                                        }
+                                        }                                        
                                         $cell_val = $cell_val + (float) $retain_total;
                                         $cell_val = round($cell_val, 2);
                                     }
+
 
                                     $spreadsheet->getActiveSheet()->getCell($tbdate_column_group['column'] . $p_index)->setValue(convert_decimal_format($cell_val,$decimal_1))->getStyle($tbdate_column_group['column'] . $p_index)->applyFromArray($subitemStyle);
                                     $sub_total_date_wise_arr[$tbdate_column_group['column']][] = $cell_val;
@@ -1864,7 +1866,7 @@ $chart_header = [];
 
             $spreadsheet->getActiveSheet()->getCell('A3')->setValue('Opening Cash')->getStyle('A3')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
             $spreadsheet->getActiveSheet()->getCell('A4')->setValue('Closing Cash')->getStyle('A4')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
-            $spreadsheet->getActiveSheet()->getCell('A5')->setValue('Cash Flows')->getStyle('A5')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
+            $spreadsheet->getActiveSheet()->getCell('A5')->setValue('Net Cash Flows')->getStyle('A5')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
             // $spreadsheet->getActiveSheet()->getCell('A6')->setValue('Cash flows from Operating Activity')->getStyle('A6')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
             // $spreadsheet->getActiveSheet()->getCell('A7')->setValue('Cash flows from Investing Activity')->getStyle('A7')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
             // $spreadsheet->getActiveSheet()->getCell('A8')->setValue('Cash flows from Financing Activity')->getStyle('A8')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
@@ -1976,14 +1978,14 @@ $chart_header = [];
                 array('label' => 'Trade Receivables', 'data_keys' => 'Accounts Receivable', 'dr_cr' => -1),
                 array('label' => 'Trade Payables', 'data_keys' => 'Accounts Payable', 'dr_cr' => 1),
                 array('label' => 'Inventory', 'data_keys' => 'Closing Stock', 'dr_cr' => -1),
-                array('label' => 'Cash Inflows from Operating Activity', 'sum_row' => ['Trade Receivables' => 8, 'Trade Payables' => 9, 'Inventory' => 10]),
+                array('label' => 'Cash flows from Operations', 'sum_row' => ['Trade Receivables' => 8, 'Trade Payables' => 9, 'Inventory' => 10]),
                 array('label' => 'Fixed Assets', 'data_keys' => 'Fixed Assets', 'dr_cr' => -1),
-                array('label' => 'Cash Inflows from Investing Activity', 'sum_row' => ['Fixed Assets' => 12]),
+                array('label' => 'Cash flows from Investing', 'sum_row' => ['Fixed Assets' => 12]),
                 array('label' => 'Equity', 'data_keys' => 'Equity', 'dr_cr' => 1),
                 array('label' => 'Borrowings', 'data_keys' => 'Bank Loans - Current,Bank Loans - Non Current', 'dr_cr' => 1),
                 array('label' => 'Others', 'data_plus_keys' => 'Other Non Current Liabilities,Other Current Liabilities', 'data_minus_keys' => 'Other Non Current Assets,Other Current Assets', 'dr_cr' => -1),
-                array('label' => 'Cash Inflows from Financing Activity', 'sum_row' => ['Equity' => 14, 'Borrowings' => 15, 'Others' => 16 ]),
-                array('label' => 'Total Cash Flows', 'sum_row' => ['Cash Inflows from Operating Activity' => 11, 'Cash Inflows from Investing Activity' => 13, 'Cash Inflows from Financing Activity' => 17 ]),
+                array('label' => 'Cash flows from Financing', 'sum_row' => ['Equity' => 14, 'Borrowings' => 15, 'Others' => 16 ]),
+                array('label' => 'Total Cash Flows', 'sum_row' => ['Cash flows from Operations' => 11, 'Cash flows from Investing' => 13, 'Cash flows from Financing' => 17 ]),
             );
 
             $final_all_total = [];
@@ -2072,9 +2074,9 @@ $chart_header = [];
 
                         $validation = round($total_cashflow_amt - $cashFlowTotal, 2);
 
-                        $operating_activity = isset($final_all_total['Cash Inflows from Operating Activity'][$n_tbdate_column_group['column'] . '11']) ? $final_all_total['Cash Inflows from Operating Activity'][$n_tbdate_column_group['column'] . '11'] : 0;
-                        $investing_activity = isset($final_all_total['Cash Inflows from Investing Activity'][$n_tbdate_column_group['column'] . '13']) ? $final_all_total['Cash Inflows from Investing Activity'][$n_tbdate_column_group['column'] . '13'] : 0;
-                        $financing_activity = isset($final_all_total['Cash Inflows from Financing Activity'][$n_tbdate_column_group['column'] . '17']) ? $final_all_total['Cash Inflows from Financing Activity'][$n_tbdate_column_group['column'] . '17'] : 0;
+                        $operating_activity = isset($final_all_total['Cash flows from Operations'][$n_tbdate_column_group['column'] . '11']) ? $final_all_total['Cash flows from Operations'][$n_tbdate_column_group['column'] . '11'] : 0;
+                        $investing_activity = isset($final_all_total['Cash flows from Investing'][$n_tbdate_column_group['column'] . '13']) ? $final_all_total['Cash flows from Investing'][$n_tbdate_column_group['column'] . '13'] : 0;
+                        $financing_activity = isset($final_all_total['Cash flows from Financing'][$n_tbdate_column_group['column'] . '17']) ? $final_all_total['Cash flows from Financing'][$n_tbdate_column_group['column'] . '17'] : 0;
 
 
                         $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '3')->setValue(convert_decimal_format($cashBankPrev))->getStyle($n_tbdate_column_group['column'].'3')->applyFromArray(hg_comman_customer_header_style('#00FF00', 14, '000000'));
@@ -3919,6 +3921,671 @@ $chart_header = [];
             }
             $all_dates = [];
 
+            $display_start_month_ts = null;
+
+            if (!empty($date_filter)) {
+                $between_date = explode('/', $date_filter);
+                $display_start_date = trim($between_date[0]); // the user's actual selected start (e.g. Jul-25)
+                $display_start_month_ts = strtotime(date('Y-m-01', strtotime($display_start_date)));
+
+                $start_date = date("Y-m-d", strtotime("-1 month", strtotime($display_start_date))); // extended back 1 month, for comparison baseline only
+                $end_date = trim($between_date[1]);
+                $all_dates = getMonthStartDates($start_date, $end_date);
+
+                $pl_query->where(
+                    function ($query) use ($start_date, $end_date) {
+                        $query->whereBetween('kpi_records.tbdate', [$start_date , $end_date ]);
+                    }
+                );
+            }
+               //->whereIn('kpi_name', ['Accounts Payable', 'Accounts Receivable'])
+            $pl_query->groupBy('tbdate', 'kpi_name');
+            $blData = $pl_query->get();
+
+
+            $tbdate_list = $all_item_header_list = [];
+            foreach ( $blData as $row ) {
+                $tbdate_list[date('m/d/Y', strtotime($row->tbdate))] = date('m/d/Y', strtotime($row->tbdate));
+                $all_item_header_list[date('m/d/Y', strtotime($row->tbdate))][$row->kpi_name] = $row->total;
+            }
+
+            $finacial_titles = comman_finacial_column_title($all_dates);
+            $year_grouped = $finacial_titles['year_grouped'];
+            $quater_grouped = $finacial_titles['quater_grouped'];
+            $month_wise_grouped = $finacial_titles['month_wise_grouped'];
+            $year_wise_grouped  = $finacial_titles['year_wise_grouped'];
+
+            $pl_balance_items = $this->power_profit_report_list;
+            $column_width_list = [
+                'A' => 250
+            ];
+            $header_arr = [
+                'A3' => [
+                    'label' => 'Particulars',
+                    'style' => hg_comman_customer_header_style('bfbfbf')
+                ]
+            ];
+            $data_column_range = $tb_header = [];
+
+            $start_row = 3;
+            $start_col = 'B';
+            $chart_header = [];
+
+            $hidden_columns = []; // column letters pulled in only as a comparison baseline; removed from the sheet at the end
+
+            if ($tbdate_list) {
+                $tb_d_cnt = count($tbdate_list);
+                $tb_d_cnt = $tb_d_cnt - 1;
+                $tbdate_list_arr = array_values($tbdate_list);
+                $tb_header_cell = hg_generate_excel_cell_names($start_row, $tb_d_cnt, $start_col);
+                if ($tb_header_cell) {
+                    $start_col = end($tb_header_cell);
+                    foreach ($tb_header_cell as $tb_header_index => $tb_header_range_index) {
+                        if (isset($tbdate_list_arr[$tb_header_index]) && !empty($tbdate_list_arr[$tb_header_index])) {
+
+                            $col_letter = str_replace($start_row, '', $tb_header_range_index);
+
+                            $this_month_ts = strtotime(date('Y-m-01', strtotime($tbdate_list_arr[$tb_header_index])));
+                            $is_hidden = ($display_start_month_ts !== null) && ($this_month_ts < $display_start_month_ts);
+
+                            if ($is_hidden) {
+                                $hidden_columns[] = $col_letter;
+                            } else {
+                                $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
+                            }
+
+                            $td_date = date('m/d/Y', strtotime($tbdate_list_arr[$tb_header_index]));
+                            $tb_header[$tb_header_range_index] = [
+                                'label' => date('M-y', strtotime($tbdate_list_arr[$tb_header_index])),
+                                'style' => hg_comman_customer_header_style('bfbfbf')
+                            ];
+                            $column_width_list[$col_letter] = 125;
+                            $data_column_range[$tbdate_list_arr[$tb_header_index]] = array(
+                                'column' => $col_letter,
+                            );
+                        }
+                    }
+
+                }
+            }
+
+
+            $end_cell = str_replace($start_row, '', $start_col);
+
+            $header_arr = array_merge($header_arr, $tb_header);
+
+            $local_path = $path = public_path() . '/reports/pf-pw-report/';
+
+            $rp_po_path = 'pf-pw-report';
+
+            $path = $local_path . $rp_po_path . '/';
+
+            if (!is_dir($local_path)) {
+                mkdir($local_path, 0777);
+            }
+
+            if (!is_dir($path)) {
+                mkdir($path, 0777);
+            }
+            $user_id = auth()->user()->id;
+            $documentFileName = $rp_po_path . '-' . time() . '-' . $user_id . ".xlsx";
+
+            $styleArray = array(
+                'font' => array(
+                    'size' => 10,
+                )
+            );
+            $comman_outline_border = array(
+                'borders' => array(
+                    'outline' => array(
+                        'borderStyle' => Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000'),
+                    ),
+                ),
+                'alignment' => [
+                    'indent' => 5,
+
+                ],
+            );
+            $comman_bottom_border = array(
+                'borders' => array(
+                    'bottom' => array(
+                        'borderStyle' => Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000'),
+                    ),
+                ),
+            );
+
+            $comman_all_border = array(
+                'borders' => array(
+                    'allBorders' => array(
+                        'borderStyle' => Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000'),
+                    ),
+                ),
+            );
+
+            $allborder = array(
+                'borders' => array(
+                    'allBorders' => array(
+                        'borderStyle' => Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000'),
+                    ),
+                ),
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                    'wrapText' => true
+                ],
+
+            );
+
+            // ---- Month-over-month comparison rule map & text color styles ----
+            // 'positive' rows: increase = green text, decrease = red text
+            // 'negative' rows (cost/expense-type): increase = red text, decrease = green text
+            $row_compare_rules = [
+                'Revenue'                          => 'positive',
+                'Revenue Growth %'                 => 'positive',
+                'COGS'                              => 'negative',
+                'COGS Growth %'                     => 'negative',
+                'Gross Margin'                      => 'positive',
+                'Gross Margin %'                    => 'positive',
+                'Overheads including depreciation'  => 'negative',
+                'Overheads %'                        => 'negative',
+                'Overheads Growth %'                 => 'negative',
+                'Operating Profit'                   => 'positive',
+                'Operating Profit %'                 => 'positive',
+                'EBITDA'                              => 'positive',
+                'Net Profit'                          => 'positive',
+                'Net Profit %'                        => 'positive',
+                'Retained Profit'                     => 'positive',
+                'Interest Cover'                      => 'positive',
+                'Break Even Sales'                    => 'negative',
+            ];
+
+            $green_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FF008000'],
+                ],
+            ];
+            $red_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FFFF0000'],
+                ],
+            ];
+            // -------------------------------------------------------------
+
+
+            $spreadsheet->setActiveSheetIndex(0);
+
+            $sheet = $spreadsheet->getActiveSheet();
+
+            $styleArray = [
+                'font' => [
+                    'size' => 11,
+                    'name' => 'Calibri'
+                ],
+            ];
+
+            $spreadsheet->getDefaultStyle()->applyFromArray($styleArray);
+
+            $sheet->getStyle('A1')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+            if ($header_arr) {
+                foreach ($header_arr as $header_index => $header_cell) {
+                    $spreadsheet->getActiveSheet()->getCell($header_index)->setValue($header_cell['label'])->getStyle($header_index)->applyFromArray($header_cell['style']);
+                }
+            }
+            $spreadsheet->getActiveSheet()->mergeCells('A1:' . $end_cell . '1');
+            $spreadsheet->getActiveSheet()->getCell('A1')->setValue('Profit Power Report')->getStyle('A1:' . $end_cell . '1')->applyFromArray(hg_comman_customer_header_style('#bfbfbf', 14, '000000'));
+
+
+            $spreadsheet->getActiveSheet()->getRowDimension(1)->setRowHeight(25);
+            $spreadsheet->getActiveSheet()->getRowDimension(2)->setRowHeight(25);
+            $spreadsheet->getActiveSheet()->getRowDimension(3)->setRowHeight(25);
+            $p_index = 4;
+
+            $itemStyle = array(
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_LEFT,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                    'wrapText' => false
+                ],
+                'font' => [
+                    'size' => 11,
+                    'bold' => true,
+                    'color' => ['argb' => '#000000'],
+                ],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => [
+                        'argb' => 'c7e4db',
+                    ],
+                ]
+            );
+
+            $subitemStyle = array(
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_LEFT,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                    'wrapText' => false
+                ],
+                'font' => [
+                    'size' => 11,
+                    'bold' => false,
+                    'color' => ['argb' => '#000000'],
+                ],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => [
+                        'argb' => 'c7e4db',
+                    ],
+                ]
+            );
+
+            if ($column_width_list) {
+                foreach ($column_width_list as $col_key => $column_width) {
+                    $spreadsheet->getActiveSheet()->getColumnDimension($col_key)->setWidth($column_width, 'px');
+                }
+            }
+
+
+            $p_index = 4;
+            $main_net_profit_year_wise_arr = $main_net_profit_month_wise_arr = $main_net_profit_check = $all_item_rows = $final_all_total = $dataColCell = [];
+            $row_label_map = []; // maps p_index (row number) => label written on that row
+            $i = 0;
+
+            if ($pl_balance_items) {
+                foreach ($pl_balance_items as $b_key => $bl_key) {
+                    $sub_year_wise_sub_types = $sub_date_wise_sub_types = $sub_total_date_wise_arr = [];
+                    if (isset($bl_key['data']['items']) && is_array($bl_key['data']['items']) && count($bl_key['data']['items']) > 0) {
+                        foreach ($bl_key['data']['items'] as $sub_key => $sub_items) {
+                            if (!isset($sub_items['download_tr_hide'])) {
+                                $spreadsheet->getActiveSheet()->getCell('A' . $p_index)->setValue($sub_items['label'])->getStyle('A' . $p_index)->applyFromArray($subitemStyle);
+                            }
+                            $decimal_1 = 0;
+                            if( isset($sub_items['decimal']) && $sub_items['decimal'] == true ){
+                                $decimal_1 = 2;
+                            }
+                            $all_item_rows[] = 'A' . $p_index;
+                            $main_total_date_wise_arr = $main_total_quater_wise_arr = $main_total_year_wise_arr = [];
+                            $year_wise_sub_types = $date_wise_sub_types = [];
+                            if ($data_column_range) {
+                                foreach ($data_column_range as $tbdate_index => $tbdate_column_group) {
+
+                                    $cell_val = (isset($all_item_header_list[$tbdate_index][$sub_key]) ) ? $all_item_header_list[$tbdate_index][$sub_key] : 0;
+
+                                    $cell_val = round($cell_val, 2);
+
+                                    if (!isset($sub_items['download_tr_hide'])) {
+                                        $spreadsheet->getActiveSheet()->getCell($tbdate_column_group['column'] . $p_index)->setValue(convert_decimal_format($cell_val,$decimal_1))->getStyle($tbdate_column_group['column'] . $p_index)->applyFromArray($subitemStyle);
+                                        $dataColCell[$p_index][$tbdate_column_group['column']] = $cell_val;
+                                    }
+
+                                    $sub_total_date_wise_arr[$tbdate_column_group['column']][] = $cell_val;
+
+                                    $final_all_total[$sub_items['label']][$tbdate_column_group['column']] = $cell_val;
+                                    $date_wise_sub_types[$month_wise_grouped[date('m/d/Y', strtotime($tbdate_index))]][] = $cell_val;
+                                    $year_wise_sub_types[$year_wise_grouped[date('m/d/Y', strtotime($tbdate_index))]][] = $cell_val;
+                                    $sub_date_wise_sub_types[$month_wise_grouped[date('m/d/Y', strtotime($tbdate_index))]][] = $cell_val;
+                                    $sub_year_wise_sub_types[$year_wise_grouped[date('m/d/Y', strtotime($tbdate_index))]][] = $cell_val;
+                                }
+                            }
+
+                            if (!isset($sub_items['download_tr_hide'])) {
+                                $row_label_map[$p_index] = $sub_items['label'];
+                                $p_index++;
+                            }
+                        }
+                    }
+
+                    if (isset($bl_key['data']['total']) && is_array($bl_key['data']['total']) && count($bl_key['data']['total']) > 0) {
+                        $minus_items_list = isset($bl_key['data']['total']['minus_items']) ? $bl_key['data']['total']['minus_items'] : [];
+                        $total_label = isset($bl_key['data']['total']['show_label']) ? $bl_key['data']['total']['show_label'] : $bl_key['data']['total']['label'];
+                        if (!isset($bl_key['data']['total']['hide_tr'])) {
+                            $spreadsheet->getActiveSheet()->getCell('A' . $p_index)->setValue($total_label)->getStyle('A' . $p_index)->applyFromArray(($bl_key['data']['total']['bold'] == true) ? $itemStyle : $subitemStyle);
+                        }
+
+                        $decimal_2 = 0;
+                        if( isset($bl_key['data']['total']['decimal']) && $bl_key['data']['total']['decimal'] == true ){
+                            $decimal_2 = 2;
+                        }
+
+                        $s_year_wise_sub_types = $s_date_wise_sub_types = [];
+                        if ($data_column_range) {
+                            foreach ($data_column_range as $s_tbdate_index => $s_tbdate_column_group) {
+
+                                $s_cell_val = 0;
+
+                                if (isset($sub_total_date_wise_arr[$s_tbdate_column_group['column']]) && count($sub_total_date_wise_arr[$s_tbdate_column_group['column']]) > 0) {
+                                    $all_values = $sub_total_date_wise_arr[$s_tbdate_column_group['column']];
+                                    $s_cell_val = array_sum($all_values);
+                                    if (is_array($minus_items_list) && count($minus_items_list) > 0) {
+                                        foreach ($minus_items_list as $index) {
+                                            if (isset($all_values[$index])) {
+                                                $s_cell_val -= $all_values[$index] * 2;
+                                            }
+                                        }
+                                    }
+
+                                }
+                                $s_cell_val = round($s_cell_val, 2);
+
+                                if (!isset($bl_key['data']['total']['hide_tr'])) {
+
+                                    $spreadsheet->getActiveSheet()->getCell($s_tbdate_column_group['column'] . $p_index)->setValue(convert_decimal_format($s_cell_val,$decimal_2))->getStyle($s_tbdate_column_group['column'] . $p_index)->applyFromArray(($bl_key['data']['total']['bold'] == true) ? $itemStyle : $subitemStyle);
+
+                                    $dataColCell[$p_index][$s_tbdate_column_group['column']] = $s_cell_val;
+                                }
+
+                                $s_date_wise_sub_types[$month_wise_grouped[date('m/d/Y', strtotime($s_tbdate_index))]][] = $s_cell_val;
+                                $s_year_wise_sub_types[$year_wise_grouped[date('m/d/Y', strtotime($s_tbdate_index))]][] = $s_cell_val;
+
+                                $final_all_total[$bl_key['data']['total']['label']][$s_tbdate_column_group['column']] = $s_cell_val;
+                            }
+                        }
+
+
+                        if (!isset($bl_key['data']['total']['hide_tr'])) {
+                            $row_label_map[$p_index] = $total_label;
+                            $p_index++;
+                        }
+                    }
+
+                    if (isset($bl_key['final']) && is_array($bl_key['final']) && count($bl_key['final']) > 0) {
+                        foreach ($bl_key['final'] as $final_index => $final_items) {
+
+                            if (isset($final_items['label']) && !empty($final_items['label'])) {
+
+                                $decimal_3 = 0;
+                                if( isset($final_items['decimal']) && $final_items['decimal'] == true ){
+                                    $decimal_3 = 2;
+                                }
+
+                                $f_year_wise_sub_types = $f_date_wise_sub_types = [];
+                                if (!isset($final_items['hide_tr'])) {
+                                    $spreadsheet->getActiveSheet()->getCell('A' . $p_index)->setValue($final_items['label'])->getStyle('A' . $p_index)->applyFromArray(($final_items['bold'] == true) ? $itemStyle : $subitemStyle);
+                                }
+                                if ($data_column_range) {
+                                    foreach ($data_column_range as $n_tbdate_index => $n_tbdate_column_group) {
+                                        $n_cell_val = 0;
+
+                                        if (isset($final_items['direct']) && $final_items['direct'] == true) {
+                                            $n_cell_val = isset($final_items['value']) ? $final_items['value'] : 0;
+                                        } else {
+                                            if (isset($final_items['items']) && is_array($final_items['items']) && count($final_items['items']) > 0) {
+                                                $s_data = $final_items['items'];
+                                                $operators = $final_items['operators'];
+                                                foreach ($s_data as $i => $value) {
+                                                    $n_cell_val += ($operators[$i] === '+') ? $final_all_total[$value][$n_tbdate_column_group['column']] : -$final_all_total[$value][$n_tbdate_column_group['column']];
+                                                }
+                                            }
+                                        }
+
+                                        $n_cell_val = round($n_cell_val, 2);
+                                        if (!isset($final_items['hide_tr'])) {
+                                            $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . $p_index)->setValue(convert_decimal_format($n_cell_val,$decimal_3))->getStyle($n_tbdate_column_group['column'] . $p_index)->applyFromArray(($final_items['bold'] == true) ? $itemStyle : $subitemStyle);
+                                            $dataColCell[$p_index][$n_tbdate_column_group['column']] = $n_cell_val;
+                                        }
+
+                                        $f_date_wise_sub_types[$month_wise_grouped[date('m/d/Y', strtotime($n_tbdate_index))]][] = $n_cell_val;
+                                        $f_year_wise_sub_types[$year_wise_grouped[date('m/d/Y', strtotime($n_tbdate_index))]][] = $n_cell_val;
+
+                                        $final_all_total[$final_items['label']][$n_tbdate_column_group['column']] = $n_cell_val;
+
+                                    }
+                                }
+
+
+                                if (!isset($final_items['hide_tr'])) {
+                                    $row_label_map[$p_index] = $final_items['label'];
+                                    $p_index++;
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+
+
+            if (isset($dataColCell[4])) {
+                $first_index = 0;
+                $revenue_growth = array_values($dataColCell[4]);
+                foreach ($dataColCell[4] as $m_key => $m_value) {
+                    if ($first_index > 0) {
+                        $data_value = comman_growth_formula($revenue_growth[$first_index - 1], $revenue_growth[$first_index], 2);
+                        $spreadsheet->getActiveSheet()->getCell($m_key . '5')->setValue(convert_decimal_format($data_value))->getStyle($m_key . '5')->applyFromArray($subitemStyle);
+                        $dataColCell[5][$m_key] = $data_value;
+                    }
+                    $first_index++;
+                }
+            }
+
+            if (isset($dataColCell[6])) {
+                $cg_index = 0;
+                $cogs_growth = array_values($dataColCell[6]);
+                foreach ($dataColCell[6] as $m_key => $m_value) {
+                    if ($cg_index > 0) {
+                        $data_value = comman_growth_formula($cogs_growth[$cg_index - 1], $cogs_growth[$cg_index], 2);
+                        $spreadsheet->getActiveSheet()->getCell($m_key . '7')->setValue(convert_decimal_format($data_value))->getStyle($m_key . '7')->applyFromArray($subitemStyle);
+                        $dataColCell[7][$m_key] = $data_value;
+                    }
+                    $cg_index++;
+                }
+            }
+
+            if (isset($dataColCell[10])) {
+                $og_index = 0;
+                $overheads_growth = array_values($dataColCell[10]);
+                foreach ($dataColCell[6] as $m_key => $m_value) {
+                    if ($og_index > 0) {
+                        $data_value = comman_growth_formula($overheads_growth[$og_index - 1], $overheads_growth[$og_index], 2);
+                        $spreadsheet->getActiveSheet()->getCell($m_key . '12')->setValue(convert_decimal_format($data_value))->getStyle($m_key . '12')->applyFromArray($subitemStyle);
+                        $dataColCell[12][$m_key] = $data_value;
+                    }
+                    $og_index++;
+                }
+            }
+
+            if (isset($final_all_total['Finance Cost']) && count($final_all_total['Finance Cost']) > 0) {
+                //Operating Profit
+                foreach ($dataColCell[9] as $m_key => $m_value) {
+                    $bank_chng = isset($final_all_total['Finance Cost'][$m_key]) ? $final_all_total['Finance Cost'][$m_key] : 0;
+                    $opt_chng = isset($final_all_total['Operating Profit'][$m_key]) ? $final_all_total['Operating Profit'][$m_key] : 0;
+                    $d_value = 0;
+                    // if ($opt_chng > 0) {
+                    //     $d_value = round(($bank_chng / $opt_chng) * 100, 2);
+
+                    // }
+                    if ($bank_chng > 0) {
+                        $d_value = round(($opt_chng / $bank_chng), 2);
+
+                    }
+                    $spreadsheet->getActiveSheet()->getCell($m_key . '19')->setValue(convert_decimal_format($d_value))->getStyle($m_key . '19')->applyFromArray($subitemStyle);
+                    $dataColCell[19][$m_key] = $d_value;
+                }
+            }
+
+            if (isset($dataColCell[9])) {
+                $compare_data_list = [
+                    ['cell_no' => 9, 'check_index' => [4, 8]],
+                    ['cell_no' => 11, 'check_index' => [4, 10]],
+                    ['cell_no' => 14, 'check_index' => [4, 13]],
+                    ['cell_no' => 14, 'check_index' => [4, 13]],
+                    ['cell_no' => 17, 'check_index' => [4, 16]],
+                    ['cell_no' => 20, 'check_index' => [9, 10]],
+                ];
+
+                foreach ($compare_data_list as $key => $compare_value) {
+                    foreach ($dataColCell[9] as $m_key => $m_value) {
+                        $d_value = comman_module_formula($dataColCell[$compare_value['check_index'][0]][$m_key], $dataColCell[$compare_value['check_index'][1]][$m_key], 2);
+                        $spreadsheet->getActiveSheet()->getCell($m_key . $compare_value['cell_no'])->setValue(convert_decimal_format($d_value))->getStyle($m_key . $compare_value['cell_no'])->applyFromArray($subitemStyle);
+                        $dataColCell[$compare_value['cell_no']][$m_key] = $d_value;
+                    }
+                }
+            }
+
+            if (is_array($all_item_rows) && count($all_item_rows) > 0) {
+                foreach ($all_item_rows as $a_key => $a_value) {
+                    $color = ($a_key % 2 == 0) ? 'c7e4db' : 'e3f1ed';
+                    $spreadsheet->getActiveSheet()
+                        ->getStyle($a_value)
+                        ->getFill()
+                        ->setFillType(Fill::FILL_SOLID)
+                        ->getStartColor()
+                        ->setARGB($color);
+
+                    $cnt_index = str_replace('A', '', $a_value);
+
+                    if ($data_column_range) {
+                        foreach ($data_column_range as $at_index => $at_column_group) {
+                            $spreadsheet->getActiveSheet()
+                                ->getStyle($at_column_group['column'] . $cnt_index)
+                                ->getFill()
+                                ->setFillType(Fill::FILL_SOLID)
+                                ->getStartColor()
+                                ->setARGB($color);
+                        }
+                    }
+
+
+                }
+            }
+
+            // ---- Apply month-over-month green/red coloring per row rule ----
+            // Must run AFTER the striping block above so it isn't overwritten.
+            foreach ($row_label_map as $row_num => $row_label) {
+                if (!isset($row_compare_rules[$row_label]) || !isset($dataColCell[$row_num])) {
+                    continue;
+                }
+
+                $rule = $row_compare_rules[$row_label]; // 'positive' or 'negative'
+                $prev_val = null;
+
+                foreach ($dataColCell[$row_num] as $col => $current_val) {
+                    if ($prev_val !== null && $current_val != $prev_val) {
+                        $increased = $current_val > $prev_val;
+
+                        if ($rule === 'positive') {
+                            $style = $increased ? $green_fill : $red_fill;
+                        } else {
+                            $style = $increased ? $red_fill : $green_fill;
+                        }
+
+                        $spreadsheet->getActiveSheet()
+                            ->getStyle($col . $row_num)
+                            ->applyFromArray($style);
+                    }
+                    $prev_val = $current_val;
+                }
+            }
+            // -----------------------------------------------------------------
+
+            // ---- Physically remove the prior-month comparison-only column(s) ----
+            // All growth%/comparison-color calculations above have already used
+            // this column's values; now delete it so it never appears in the
+            // exported table (no header, no <td>, not part of the array at all).
+            if (!empty($hidden_columns)) {
+                $hidden_columns_unique = array_unique($hidden_columns);
+
+                // Remove rightmost column first so the letters of any remaining
+                // hidden columns to its left stay valid during the loop.
+                usort($hidden_columns_unique, function ($a, $b) {
+                    return \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($b)
+                        <=> \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($a);
+                });
+
+                foreach ($hidden_columns_unique as $hidden_col) {
+                    $spreadsheet->getActiveSheet()->removeColumn($hidden_col);
+                }
+
+                // Shift end_cell left to reflect the removed column(s).
+                $end_col_index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($end_cell);
+                $end_col_index -= count($hidden_columns_unique);
+                $end_cell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($end_col_index);
+            }
+            // -----------------------------------------------------------------
+
+
+            $last_cell_index = $p_index - 1;
+            $sheet->getStyle('A3:' . $end_cell . $last_cell_index)->getNumberFormat()->setFormatCode('0.00')->applyFromArray($comman_all_border);
+
+
+            if ($return_data == 1) {
+                $sheet = $spreadsheet->getActiveSheet();
+                $cellArray = $sheet->toArray(null, true, true, true);
+                return $cellArray;
+            }
+
+            if ($report_type == 'download') {
+                $writer = new Xlsx($spreadsheet);
+                $writer->save($path . $documentFileName);
+                return response()->json([
+                    'message' => 'Profit Power Report Generated Successfully!',
+                    'status' => 'success',
+                    'filename' => $documentFileName,
+                    'pdf' => url('/public/reports/pf-pw-report/') . '/' . $rp_po_path . '/' . $documentFileName
+                ], 200);
+
+            } else {
+
+                ob_start();
+                $writer = new Html($spreadsheet);
+                $writer->save('php://output');
+                $html = ob_get_clean();
+
+
+                return response()->json([
+                    'message' => 'Profit Power Report Generated Successfully!',
+                    'status' => 'success',
+                    'table_html' => $html,
+                    'chart_header' => $chart_header,
+                    'cogs_arr' => [],
+                    'revenue_arr' => [],
+                ], 200);
+
+            }
+
+        } catch (\Exception $e) {
+            if ($return_data == 1) {
+                return [];
+            }
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+    }
+
+    public function getProfiddtPowerReport(Request $request, $return_data = 0) {
+        try {
+            $spreadsheet = new Spreadsheet();
+            $assignUserId = $request->get('assign_by');
+            $date_filter = $request->get('date_filter');
+            $report_type = $request->get('report_type');
+            $user = auth()->user();
+            $isAdmin = $user->hasRole('Super Admin');
+            $userId = $user->id;
+
+            $pl_query = KPIRecords::select(
+                DB::raw("DATE_FORMAT(tbdate, '%Y-%m-%d') as tbdate"),
+                'kpi_name',
+                DB::raw("SUM(amount) as total")
+            );
+
+            if ($isAdmin && $assignUserId != null) {
+                if ($assignUserId && $assignUserId !== 'all') {
+                    $pl_query->where('kpi_records.user_id', $assignUserId);
+                }
+            } else {
+                $pl_query->where('kpi_records.user_id', $userId);
+            }
+            $all_dates = [];
+
             if (!empty($date_filter)) {
                 $between_date = explode('/', $date_filter);
                 $start_date = trim($between_date[0]);
@@ -4292,6 +4959,8 @@ $chart_header = [];
                 }
             }
 
+            
+
             if (isset($dataColCell[4])) {
                 $first_index = 0;
                 $revenue_growth = array_values($dataColCell[4]);
@@ -4331,14 +5000,18 @@ $chart_header = [];
                 }
             }
 
-            if (isset($final_all_total['Interest & Bank Charges']) && count($final_all_total['Interest & Bank Charges']) > 0) {
+            if (isset($final_all_total['Finance Cost']) && count($final_all_total['Finance Cost']) > 0) {
                 //Operating Profit              
                 foreach ($dataColCell[9] as $m_key => $m_value) {
-                    $bank_chng = isset($final_all_total['Interest & Bank Charges'][$m_key]) ? $final_all_total['Interest & Bank Charges'][$m_key] : 0;
+                    $bank_chng = isset($final_all_total['Finance Cost'][$m_key]) ? $final_all_total['Finance Cost'][$m_key] : 0;
                     $opt_chng = isset($final_all_total['Operating Profit'][$m_key]) ? $final_all_total['Operating Profit'][$m_key] : 0;
                     $d_value = 0;
-                    if ($opt_chng > 0) {
-                        $d_value = round(($bank_chng / $opt_chng) * 100, 2);
+                    // if ($opt_chng > 0) {
+                    //     $d_value = round(($bank_chng / $opt_chng) * 100, 2);
+
+                    // }
+                    if ($bank_chng > 0) {
+                        $d_value = round(($opt_chng / $bank_chng), 2);
 
                     }
                     $spreadsheet->getActiveSheet()->getCell($m_key . '19')->setValue(convert_decimal_format($d_value))->getStyle($m_key . '19')->applyFromArray($subitemStyle);
@@ -4473,10 +5146,13 @@ $chart_header = [];
                 $pl_query->where('kpi_records.user_id', $userId);
             }
             $all_dates = [];
+            $display_start_month_ts = null;
 
             if (!empty($date_filter)) {
                 $between_date = explode('/', $date_filter);
-                $start_date = trim($between_date[0]);
+                $display_start_date = trim($between_date[0]); // the user's actual selected start (e.g. Jul-25)
+                $display_start_month_ts = strtotime(date('Y-m-01', strtotime($display_start_date)));
+                $start_date = date("Y-m-d", strtotime("-1 month", strtotime($display_start_date))); // extended back 1 month, for comparison baseline only
                 $end_date = trim($between_date[1]);
                 $all_dates = getMonthStartDates($start_date, $end_date);
 
@@ -4489,7 +5165,7 @@ $chart_header = [];
                //->whereIn('kpi_name', ['Accounts Payable', 'Accounts Receivable'])
             $pl_query->groupBy('tbdate', 'kpi_name');
             $blData = $pl_query->get();
-
+  
 
             $tbdate_list = $all_item_header_list = [];
             foreach ( $blData as $row ) {
@@ -4505,6 +5181,8 @@ $chart_header = [];
 
             $pl_balance_items = $this->cash_management_report_list;
 
+
+
             $column_width_list = [
                 'A' => 200
             ];
@@ -4515,6 +5193,8 @@ $chart_header = [];
                 ]
             ];
             $data_column_range = $tb_header = [];
+
+             $hidden_columns = []; 
 
             $start_row = 3;
             $start_col = 'B';
@@ -4530,17 +5210,27 @@ $chart_header = [];
                     $start_col = end($tb_header_cell);
                     foreach ($tb_header_cell as $tb_header_index => $tb_header_range_index) {
                         if (isset($tbdate_list_arr[$tb_header_index]) && !empty($tbdate_list_arr[$tb_header_index])) {
+
+                            $col_letter = str_replace($start_row, '', $tb_header_range_index);
+
+                            $this_month_ts = strtotime(date('Y-m-01', strtotime($tbdate_list_arr[$tb_header_index])));
+                            $is_hidden = ($display_start_month_ts !== null) && ($this_month_ts < $display_start_month_ts);
+
+                            if ($is_hidden) {
+                                $hidden_columns[] = $col_letter;
+                            } else {
+                                $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
+                            }
                             
                             $td_date = date('m/d/Y', strtotime($tbdate_list_arr[$tb_header_index]));
-                            $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
                             $tb_header[$tb_header_range_index] = [
                                 'label' => date('M-y', strtotime($tbdate_list_arr[$tb_header_index])),
                                 'style' => hg_comman_customer_header_style('bfbfbf')
                             ];
-                            $column_width_list[str_replace($start_row, '', $tb_header_range_index)] = 125;
-                            $data_column_range[$tbdate_list_arr[$tb_header_index]] = array(
-                                'column' => str_replace($start_row, '', $tb_header_range_index),
+                            $column_width_list[$col_letter] = 125;
 
+                            $data_column_range[$tbdate_list_arr[$tb_header_index]] = array(
+                                'column' => $col_letter,
                             );
                         }
                     }
@@ -4618,6 +5308,29 @@ $chart_header = [];
 
             );
 
+            $row_compare_rules = [
+                4  => 'negative', // A/R Days
+                5  => 'negative', // Inventory Days
+                6  => 'positive', // AP Days
+                7  => 'negative', // Working Capital Days
+                8  => 'positive', // Working Capital
+                9  => 'negative', // Working Capital per ₹100
+                10 => 'positive', // Working Capital Turnover
+                11 => 'negative', // Marginal Cash Flow
+                12 => 'positive', // Current Ratio
+                13 => 'positive', // Quick Ratio
+            ];
+ 
+            $green_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FF008000'],
+                ],
+            ];
+            $red_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FFFF0000'],
+                ],
+            ];
 
             $spreadsheet->setActiveSheetIndex(0);
 
@@ -4851,9 +5564,12 @@ $chart_header = [];
                     }
                 }
 
-            }
+            }            
+
+            $dataColCell = [];
 
             $p_index = 4;
+            $next_index = 'A';
             $spreadsheet->getActiveSheet()->getCell('A' . $p_index)->setValue('A/R Days')->getStyle('A' . $p_index)->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A5')->setValue('Inventory Days')->getStyle('A5')->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A6')->setValue('AP Days')->getStyle('A6')->applyFromArray($subitemStyle);
@@ -4864,18 +5580,41 @@ $chart_header = [];
             $spreadsheet->getActiveSheet()->getCell('A11')->setValue('Marginal Cash Flow')->getStyle('A11')->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A12')->setValue('Current Ratio')->getStyle('A12')->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A13')->setValue('Quick Ratio')->getStyle('A13')->applyFromArray($subitemStyle);
+
             if ($data_column_range) {
                 foreach ($data_column_range as $n_tbdate_index => $n_tbdate_column_group) {
+
+                   $previousMonthAR = $previousMonthInventory = $previousMonthAP = 0;  
+                   $currentMonthAR = isset($final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']]) ? str_replace(',', '', $final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']] ) : 0;
+                   $currentMonthAP = isset($final_all_total['Accounts Payable'][$n_tbdate_column_group['column']]) ? str_replace(',', '', $final_all_total['Accounts Payable'][$n_tbdate_column_group['column']] ) : 0;
+                   $currentMonthInventory = isset($final_all_total['Closing Stock'][$n_tbdate_column_group['column']]) ? str_replace(',', '', $final_all_total['Closing Stock'][$n_tbdate_column_group['column']] ) : 0;
+
+                   if( $next_index != 'A' ){
+                        $previousMonthAR = isset($final_all_total['Accounts Receivable'][$next_index]) ? str_replace(',', '', $final_all_total['Accounts Receivable'][$next_index] ) : 0;
+                        $previousMonthAP = isset($final_all_total['Accounts Payable'][$next_index]) ? str_replace(',', '', $final_all_total['Accounts Payable'][$next_index] ) : 0;
+                        $previousMonthInventory = isset($final_all_total['Closing Stock'][$next_index]) ? str_replace(',', '', $final_all_total['Closing Stock'][$next_index] ) : 0;
+                    }
+
+                    $revenue = isset($final_all_total['Sales'][$n_tbdate_column_group['column']]) ? str_replace(',', '', $final_all_total['Sales'][$n_tbdate_column_group['column']] ) : 0;
+                    $cogs = isset($final_all_total['Total Direct Expenses'][$n_tbdate_column_group['column']]) ? str_replace(',', '', $final_all_total['Total Direct Expenses'][$n_tbdate_column_group['column']] ) : 0;
+                    $arDays = $revenue != 0 ? ((($previousMonthAR + $currentMonthAR) / 2) / $revenue) * 30 : 0;
+                    $arDays = round($arDays,2);
+                    $apDays = $cogs != 0  ? ((($previousMonthAP + $currentMonthAP) / 2) / $cogs) * 30  : 0;
+                    $apDays = round($apDays,2);
+                    $inventoryDays = $cogs != 0 ? ((($previousMonthInventory + $currentMonthInventory) / 2) / $cogs) * 30 : 0;
+                    $inventoryDays = round($inventoryDays,2);
+                    
                     $n_cell_val1 = comman_cashmg_formula($final_all_total['Sales'][$n_tbdate_column_group['column']], $final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']], 1, 1, 2);
-                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '4')->setValue(convert_decimal_format($n_cell_val1))->getStyle($n_tbdate_column_group['column'] . '4')->applyFromArray($itemStyle);
+                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '4')->setValue(convert_decimal_format($arDays))->getStyle($n_tbdate_column_group['column'] . '4')->applyFromArray($itemStyle);
 
                     $n_cell_val2 = comman_cashmg_formula($final_all_total['Total Direct Expenses'][$n_tbdate_column_group['column']], $final_all_total['Closing Stock'][$n_tbdate_column_group['column']], 1, 1, 2);
-                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '5')->setValue(convert_decimal_format($n_cell_val2))->getStyle($n_tbdate_column_group['column'] . '5')->applyFromArray($itemStyle);
+                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '5')->setValue(convert_decimal_format($inventoryDays))->getStyle($n_tbdate_column_group['column'] . '5')->applyFromArray($itemStyle);
 
                     $n_cell_val3 = comman_cashmg_formula($final_all_total['Total Direct Expenses'][$n_tbdate_column_group['column']], $final_all_total['Accounts Payable'][$n_tbdate_column_group['column']], 1, 1, 2);
-                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '6')->setValue(convert_decimal_format($n_cell_val3))->getStyle($n_tbdate_column_group['column'] . '6')->applyFromArray($itemStyle);
+                    $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '6')->setValue(convert_decimal_format($apDays))->getStyle($n_tbdate_column_group['column'] . '6')->applyFromArray($itemStyle);
 
-                    $n_cell_val4 = ($n_cell_val1 + $n_cell_val2) - $n_cell_val3;
+                    //$n_cell_val4 = ($arDays + $apDays) - $inventoryDays;
+                    $n_cell_val4 = ($arDays + $inventoryDays) - $apDays;
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '7')->setValue(convert_decimal_format($n_cell_val4))->getStyle($n_tbdate_column_group['column'] . '7')->applyFromArray($itemStyle);
 
                     $n_cell_val5 = ($final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']] + $final_all_total['Closing Stock'][$n_tbdate_column_group['column']]) - $final_all_total['Accounts Payable'][$n_tbdate_column_group['column']];
@@ -4923,6 +5662,18 @@ $chart_header = [];
 
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '13')->setValue(convert_decimal_format($n_cell_val11))->getStyle($n_tbdate_column_group['column'] . '13')->applyFromArray($itemStyle);
 
+                    $dataColCell[4][$n_tbdate_column_group['column']] = $arDays;
+                    $dataColCell[5][$n_tbdate_column_group['column']] = $inventoryDays;
+                    $dataColCell[6][$n_tbdate_column_group['column']] = $apDays;
+                    $dataColCell[7][$n_tbdate_column_group['column']] = $n_cell_val4;
+                    $dataColCell[8][$n_tbdate_column_group['column']] = $n_cell_val5;
+                    $dataColCell[9][$n_tbdate_column_group['column']] = $n_cell_val6;
+                    $dataColCell[10][$n_tbdate_column_group['column']] = $n_cell_val7;
+                    $dataColCell[11][$n_tbdate_column_group['column']] = $cashflow_mrg;
+                    $dataColCell[12][$n_tbdate_column_group['column']] = $n_cell_val10;
+                    $dataColCell[13][$n_tbdate_column_group['column']] = $n_cell_val11;
+
+                    $next_index = $n_tbdate_column_group['column'];
                 }
             }
 
@@ -4946,6 +5697,51 @@ $chart_header = [];
                             ->setARGB($color);
                     }
                 }
+            }
+
+            // ---- Apply month-over-month text color per row rule ----
+            foreach ($row_compare_rules as $row_num => $rule) {
+                if (!isset($dataColCell[$row_num])) {
+                    continue;
+                }
+ 
+                $prev_val = null;
+                foreach ($dataColCell[$row_num] as $col => $current_val) {
+                    if ($prev_val !== null && $current_val != $prev_val) {
+                        $increased = $current_val > $prev_val;
+ 
+                        if ($rule === 'positive') {
+                            $style = $increased ? $green_fill : $red_fill;
+                        } else {
+                            $style = $increased ? $red_fill : $green_fill;
+                        }
+ 
+                        $spreadsheet->getActiveSheet()
+                            ->getStyle($col . $row_num)
+                            ->applyFromArray($style);
+                    }
+                    $prev_val = $current_val;
+                }
+            }
+
+            if (!empty($hidden_columns)) {
+                $hidden_columns_unique = array_unique($hidden_columns);
+
+                // Remove rightmost column first so the letters of any remaining
+                // hidden columns to its left stay valid during the loop.
+                usort($hidden_columns_unique, function ($a, $b) {
+                    return \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($b)
+                        <=> \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($a);
+                });
+
+                foreach ($hidden_columns_unique as $hidden_col) {
+                    $spreadsheet->getActiveSheet()->removeColumn($hidden_col);
+                }
+
+                // Shift end_cell left to reflect the removed column(s).
+                $end_col_index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($end_cell);
+                $end_col_index -= count($hidden_columns_unique);
+                $end_cell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($end_col_index);
             }
 
             $sheet->getStyle('A3:' . $end_cell . '13')->applyFromArray($comman_all_border)->getNumberFormat()->setFormatCode('0.00');
@@ -5025,10 +5821,14 @@ $chart_header = [];
                 $pl_query->where('kpi_records.user_id', $userId);
             }
             $all_dates = [];
+            $display_start_month_ts = null;
 
             if (!empty($date_filter)) {
                 $between_date = explode('/', $date_filter);
-                $start_date = trim($between_date[0]);
+                $display_start_date = trim($between_date[0]); // the user's actual selected start (e.g. Jul-25)
+                $display_start_month_ts = strtotime(date('Y-m-01', strtotime($display_start_date)));
+
+                $start_date = date("Y-m-d", strtotime("-1 month", strtotime($display_start_date))); // extended back 1 month, for comparison baseline only
                 $end_date = trim($between_date[1]);
                 $all_dates = getMonthStartDates($start_date, $end_date);
 
@@ -5071,6 +5871,7 @@ $chart_header = [];
             $start_row = 3;
             $start_col = 'B';
 $chart_header = [];
+$hidden_columns = [];
             if ($tbdate_list) {
                 $tb_d_cnt = count($tbdate_list);
                 $tb_d_cnt = $tb_d_cnt - 1;
@@ -5080,17 +5881,25 @@ $chart_header = [];
                     $start_col = end($tb_header_cell);
                     foreach ($tb_header_cell as $tb_header_index => $tb_header_range_index) {
                         if (isset($tbdate_list_arr[$tb_header_index]) && !empty($tbdate_list_arr[$tb_header_index])) {
-                            $tb_item = $tbdate_list_arr[$tb_header_index][0];
+                            $col_letter = str_replace($start_row, '', $tb_header_range_index);
+
+                            $this_month_ts = strtotime(date('Y-m-01', strtotime($tbdate_list_arr[$tb_header_index])));
+                            $is_hidden = ($display_start_month_ts !== null) && ($this_month_ts < $display_start_month_ts);
+
+                            if ($is_hidden) {
+                                $hidden_columns[] = $col_letter;
+                            } else {
+                                $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
+                            }
+
                             $td_date = date('m/d/Y', strtotime($tbdate_list_arr[$tb_header_index]));
                             $tb_header[$tb_header_range_index] = [
                                 'label' => date('M-y', strtotime($tbdate_list_arr[$tb_header_index])),
                                 'style' => hg_comman_customer_header_style('bfbfbf')
                             ];
-                            $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
-                            $column_width_list[str_replace($start_row, '', $tb_header_range_index)] = 125;
+                            $column_width_list[$col_letter] = 125;
                             $data_column_range[$tbdate_list_arr[$tb_header_index]] = array(
-                                'column' => str_replace($start_row, '', $tb_header_range_index),
-                                //'data' => $tbdate_list_arr[$tb_header_index],
+                                'column' => $col_letter,
                             );
                         }
                     }
@@ -5168,6 +5977,22 @@ $chart_header = [];
 
             );
 
+            $row_compare_rules = [
+                10 => 'positive', // Return on Capital %
+                11 => 'positive', // Return on Total Assets
+                12 => 'positive', // Return on Equity %
+            ];
+
+            $green_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FF008000'],
+                ],
+            ];
+            $red_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FFFF0000'],
+                ],
+            ];
 
             $spreadsheet->setActiveSheetIndex(0);
 
@@ -5417,11 +6242,14 @@ $chart_header = [];
             $spreadsheet->getActiveSheet()->getCell('A10')->setValue('Return on Capital %')->getStyle('A10')->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A11')->setValue('Return on Total Assets')->getStyle('A11')->applyFromArray($subitemStyle);
             $spreadsheet->getActiveSheet()->getCell('A12')->setValue('Return on Equity %')->getStyle('A12')->applyFromArray($subitemStyle);
-
+             $dataColCell = []; 
             if ($data_column_range) {
                 foreach ($data_column_range as $n_tbdate_index => $n_tbdate_column_group) {
 
-                    $n_cell_val1 = ($final_all_total['Fixed Assets'][$n_tbdate_column_group['column']] + $final_all_total['Other Non Current Assets'][$n_tbdate_column_group['column']] + $final_all_total['Other Current Assets'][$n_tbdate_column_group['column']]) - ($final_all_total['Other Current Liabilities'][$n_tbdate_column_group['column']] - $final_all_total['Other Non Current Liabilities'][$n_tbdate_column_group['column']]);
+                   // $n_cell_val1 = ($final_all_total['Fixed Assets'][$n_tbdate_column_group['column']] + $final_all_total['Other Non Current Assets'][$n_tbdate_column_group['column']] + $final_all_total['Other Current Assets'][$n_tbdate_column_group['column']]) - ($final_all_total['Other Current Liabilities'][$n_tbdate_column_group['column']] - $final_all_total['Other Non Current Liabilities'][$n_tbdate_column_group['column']]);
+
+                     $n_cell_val1 = ($final_all_total['Fixed Assets'][$n_tbdate_column_group['column']] + $final_all_total['Other Non Current Assets'][$n_tbdate_column_group['column']] ) - ( $final_all_total['Other Non Current Liabilities'][$n_tbdate_column_group['column']]);
+
                     $n_cell_val1 = round($n_cell_val1);
 
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '4')->setValue(convert_decimal_format($n_cell_val1,0))->getStyle($n_tbdate_column_group['column'] . '4')->applyFromArray($itemStyle);
@@ -5477,12 +6305,17 @@ $chart_header = [];
 
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '10')->setValue(convert_decimal_format($n_cell_val7))->getStyle($n_tbdate_column_group['column'] . '10')->applyFromArray($itemStyle);
 
+                    $dataColCell[10][$n_tbdate_column_group['column']] = $n_cell_val7;
+
                     $n_cell_val8 = 0;
                     if ($final_all_total['Total Assets'][$n_tbdate_column_group['column']] / 100 != 0) {
                         $n_cell_val8 = ($final_all_total['Operating Profit'][$n_tbdate_column_group['column']] * count($data_column_range) / 1) / ($final_all_total['Total Assets'][$n_tbdate_column_group['column']] / 100);
                         $n_cell_val8 = round($n_cell_val8,2);
                     }
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '11')->setValue(convert_decimal_format($n_cell_val8))->getStyle($n_tbdate_column_group['column'] . '11')->applyFromArray($itemStyle);
+
+                    $dataColCell[11][$n_tbdate_column_group['column']] = $n_cell_val8;
+
 
                     $n_cell_val9 = 0;
                     if ($final_all_total['Equity'][$n_tbdate_column_group['column']] / 100 != 0) {
@@ -5492,6 +6325,8 @@ $chart_header = [];
                         $n_cell_val9 = round($n_cell_val9,2);
                     }
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '12')->setValue(convert_decimal_format($n_cell_val9))->getStyle($n_tbdate_column_group['column'] . '12')->applyFromArray($itemStyle);
+
+                    $dataColCell[12][$n_tbdate_column_group['column']] = $n_cell_val9;
 
 
                 }
@@ -5520,8 +6355,58 @@ $chart_header = [];
                 }
             }
 
+            // ---- Apply month-over-month text color per row rule ----
+            foreach ($row_compare_rules as $row_num => $rule) {
+                if (!isset($dataColCell[$row_num])) {
+                    continue;
+                }
+
+                $prev_val = null;
+                foreach ($dataColCell[$row_num] as $col => $current_val) {
+                    if ($prev_val !== null && $current_val != $prev_val) {
+                        $increased = $current_val > $prev_val;
+
+                        if ($rule === 'positive') {
+                            $style = $increased ? $green_fill : $red_fill;
+                        } else {
+                            $style = $increased ? $red_fill : $green_fill;
+                        }
+
+                        $spreadsheet->getActiveSheet()
+                            ->getStyle($col . $row_num)
+                            ->applyFromArray($style);
+                    }
+                    $prev_val = $current_val;
+                }
+            }
+
+            // ---- Physically remove the prior-month comparison-only column(s) ----
+            // All growth%/comparison-color calculations above have already used
+            // this column's values; now delete it so it never appears in the
+            // exported table (no header, no <td>, not part of the array at all).
+            if (!empty($hidden_columns)) {
+                $hidden_columns_unique = array_unique($hidden_columns);
+
+                // Remove rightmost column first so the letters of any remaining
+                // hidden columns to its left stay valid during the loop.
+                usort($hidden_columns_unique, function ($a, $b) {
+                    return \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($b)
+                        <=> \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($a);
+                });
+
+                foreach ($hidden_columns_unique as $hidden_col) {
+                    $spreadsheet->getActiveSheet()->removeColumn($hidden_col);
+                }
+
+                // Shift end_cell left to reflect the removed column(s).
+                $end_col_index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($end_cell);
+                $end_col_index -= count($hidden_columns_unique);
+                $end_cell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($end_col_index);
+            }
+
 
             $sheet->getStyle('A3:' . $end_cell . '12')->applyFromArray($comman_all_border)->getNumberFormat()->setFormatCode('0.00');
+           
 if ($return_data == 1) {
                 $sheet = $spreadsheet->getActiveSheet();
                 $cellArray = $sheet->toArray(null, true, true, true);
@@ -5597,9 +6482,14 @@ if ($return_data == 1) {
             }
             $all_dates = [];
 
+            $display_start_month_ts = null;
+
             if (!empty($date_filter)) {
                 $between_date = explode('/', $date_filter);
-                $start_date = trim($between_date[0]);
+                $display_start_date = trim($between_date[0]); // the user's actual selected start (e.g. Jul-25)
+                $display_start_month_ts = strtotime(date('Y-m-01', strtotime($display_start_date)));
+
+                $start_date = date("Y-m-d", strtotime("-1 month", strtotime($display_start_date))); // extended back 1 month, for comparison baseline only
                 $end_date = trim($between_date[1]);
                 $all_dates = getMonthStartDates($start_date, $end_date);
 
@@ -5638,7 +6528,7 @@ if ($return_data == 1) {
                     'style' => hg_comman_customer_header_style('bfbfbf')
                 ]
             ];
-            $data_column_range = $tb_header = [];
+            $hidden_columns = $data_column_range = $tb_header = [];
 
             $start_row = 3;
             $start_col = 'B';
@@ -5652,16 +6542,25 @@ if ($return_data == 1) {
                     $start_col = end($tb_header_cell);
                     foreach ($tb_header_cell as $tb_header_index => $tb_header_range_index) {
                         if (isset($tbdate_list_arr[$tb_header_index]) && !empty($tbdate_list_arr[$tb_header_index])) {
+                            $col_letter = str_replace($start_row, '', $tb_header_range_index);
+
+                            $this_month_ts = strtotime(date('Y-m-01', strtotime($tbdate_list_arr[$tb_header_index])));
+                            $is_hidden = ($display_start_month_ts !== null) && ($this_month_ts < $display_start_month_ts);
+
+                            if ($is_hidden) {
+                                $hidden_columns[] = $col_letter;
+                            } else {
+                                $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
+                            }
+
                             $td_date = date('m/d/Y', strtotime($tbdate_list_arr[$tb_header_index]));
                             $tb_header[$tb_header_range_index] = [
                                 'label' => date('M-y', strtotime($tbdate_list_arr[$tb_header_index])),
                                 'style' => hg_comman_customer_header_style('bfbfbf')
                             ];
-                            $chart_header[] = date('M-y', strtotime($tbdate_list_arr[$tb_header_index]));
-                            $column_width_list[str_replace($start_row, '', $tb_header_range_index)] = 125;
+                            $column_width_list[$col_letter] = 125;
                             $data_column_range[$tbdate_list_arr[$tb_header_index]] = array(
-                                'column' => str_replace($start_row, '', $tb_header_range_index),
-
+                                'column' => $col_letter,
                             );
                         }
                     }
@@ -5743,6 +6642,38 @@ if ($return_data == 1) {
             $spreadsheet->setActiveSheetIndex(0);
 
             $sheet = $spreadsheet->getActiveSheet();
+
+             // ---- Month-over-month comparison rule map & text color styles ----
+            // Row numbers correspond to the fixed financing metric rows (4-18) below.
+            // 'positive': increase = green text, decrease = red text
+            // 'negative': increase = red text, decrease = green text
+            // NOTE: rows 4-7, 12, 13, 15-18 confirmed from the reference table.
+            // Rows 8, 9, 10, 11, 14 (debt/funding levels) were not shown in the
+            // screenshot; assumed 'negative' for debt-load metrics and 'positive'
+            // for Total Funding. Tell me if any of these should be flipped.
+            $row_compare_rules = [
+                4  => 'negative', // Marginal Cash Flow
+                5  => 'positive', // Operating Cash Flow
+                6  => 'positive', // Operating Cash Profit
+                7  => 'positive', // Net Cash Flow    
+                12 => 'positive', // Interest Cover
+                13 => 'negative', // Debt Payback
+                15 => 'positive', // Operating CF Margin
+                16 => 'positive', // Cash Flow Coverage
+                17 => 'positive', // Cash Flow to Debt
+                18 => 'positive', // Capex Coverage
+            ];
+
+            $green_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FF008000'],
+                ],
+            ];
+            $red_fill = [
+                'font' => [
+                    'color' => ['argb' => 'FFFF0000'],
+                ],
+            ];
 
             $styleArray = [
                 'font' => [
@@ -6001,7 +6932,7 @@ if ($return_data == 1) {
 
             $old_cell_no = 'A';
 
-
+            $dataColCell = [];
             if ($data_column_range) {
                 foreach ($data_column_range as $n_tbdate_index => $n_tbdate_column_group) {
 
@@ -6020,7 +6951,7 @@ if ($return_data == 1) {
                     $n_cell_val1 = $gross_margin - $working_capital_100;
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '4')->setValue(convert_decimal_format($n_cell_val1,0))->getStyle($n_tbdate_column_group['column'] . '4')->applyFromArray($itemStyle);
 
-                    $operating_cash_profit = $final_all_total['Operating Profit'][$n_tbdate_column_group['column']] + $final_all_total['Depreciation & Amortization'][$n_tbdate_column_group['column']];
+                    $operating_cash_profit = $final_all_total['Operating Profit'][$n_tbdate_column_group['column']] + $final_all_total['Depreciation'][$n_tbdate_column_group['column']];
                     $operating_cash_profit = round($operating_cash_profit);
 
                     $acc_rec = $final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']] - (isset($final_all_total['Accounts Receivable'][$old_cell_no]) ? $final_all_total['Accounts Receivable'][$old_cell_no] : 0);
@@ -6068,8 +6999,9 @@ if ($return_data == 1) {
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '11')->setValue(convert_decimal_format($debt_capital))->getStyle($n_tbdate_column_group['column'] . '11')->applyFromArray($itemStyle);
 
                     $interest_cover = 0;
-                    if ($final_all_total['Operating Profit'][$n_tbdate_column_group['column']] > 0) {
-                        $interest_cover = round(($final_all_total['Interest & Bank Charges'][$n_tbdate_column_group['column']] / $final_all_total['Operating Profit'][$n_tbdate_column_group['column']]) * 100,2);
+                    if ($final_all_total['Finance Cost'][$n_tbdate_column_group['column']] > 0) {
+                        //$interest_cover = round(($final_all_total['Finance Cost'][$n_tbdate_column_group['column']] / $final_all_total['Operating Profit'][$n_tbdate_column_group['column']]) * 100,2);
+                        $interest_cover = round(($final_all_total['Operating Profit'][$n_tbdate_column_group['column']] / $final_all_total['Finance Cost'][$n_tbdate_column_group['column']]),2);
                     }
 
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '12')->setValue(convert_decimal_format($interest_cover))->getStyle($n_tbdate_column_group['column'] . '12')->applyFromArray($itemStyle);
@@ -6100,7 +7032,21 @@ if ($return_data == 1) {
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '17')->setValue(convert_decimal_format($Cash_Flow_Debt))->getStyle($n_tbdate_column_group['column'] . '17')->applyFromArray($itemStyle);
                     $spreadsheet->getActiveSheet()->getCell($n_tbdate_column_group['column'] . '18')->setValue(convert_decimal_format($Capex_Coverage))->getStyle($n_tbdate_column_group['column'] . '18')->applyFromArray($itemStyle);
 
-
+                    $dataColCell[4][$n_tbdate_column_group['column']] = $n_cell_val1;
+                    $dataColCell[5][$n_tbdate_column_group['column']] = $operating_cash_flow;
+                    $dataColCell[6][$n_tbdate_column_group['column']] = $operating_cash_profit;
+                    $dataColCell[7][$n_tbdate_column_group['column']] = $netcashflow;
+                    $dataColCell[8][$n_tbdate_column_group['column']] = $n_cell_val5;
+                    $dataColCell[9][$n_tbdate_column_group['column']] = $total_debt;
+                    $dataColCell[10][$n_tbdate_column_group['column']] = $debt_equity;
+                    $dataColCell[11][$n_tbdate_column_group['column']] = $debt_capital;
+                    $dataColCell[12][$n_tbdate_column_group['column']] = $interest_cover;
+                    $dataColCell[13][$n_tbdate_column_group['column']] = $debt_payback;
+                    $dataColCell[14][$n_tbdate_column_group['column']] = $total_funding;
+                    $dataColCell[15][$n_tbdate_column_group['column']] = $Operating_CF_Margin;
+                    $dataColCell[16][$n_tbdate_column_group['column']] = $Cash_Flow_Coverage;
+                    $dataColCell[17][$n_tbdate_column_group['column']] = $Cash_Flow_Debt;
+                    $dataColCell[18][$n_tbdate_column_group['column']] = $Capex_Coverage;
 
                     $old_cell_no = $n_tbdate_column_group['column'];
                 }
@@ -6127,6 +7073,56 @@ if ($return_data == 1) {
                     }
                 }
             }
+
+            // ---- Apply month-over-month text color per row rule ----
+            foreach ($row_compare_rules as $row_num => $rule) {
+                if (!isset($dataColCell[$row_num])) {
+                    continue;
+                }
+
+                $prev_val = null;
+                foreach ($dataColCell[$row_num] as $col => $current_val) {
+                    if ($prev_val !== null && $current_val != $prev_val) {
+                        $increased = $current_val > $prev_val;
+
+                        if ($rule === 'positive') {
+                            $style = $increased ? $green_fill : $red_fill;
+                        } else {
+                            $style = $increased ? $red_fill : $green_fill;
+                        }
+
+                        $spreadsheet->getActiveSheet()
+                            ->getStyle($col . $row_num)
+                            ->applyFromArray($style);
+                    }
+                    $prev_val = $current_val;
+                }
+            }
+
+             // ---- Physically remove the prior-month comparison-only column(s) ----
+            // All growth%/comparison-color calculations above have already used
+            // this column's values; now delete it so it never appears in the
+            // exported table (no header, no <td>, not part of the array at all).
+            if (!empty($hidden_columns)) {
+                $hidden_columns_unique = array_unique($hidden_columns);
+
+                // Remove rightmost column first so the letters of any remaining
+                // hidden columns to its left stay valid during the loop.
+                usort($hidden_columns_unique, function ($a, $b) {
+                    return \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($b)
+                        <=> \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($a);
+                });
+
+                foreach ($hidden_columns_unique as $hidden_col) {
+                    $spreadsheet->getActiveSheet()->removeColumn($hidden_col);
+                }
+
+                // Shift end_cell left to reflect the removed column(s).
+                $end_col_index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($end_cell);
+                $end_col_index -= count($hidden_columns_unique);
+                $end_cell = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($end_col_index);
+            }
+            // -----------------------------------------------------------------
 
             $sheet->getStyle('A3:' . $end_cell . '18')->applyFromArray($comman_all_border)->getNumberFormat()->setFormatCode('0.00');
 
@@ -6440,11 +7436,11 @@ if ($return_data == 1) {
                     $operating_profit = isset($final_all_total['Operating Profit'][$n_tbdate_column_group]) ? str_replace(',', '', $final_all_total['Operating Profit'][$n_tbdate_column_group]) : 0;
                     $total_assets = isset($final_all_total['Total Assets'][$n_tbdate_column_group]) ? str_replace(',', '', $final_all_total['Total Assets'][$n_tbdate_column_group]) : 0;
                     $gross_margin = isset($final_all_total['Gross Profit'][$n_tbdate_column_group]) ? str_replace(',', '', $final_all_total['Gross Profit'][$n_tbdate_column_group]) : 0;
-                    $interest_charge = isset($final_all_total['Interest & Bank Charges'][$n_tbdate_column_group]) ? str_replace(',', '', $final_all_total['Interest & Bank Charges'][$n_tbdate_column_group]) : 0;
+                    $interest_charge = isset($final_all_total['Finance Cost'][$n_tbdate_column_group]) ? str_replace(',', '', $final_all_total['Finance Cost'][$n_tbdate_column_group]) : 0;
                     $old_acc_rec = isset($final_all_total['Accounts Receivable'][$next_index]) ? str_replace(',', '', $final_all_total['Accounts Receivable'][$next_index]) : 0;
                     $old_closing_st = isset($final_all_total['Closing Stock'][$next_index]) ? str_replace(',', '', $final_all_total['Closing Stock'][$next_index]) : 0;
                     $old_acc_pay = isset($final_all_total['Accounts Payable'][$next_index]) ? str_replace(',', '', $final_all_total['Accounts Payable'][$next_index]) : 0;
-                    $Depreciation = isset($final_all_total['Depreciation & Amortization'][$next_index]) ? str_replace(',', '', $final_all_total['Depreciation & Amortization'][$next_index]) : 0;
+                    $Depreciation = isset($final_all_total['Depreciation'][$next_index]) ? str_replace(',', '', $final_all_total['Depreciation'][$next_index]) : 0;
                     if ($Current_Liabilities != 0) {
                         $current_ratio = round((float) $Current_Assets / (float) $Current_Liabilities, 2);
                     }
@@ -6494,8 +7490,9 @@ if ($return_data == 1) {
                     $net_margin_per = comman_module_formula($revenue, $profit_after_tax, 2);
 
                     $Interest_Cover = 0;
-                    if ((float) $operating_profit > 0) {
-                        $Interest_Cover = round(((float) $interest_charge / (float) $operating_profit) * 100, 2);
+                    if ((float) $interest_charge > 0) {
+                        //$Interest_Cover = round(((float) $interest_charge / (float) $operating_profit) * 100, 2);
+                        $Interest_Cover = round(((float) $operating_profit / (float) $interest_charge), 2);
                     }
 
                     $rec_days = comman_cashmg_formula($revenue, $acc_rec, 1, count($data_column_range), 2);
@@ -7600,7 +8597,8 @@ if ($return_data == 1) {
 
             $p_index = 4;
             $old_cell_no = 'A';
-            $total_overheads = $total_cogs = $total_acc_rec_days = $total_acc_pay_days = $total_inventory_days = $final_net_cashflow = $grossProfitPercent = $netCashFlow = $operatingProfit = $grossProfit = $netMargin = $totalRevenue = 0;
+
+            $netMarginTot = $acc_rec_amt = $acc_py_amt = $closing_stk_amt = $total_overheads = $total_cogs = $total_acc_rec_days = $total_acc_pay_days = $total_inventory_days = $final_net_cashflow = $grossProfitPercent = $netCashFlow = $operatingProfit = $grossProfit = $netMargin = $totalRevenue = 0;
             if ($data_column_range) {
                 foreach ($data_column_range as $n_tbdate_index => $n_tbdate_column_group) {
                     $bankLoanCrrent = isset($final_all_total['Bank Loans - Current'][$old_cell_no]) ? $final_all_total['Bank Loans - Current'][$old_cell_no] : 0;
@@ -7609,13 +8607,17 @@ if ($return_data == 1) {
                     $netcashflow = (($bankLoanCrrent + $bankLoanNonCrrent) - $cashBank) - (($final_all_total['Bank Loans - Current'][$n_tbdate_column_group['column']] + $final_all_total['Bank Loans - Non Current'][$n_tbdate_column_group['column']]) - $final_all_total['Cash & Bank'][$n_tbdate_column_group['column']]);
                     $final_net_cashflow += $netcashflow;
                     $old_cell_no = $n_tbdate_column_group['column'];
+                    
                     $total_overheads += (float) str_replace(',', '', $final_all_total['Overheads'][$n_tbdate_column_group['column']]);
                     $totalRevenue += (float) str_replace(',', '', $profit_power_list[4][$n_tbdate_column_group['column']]);
                     $grossProfit += (float) str_replace(',', '', $profit_power_list[8][$n_tbdate_column_group['column']]);
                     $grossProfitPercent += (float) str_replace(',', '', $profit_power_list[9][$n_tbdate_column_group['column']]);
                     $operatingProfit += (float) str_replace(',', '', $profit_power_list[13][$n_tbdate_column_group['column']]);
+                    $netMarginTot += (float) str_replace(',', '', $profit_power_list[16][$n_tbdate_column_group['column']]);
                     $netMargin += (float) str_replace(',', '', $profit_power_list[17][$n_tbdate_column_group['column']]);
-
+                    $acc_rec_amt += (float) str_replace(',', '', $final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']]);
+                    $acc_py_amt += (float) str_replace(',', '', $final_all_total['Accounts Payable'][$n_tbdate_column_group['column']]);
+                    $closing_stk_amt += (float) str_replace(',', '', $final_all_total['Closing Stock'][$n_tbdate_column_group['column']]);
                     $total_cogs += (float) str_replace(',', '', $final_all_total['Total Direct Expenses'][$n_tbdate_column_group['column']]);
 
                     $n_cell_val1 = comman_cashmg_formula($final_all_total['Sales'][$n_tbdate_column_group['column']], $final_all_total['Accounts Receivable'][$n_tbdate_column_group['column']], 1, 1, 2);
@@ -7628,6 +8630,19 @@ if ($return_data == 1) {
                 }
             }
 
+            $total_acc_rec_days = ( ($acc_rec_amt / count($data_column_range)) / ($totalRevenue / count($data_column_range)) ) * 30;             
+            $total_acc_pay_days = ( ($acc_py_amt / count($data_column_range)) / ($total_cogs / count($data_column_range)) ) * 30;             
+            $total_inventory_days = ( ($closing_stk_amt / count($data_column_range)) / ($total_cogs / count($data_column_range)) ) * 30;             
+
+
+            $netMargin = ($totalRevenue > 0) ? round((($netMarginTot / $totalRevenue) * 100), 2) : 0;            
+            $totalRevenue = round(($totalRevenue / count($data_column_range)) * 12, 2);
+            $grossProfitPercent = ($totalRevenue > 0) ? round(($grossProfit / $totalRevenue) * 100, 2) : 0;
+            $grossProfitPercent = round(($grossProfitPercent / count($data_column_range)) * 12, 2);
+            $final_net_cashflow = round(($final_net_cashflow / count($data_column_range)) * 12, 2);
+            $operatingProfit = round(($operatingProfit / count($data_column_range)) * 12, 2);
+            $grossProfit = round(($grossProfit / count($data_column_range)) * 12, 2);
+
 
             return response()->json([
                 'message' => 'Impact Of Change Report  Generated Successfully!',
@@ -7635,13 +8650,13 @@ if ($return_data == 1) {
                 'final_net_cashflow' => round($final_net_cashflow, 0),
                 'totalRevenue' => round($totalRevenue, 0),
                 'grossProfit' => round($grossProfit, 0),
-                'grossProfitPercent' => round($grossProfitPercent, 0),
+                'grossProfitPercent' => round($grossProfitPercent, 2),
                 'operatingProfit' => round($operatingProfit, 0),
-                'netMargin' => round($netMargin, 0),
+                'netMargin' => round($netMargin, 2),
                 'total_cogs' => round($total_cogs, 0),
-                'total_acc_rec_days' => round($total_acc_rec_days, 0),
-                'total_inventory_days' => round($total_inventory_days, 0),
-                'total_acc_pay_days' => round($total_acc_pay_days, 0),
+                'total_acc_rec_days' => round($total_acc_rec_days, 2),
+                'total_inventory_days' => round($total_inventory_days, 2),
+                'total_acc_pay_days' => round($total_acc_pay_days, 2),
                 'total_overheads' => round($total_overheads, 0),
                 'month_count' => count($data_column_range),
                 'table_html' => '',

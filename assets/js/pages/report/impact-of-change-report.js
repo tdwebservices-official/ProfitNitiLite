@@ -187,15 +187,15 @@ jQuery(document).ready(function() {
 
                     if( res.status == 'success' ){
                         
-                        jQuery('#totalRevenue').text( res.totalRevenue ).attr('data-total',res.totalRevenue).attr('data-cogs', res.total_cogs).attr('data-overheads', res.total_overheads);
+                        jQuery('#totalRevenue').text( formatCurrency(res.totalRevenue) ).attr('data-total',res.totalRevenue).attr('data-cogs', res.total_cogs).attr('data-overheads', res.total_overheads);
                         products[0].baseRevenue = res.totalRevenue;
                         expenseItems[0].baseAmount = res.total_cogs;
                         expenseItems[1].baseAmount = res.total_overheads;
                         jQuery('#grossProfitPercent').text( res.grossProfitPercent+'%' ).attr('data-total',res.grossProfitPercent);
-                        jQuery('#netCashFlow').text( res.totalRevenue ).attr('data-total',res.final_net_cashflow);
-                        jQuery('#operatingProfit').text( res.operatingProfit ).attr('data-total',res.operatingProfit);
+                        jQuery('#netCashFlow').text( formatCurrency(res.final_net_cashflow) ).attr('data-total',res.final_net_cashflow);
+                        jQuery('#operatingProfit').text( formatCurrency(res.operatingProfit) ).attr('data-total',res.operatingProfit);
                         jQuery('#netMargin').text( res.netMargin+'%' ).attr('data-total',res.netMargin);
-                        jQuery('#grossProfitAmount').text( res.grossProfit ).attr('data-total',res.grossProfit);
+                        jQuery('#grossProfitAmount').text( formatCurrency(res.grossProfit) ).attr('data-total',res.grossProfit);
                         jQuery('.balance-sheet-table-box').removeClass('d-none');
                         jQuery('#dataPeriod').val(res.month_count);
                         businessParams.currentReceivablesDays = res.total_acc_rec_days;
@@ -519,11 +519,11 @@ function updatePeriodLabels() {
     }
     
     // Update all period labels
-    document.getElementById('revenueLabel').textContent = periodText;
+   // document.getElementById('revenueLabel').textContent = periodText;
     document.getElementById('cashFlowLabel').textContent = '(Annual)';
     document.getElementById('profitLabel').textContent = '(Annual)';
-    document.getElementById('productRevenueLabel').textContent = `(₹ ${periodText.replace('(', '').replace(')', '')})`;
-    document.getElementById('expenseAmountLabel').textContent = `(₹ ${periodText.replace('(', '').replace(')', '')})`;
+    //document.getElementById('productRevenueLabel').textContent = `(₹ ${periodText.replace('(', '').replace(')', '')})`;
+    //document.getElementById('expenseAmountLabel').textContent = `(₹ ${periodText.replace('(', '').replace(')', '')})`;
     document.getElementById('analysisFlowLabel').textContent = '(Annual)';
     document.getElementById('analysisProfitLabel').textContent = '(Annual)';
     
@@ -732,9 +732,9 @@ function calculateResults() {
 function updateDisplay(results) {
     // Update current position - show input period data for revenue, annualized for others
     if (results.dataPeriodMonths === 12) {
-        document.getElementById('totalRevenue').textContent = formatCurrency(results.totalRevenue);
+        //document.getElementById('totalRevenue').textContent = formatCurrency(results.totalRevenue);
     } else {
-        document.getElementById('totalRevenue').textContent = formatCurrency(results.inputRevenue);
+       // document.getElementById('totalRevenue').textContent = formatCurrency(results.inputRevenue);
     }
     
     // Calculate and display margins first
@@ -742,11 +742,11 @@ function updateDisplay(results) {
     const netMargin = (results.currentOperatingProfit / results.totalRevenue) * 100;
     
     // Always show annualized figures for profit and cash flow
-    document.getElementById('grossProfitPercent').textContent = `${grossMargin.toFixed(1)}%`;
-    document.getElementById('grossProfitAmount').textContent = formatCurrency(results.grossProfit);
-    document.getElementById('netCashFlow').textContent = formatCurrency(results.currentNetCashFlow);
-    document.getElementById('operatingProfit').textContent = formatCurrency(results.currentOperatingProfit);
-    document.getElementById('netMargin').textContent = `${netMargin.toFixed(1)}%`;
+    //document.getElementById('grossProfitPercent').textContent = `${grossMargin.toFixed(1)}%`;
+   // document.getElementById('grossProfitAmount').textContent = formatCurrency(results.grossProfit);
+   // document.getElementById('netCashFlow').textContent = formatCurrency(results.currentNetCashFlow);
+   // document.getElementById('operatingProfit').textContent = formatCurrency(results.currentOperatingProfit);
+   // document.getElementById('netMargin').textContent = `${netMargin.toFixed(1)}%`;
 
     // Update analysis table
     renderAnalysisTable(results);

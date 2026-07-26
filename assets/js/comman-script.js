@@ -77,8 +77,15 @@ jQuery(document).ready(function($){
 
      setTimeout(function(){
         jQuery('.assign_by').select2({ 'placeholder' : "Choose Assign" });
+
+        jQuery('.assign_by').on('select2:select', function (e) {
+        	var selectedValue = e.params.data.id;
+        	pf_createCookie( 'kpi_user_filter_id',selectedValue, 30 );
+        });
         
     },100);
+
+
 
 });
 
@@ -133,28 +140,55 @@ $(document).on("change", "#figureType", function () {
 	}
 	$(".balance-sheet-table table tbody tr td:not(:first-child)").each(function () {
 
-		let original = $(this).attr("data-original");
-		if (original !== undefined) {
-			let newValue = original / divisor;
-			// if( original == 0 ){
-			// 	$(this).text(PNTFormatNumber(newValue));
-			// }else{				
-			// }
-				//$(this).text(PNTFormatNumber(newValue) +' '+ suffix);
-			$(this).text(PNTFormatNumber(newValue));
+		if( jQuery(this).parent().attr('data-not-check') != 'yes' ){
+			let original = $(this).attr("data-original");
+			if (original !== undefined) {
+
+				let newValue = original / divisor;
+				// if( original == 0 ){
+				// 	$(this).text(PNTFormatNumber(newValue));
+				// }else{				
+				// }
+					//$(this).text(PNTFormatNumber(newValue) +' '+ suffix);
+				$(this).text(PNTFormatNumber(newValue));
+			}
 		}
+
 	});
 });
 
-function setDataAttributeTB(){
+function setDataAttributeTB( labelArr = [] ){
 	// Store original values
     $(".balance-sheet-table table tbody tr td:not(:first-child)").each(function () {
+
+    		var lbl = jQuery(this).parent().find('td').first().text();    	
+    		
+    		if (jQuery.inArray(lbl, labelArr) != -1) {
+    			jQuery(this).parent().attr('data-not-check', 'yes');
+    		} else{
+    			jQuery(this).parent().attr('data-not-check', 'no');
+    		}
 
         let value = $(this).text().replace(/,/g, '');        
         if (!isNaN(value) && value !== "") {
             $(this).attr("data-original", value);
         }
     });
+
+    
+    if( jQuery(".balance-sheet-table table tbody tr").length > 0 ){
+    	jQuery(".balance-sheet-table table tbody tr").each(function () {
+    		const $row = $(this);
+    		const label = $row.find("td:first").text().trim();
+    		if (ratio_info[label] !==  undefined) {
+    			$row.find("td:first").append(`<button type="button" class="view-toggle-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" data-bs-title="`+ratio_info[label]+`"><iconify-icon icon="jam:alert" class="text-primary-light text-lg mt-4"></iconify-icon> </button>`);
+    		}
+    	});
+
+    	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); 
+    	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)); 
+    }
+    
 }
 
 function colorizeRowsByLabel(tableSelector, labels) {
@@ -175,11 +209,11 @@ function colorizeRowsByLabel(tableSelector, labels) {
         value = parseFloat(value);
 
         if (value < 0) {
-          $(this).css("color", "red");
+        	this.style.setProperty("color", "red", "important");
         } else if (value > 0) {
-          $(this).css("color", "green");
+        	this.style.setProperty("color", "green", "important");
         } else {
-          $(this).css("color", "black");
+        	this.style.setProperty("color", "black", "important");
         }
       });
     }
@@ -207,13 +241,42 @@ function oppcolorizeRowsByLabel(tableSelector, labels) {
         value = parseFloat(value);
 
         if (value < 0) {
-          $(this).css("color", "green");
+          this.style.setProperty("color", "green", "important");
         } else if (value > 0) {
-          $(this).css("color", "red");
+          this.style.setProperty("color", "red", "important");
         } else {
-          $(this).css("color", "black");
+          this.style.setProperty("color", "black", "important");
         }
       });
     }
   });
+}
+
+
+function convertToRowsDynamic(data) {
+	
+    let keys = Object.keys(data); // dynamic keys
+    let length = data[keys[0]].length;
+
+    let result = [];
+
+    for (let i = 0; i < length; i++) {
+        let row = [];
+
+        keys.forEach(key => {
+            let value = data[key][i];
+
+            // Optional: fix long decimal issue
+            if (typeof value === "number") {
+                value = parseFloat(value.toFixed(2));
+            }
+
+            row.push(value);
+        });
+
+        result.push(row);
+    }
+
+
+    return result;
 }

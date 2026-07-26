@@ -38,13 +38,41 @@
                                         <input type="text" class="form-control radius-8" id="name" name="name" required placeholder="Enter Full Name" value="{{ $user->name }}" >
                                     </div>
                                     <div class="mb-20">
+                                        <label for="company_name" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                            Company Name
+                                        </label>
+                                        <input type="text" class="form-control radius-8" id="company_name" name="company_name"
+                                            placeholder="Enter company name" value="{{ old('company_name', $user->company_name) }}">
+                                    </div>
+                                    <div class="mb-20">
                                         <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Email <span class="text-danger-600">*</span></label>
                                         <input type="email" class="form-control radius-8" id="email" name="email" required placeholder="Enter email address" value="{{ $user->email }}">
                                     </div>
                                     <div class="mb-20">
                                         <label for="username" class="form-label fw-semibold text-primary-light text-sm mb-8">Username <span class="text-danger-600">*</span></label>
                                         <input type="text" class="form-control radius-8" id="username" name="username" required placeholder="Enter username" value="{{ $user->username }}">
-                                    </div>  
+                                    </div>
+                                    
+                                    <div class="mb-20">
+                                        <label for="mobile" class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                            Mobile Number <span class="text-danger-600">*</span>
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            class="form-control radius-8"
+                                            id="mobile"
+                                            name="mobile"
+                                            placeholder="Enter 10-digit mobile number"
+                                            value="{{ old('mobile', $user->mobile) }}"
+                                            required
+                                            maxlength="10"
+                                            pattern="[0-9]{10}"
+                                            inputmode="numeric"
+                                            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10);"
+                                        >
+                                    </div>
+                                    
+                                   
                                     <div class="mb-20">
                                       <label class="d-block mb-1"><strong>Industry :</strong></label>
                                               <select class="industry_id form-control" name="industry_id">                        

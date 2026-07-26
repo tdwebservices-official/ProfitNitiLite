@@ -10,7 +10,7 @@
       <select class="assign_by form-control" name="assign_by">
         <option value="all">All</option>
         @foreach( $all_users as $u_key => $user_item )
-        <option value="{{$user_item->id}}" @if ( auth()->user()->id == $user_item->id ) selected @endif>{{$user_item->name}}</option>
+        <option value="{{$user_item->id}}" @if ( auth()->user()->id == $user_item->id ) selected @endif @if ( (auth()->user()->id != $user_item->id) && (isset($_COOKIE['kpi_user_filter_id']) && $_COOKIE['kpi_user_filter_id'] == $user_item->id)) selected @endif>{{$user_item->name}}</option>
         @endforeach
       </select>  
     </div>

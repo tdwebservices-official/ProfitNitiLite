@@ -13337,9 +13337,6 @@ select option {
   transition: 0.2s;
 }
 
-.apexcharts-yaxis {
-  transform: translateX(10px);
-}
 
 [data-theme=dark] .apexcharts-tooltip.apexcharts-theme-light {
   color: #fff !important;
@@ -13355,9 +13352,6 @@ select option {
   background: rgba(0, 0, 0, 0.7) !important;
 }
 
-.yaxies-more .apexcharts-yaxis {
-  transform: translateX(20px);
-}
 
 .apexcharts-canvas {
   transition: 0s !important;
@@ -15344,7 +15338,7 @@ td.fc-header-center {
 }
 
 .sidebar-logo img {
-  max-height: 3.4375rem;
+  max-height: 5.4375rem;
 }
 
 .sidebar-logo img.dark-logo {
@@ -15629,4 +15623,9 @@ body .select2-container--default .select2-selection--single .select2-selection__
     object-fit: cover;
     object-position: center;
     width: 100%;
+}
+
+.view-toggle-btn {
+    display: inline-block;
+    margin-left: 5px;
 }

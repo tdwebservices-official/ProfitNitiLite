@@ -1,12 +1,29 @@
 @extends('layouts.master')
 @section('css')
-<link rel="stylesheet" href="{{asset('assets/css/pages/reports/comman-reports.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('assets/css/pages/reports/comman-reports.css')}}"> -->
+<link rel="stylesheet" href="{{asset('assets/css/pages/reports/new/profit-power-report.css?ver='.time())}}">
+
+<style>
+.chart-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+.chart-value-type{
+  width: auto;
+  display: inline-block;
+}
+</style>
 @endsection
 
 @section('content')
 <div class="dashboard-main-body">
   <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Profit Power Report</h6>
+    <h6 class="fw-semibold mb-0">Profit Power</h6>
     <ul class="d-flex align-items-center gap-2">
       <li class="fw-medium">
         <a href="/" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -15,7 +32,7 @@
         </a>
       </li>
       <li>-</li>
-      <li class="fw-medium">Profit Power Report</li>
+      <li class="fw-medium">Profit Power</li>
     </ul>
   </div>
 
@@ -68,9 +85,15 @@
         <div class="card mt-20">
           <div class="card-header">
             <h5 class="card-title mb-0">Revenue vs COGS trend</h5>
+            <select class="form-control chart-value-type" data-chart-id="revenue-cogs-trend">
+                <option value="original">Original</option>
+                <option value="thousand">Thousand (K)</option>
+                <option value="lakh" selected="">Lakh (L)</option>
+                <option value="crore">Crore (Cr)</option>
+              </select>
           </div>
           <div class="card-body">
-            <div id="columnChart1" class=""></div>
+            <div id="revenue-cogs-trend" class=""></div>
           </div>
         </div>
        
@@ -78,9 +101,15 @@
         <div class="card mt-20">
           <div class="card-header">
             <h5 class="card-title mb-0">Break Even Sales vs Actual Revenue</h5>
+            <select class="form-control chart-value-type" data-chart-id="break-even-sales-vs-revnue">
+                <option value="original">Original</option>
+                <option value="thousand">Thousand (K)</option>
+                <option value="lakh" selected="">Lakh (L)</option>
+                <option value="crore">Crore (Cr)</option>
+              </select>
           </div>
           <div class="card-body">
-            <div id="columnChart5" class=""></div>
+            <div id="break-even-sales-vs-revnue" class=""></div>
           </div>
         </div>
 

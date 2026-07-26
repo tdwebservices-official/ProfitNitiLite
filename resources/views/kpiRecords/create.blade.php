@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('css')
+<link rel="stylesheet" href="{{asset('assets/css/pages/kpi-records/kpi-form.css?ver='.time())}}">
+@endsection
 @section('content')
 
 <style>

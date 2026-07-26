@@ -62,8 +62,8 @@ return [
                 'gross_profit' => 'Gross Profit',
                 'employee_benefit_expenses' => 'Employee Benefit Expenses',
                 'selling_general_and_administrative_expenses' => 'Selling, General and Administrative Expenses',
-                'depreciation_amortization' => 'Depreciation & Amortization',
-                'interest_bank_charges' => 'Interest & Bank Charges',
+                'depreciation_amortization' => 'Depreciation',
+                'interest_bank_charges' => 'Finance Cost',
                 'other_non_operating_expenses' => 'Other Non Operating Expenses',
                 'exceptional_extraordinary_expense' => 'Exceptional/Extraordinary Expense',
                 'current_tax' => 'Current Tax',
@@ -77,6 +77,44 @@ return [
                 'suspense_ac' => 'Suspense A/c',    
             ]
         ],
+    ],
+
+    'ratio_info' => [
+        "Current Ratio" => "Ability to pay short-term dues using short-term assets",
+        "Quick Ratio" => "Immediate cash-paying ability without depending on stock/inventory",
+        "Debt to Equity" => "Borrowed money compared to owner’s own money",
+        "Asset Turnover" => "Sales generated per ₹1 of assets",
+        "ROE (Return on Equity)" => "Profit earned per ₹1 of owner’s money",
+        "ROA (Return on Assets)" => "Profit earned per ₹1 of total assets",
+        "Gross Margin" => "Gross profit earned from every ₹1 of sales before expenses",
+        "Net Profit" => "Final profit earned from every ₹1 of sales",
+        "Interest Cover" => "How comfortably profit covers loan interest",
+        "A/R Days" => "Average days customers take to pay",
+        "AP Days" => "Average days business takes to pay suppliers",
+        "Inventory Days" => "Average days stock sits before being sold",
+        "Working Capital Days" => "Days money remains stuck in operations",
+        "Operating CF Margin" => "Operating cash generated from every ₹1 of sales",
+        "CF Coverage" => "Ability of cash flow to cover total obligations",
+        "Cash Flow to Debt" => "Operating cash available against total debt",
+        "Capex Coverage" => "Ability of operating cash flow to fund asset purchases/capital expenditure",
+        "Revenue Growth" => "Increase in sales compared to previous period",
+        "COGS Growth" => "Increase in direct product/service costs",
+        "Overheads Growth" => "Increase in fixed operating expenses",
+        "Operating Profit%" => "Operating profit earned from every ₹1 of sales",
+        "Net Profit%" => "Final profit earned from every ₹1 of sales",
+        "Interest Cover" => "Ability to pay interest from operating profits",
+        "Breakeven Sales" => "Minimum sales required to avoid losses",
+        "Working Capital per ₹100" => "Amount of working capital required for every ₹100 sales",
+        "Working Capital Turnover" => "Sales generated from working capital invested",
+        "Marginal Cash Flow" => "Additional cash generated from additional sales ",
+        "Other Capital %" => "Dependence on external/non-owner capital",
+        "Other Capital Turnover" => "Sales generated from borrowed/external capital",
+        "Net Operating Assets %" => "Portion of sales tied up in operating assets",
+        "Return on Capital" => "Profit earned per ₹1 of total capital invested",
+        "Operating Cash Flow" => "Actual cash generated from core business operations",
+        "Operating Cash Profit" => "Cash profit generated after operational expenses",
+        "Debt to Capital" => "Of total money running the business, how much is borrowed",
+        "Debt Payback" => "Number of months required to repay debt from cash profits",
     ],
 
     'kpi_bl_pl_items' => [
@@ -115,8 +153,8 @@ return [
         'employee_benefit_expenses' => 'Employee Benefit Expenses', 
         'selling_general_and_administrative_expenses' => 'Selling, General and Administrative Expenses', 
         'other_expenses' => 'Other Expenses', 
-        'depreciation_amortization' => 'Depreciation & Amortization', 
-        'interest_bank_charges' => 'Interest & Bank Charges', 
+        'depreciation_amortization' => 'Depreciation', 
+        'interest_bank_charges' => 'Finance Cost', 
         'other_non_operating_income' => 'Other Non Operating Income',  
         'other_non_operating_expenses' => 'Other Non Operating Expenses', 
         'exceptional_extraordinary_income' => 'Extraordinary Income', 
@@ -163,8 +201,8 @@ return [
         'expense||gross_profit' => 'Gross Profit',
         'expense||employee_benefit_expenses' => 'Employee Benefit Expenses',
         'expense||selling_general_and_administrative_expenses' => 'Selling, General and Administrative Expenses',        
-        'expense||depreciation_amortization' => 'Depreciation & Amortization',
-        'expense||interest_bank_charges' => 'Interest & Bank Charges',
+        'expense||depreciation_amortization' => 'Depreciation',
+        'expense||interest_bank_charges' => 'Finance Cost',
         'expense||other_non_operating_expenses' => 'Other Non Operating Expenses',
         'expense||exceptional_extraordinary_expense' => 'Exceptional/Extraordinary Expense',
         'expense||current_tax' => 'Current Tax',
@@ -334,14 +372,14 @@ return [
         [
             'data' => [
                 'items' => [
-                    'depreciation_amortization' => [ 'label' => 'Depreciation & Amortization', 'bold' => false, 'pl' => true, 'bl_rule' => false ],                                        
+                    'depreciation_amortization' => [ 'label' => 'Depreciation', 'bold' => false, 'pl' => true, 'bl_rule' => false ],                                        
                 ],
             ],
             'final' => [
                 [
                     'bold' => true,
                     'label' => 'PBIT',
-                    'items' => [ 'EBITDA', 'Depreciation & Amortization' ],
+                    'items' => [ 'EBITDA', 'Depreciation' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -349,14 +387,14 @@ return [
         [
             'data' => [
                 'items' => [
-                    'interest_bank_charges' => [ 'label' => 'Interest & Bank Charges', 'bold' => false, 'pl' => true, 'bl_rule' => false ],                                        
+                    'interest_bank_charges' => [ 'label' => 'Finance Cost', 'bold' => false, 'pl' => true, 'bl_rule' => false ],                                        
                 ],
             ],
             'final' => [
                 [
                     'bold' => true,
                     'label' => 'Profit after Interest and before Tax',
-                    'items' => [ 'PBIT', 'Interest & Bank Charges' ],
+                    'items' => [ 'PBIT', 'Finance Cost' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -377,7 +415,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Exceptional/Extraordinary Items and Tax',
+                    'label' => 'Profit before exceptional items',
                     'items' => [ 'Profit after Interest and before Tax', 'Other Non Operating Income', 'Other Non Operating Expenses' ],
                     'operators' => [ '+', '+', '-' ],
                 ]                
@@ -395,7 +433,7 @@ return [
                 [
                     'bold' => true,
                     'label' => 'PBT',
-                    'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
+                    'items' => [ 'Profit before exceptional items', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
             ]
@@ -416,7 +454,7 @@ return [
                 ],
                 [
                     'bold' => true,
-                    'label' => 'Retained Dividend Paid',
+                    'label' => 'Dividend Paid',
                     'items' => [],
                     'direct' => true,
                     'value' => 0,
@@ -425,7 +463,7 @@ return [
                 [
                     'bold' => true,
                     'label' => 'Retained Profit',
-                    'items' => [ 'Profit after Tax', 'Retained Dividend Paid' ],
+                    'items' => [ 'Profit after Tax', 'Dividend Paid' ],
                     'operators' => [ '+', '-'],
                 ]                
             ]
@@ -481,14 +519,14 @@ return [
         [
             'data' => [
                 'items' => [
-                    'depreciation_amortization' => [ 'label' => 'Depreciation & Amortization',  'bold' => false, 'pl' => true, 'r_type' => 'pl', 'bl_rule' => false ],                                        
+                    'depreciation_amortization' => [ 'label' => 'Depreciation',  'bold' => false, 'pl' => true, 'r_type' => 'pl', 'bl_rule' => false ],                                        
                 ],
             ],
             'final' => [
                 [
                     'bold' => true,
                     'label' => 'Operating Profit',
-                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation & Amortization' ],
+                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation' ],
                     'operators' => [ '+', '-', '-' ],
                 ]                
             ]
@@ -496,14 +534,14 @@ return [
         [
             'data' => [
                 'items' => [
-                    'interest_bank_charges' => [ 'label' => 'Interest & Bank Charges', 'bold' => false, 'pl' => true, 'r_type' => 'pl', 'bl_rule' => false ],                                        
+                    'interest_bank_charges' => [ 'label' => 'Finance Cost', 'bold' => false, 'pl' => true, 'r_type' => 'pl', 'bl_rule' => false ],                                        
                 ],
             ],
             'final' => [
                 [
                     'bold' => true,
                     'label' => 'Profit after Interest and before Tax',
-                    'items' => [ 'Operating Profit', 'Interest & Bank Charges' ],
+                    'items' => [ 'Operating Profit', 'Finance Cost' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -526,7 +564,7 @@ return [
             'final' => [
                 [
                     'bold' => true,
-                    'label' => 'Profit before Exceptional/Extraordinary Items and Tax',
+                    'label' => 'Profit before exceptional items',
                     'items' => [ 'Profit after Interest and before Tax', 'Total Other Non Operating Income', 'Total Non Operating Expenses' ],
                     'operators' => [ '+', '+', '-' ],
                 ]                
@@ -543,7 +581,7 @@ return [
                 [
                     'bold' => true,
                     'label' => 'PBT',
-                    'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
+                    'items' => [ 'Profit before exceptional items', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
             ]
@@ -866,7 +904,7 @@ return [
         [
             'data' => [
                 'items' => [
-                    'depreciation_amortization' => [ 'label' => 'Depreciation & Amortization', 'download_tr_hide' => true,  'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
+                    'depreciation_amortization' => [ 'label' => 'Depreciation', 'download_tr_hide' => true,  'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
@@ -874,7 +912,7 @@ return [
                     'bold' => true,
                     'hide_tr' => true,
                     'label' => 'Operating Profit',
-                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation & Amortization' ],
+                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation' ],
                     'operators' => [ '+', '-', '-' ],
                 ]                
             ]
@@ -882,7 +920,7 @@ return [
         [
             'data' => [
                 'items' => [
-                    'interest_bank_charges' => [ 'label' => 'Interest & Bank Charges', 'download_tr_hide' => true, 'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
+                    'interest_bank_charges' => [ 'label' => 'Finance Cost', 'download_tr_hide' => true, 'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
@@ -890,7 +928,7 @@ return [
                     'bold' => true,
                     'hide_tr' => true,
                     'label' => 'Profit after Interest and before Tax',
-                    'items' => [ 'Operating Profit', 'Interest & Bank Charges' ],
+                    'items' => [ 'Operating Profit', 'Finance Cost' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -914,7 +952,7 @@ return [
                 [
                     'bold' => true,
                     'hide_tr' => true,
-                    'label' => 'Profit before Exceptional/Extraordinary Items and Tax',
+                    'label' => 'Profit before exceptional items',
                     'items' => [ 'Profit after Interest and before Tax', 'Total Other Non Operating Income', 'Total Non Operating Expenses' ],
                     'operators' => [ '+', '+', '-' ],
                 ]                
@@ -932,7 +970,7 @@ return [
                     'bold' => true,
                     'label' => 'PBT',
                     'hide_tr' => true,
-                    'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
+                    'items' => [ 'Profit before exceptional items', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
             ]
@@ -1180,7 +1218,7 @@ return [
         [
             'data' => [
                 'items' => [
-                    'depreciation_amortization' => [ 'label' => 'Depreciation & Amortization', 'download_tr_hide' => true,  'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
+                    'depreciation_amortization' => [ 'label' => 'Depreciation', 'download_tr_hide' => true,  'bold' => false, 'pl' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
@@ -1188,7 +1226,7 @@ return [
                     'bold' => true,
                     'label' => 'Operating Profit',
                      'hide_tr' => true, 
-                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation & Amortization' ],
+                    'items' => [  'Gross Profit', 'Overheads', 'Depreciation' ],
                     'operators' => [ '+', '-', '-' ],
                 ]                
             ]
@@ -1197,7 +1235,7 @@ return [
         [
             'data' => [
                 'items' => [
-                    'interest_bank_charges' => [ 'label' => 'Interest & Bank Charges', 'bold' => false, 'download_tr_hide' => true, 'pl' => true, 'r_type' => 'pl' ],                                        
+                    'interest_bank_charges' => [ 'label' => 'Finance Cost', 'bold' => false, 'download_tr_hide' => true, 'pl' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
@@ -1205,7 +1243,7 @@ return [
                     'bold' => true,
                     'hide_tr' => true,
                     'label' => 'Profit after Interest and before Tax',
-                    'items' => [ 'Operating Profit', 'Interest & Bank Charges' ],
+                    'items' => [ 'Operating Profit', 'Finance Cost' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -1229,7 +1267,7 @@ return [
                 [
                     'bold' => true,
                     'hide_tr' => true,
-                    'label' => 'Profit before Exceptional/Extraordinary Items and Tax',
+                    'label' => 'Profit before exceptional items',
                     'items' => [ 'Profit after Interest and before Tax', 'Total Other Non Operating Income', 'Total Non Operating Expenses' ],
                     'operators' => [ '+', '+', '-' ],
                 ]                
@@ -1247,7 +1285,7 @@ return [
                     'bold' => true,
                     'label' => 'PBT',
                     'hide_tr' => true,
-                    'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
+                    'items' => [ 'Profit before exceptional items', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
             ]
@@ -1616,14 +1654,14 @@ return [
         [
             'data' => [
                 'items' => [
-                    'depreciation_amortization' => [ 'label' => 'Depreciation & Amortization',  'bold' => false, 'pl' => true,  'download_tr_hide' => true, 'r_type' => 'pl' ],                                        
+                    'depreciation_amortization' => [ 'label' => 'Depreciation',  'bold' => false, 'pl' => true,  'download_tr_hide' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
                 [
                     'bold' => false,
                     'label' => 'Overheads including depreciation',
-                    'items' => [  'Overheads', 'Depreciation & Amortization' ],
+                    'items' => [  'Overheads', 'Depreciation' ],
                     'operators' => [ '+', '+' ],
                 ],
                 [
@@ -1662,7 +1700,7 @@ return [
                 [
                     'bold' => false,
                     'label' => 'EBITDA',
-                    'items' => [  'Operating Profit', 'Depreciation & Amortization' ],
+                    'items' => [  'Operating Profit', 'Depreciation' ],
                     'operators' => [ '+', '+', ],
                 ]                
             ]
@@ -1670,7 +1708,7 @@ return [
         [
             'data' => [
                 'items' => [
-                    'interest_bank_charges' => [ 'label' => 'Interest & Bank Charges', 'bold' => false, 'download_tr_hide' => true,  'pl' => true, 'r_type' => 'pl' ],                                        
+                    'interest_bank_charges' => [ 'label' => 'Finance Cost', 'bold' => false, 'download_tr_hide' => true,  'pl' => true, 'r_type' => 'pl' ],                                        
                 ],
             ],
             'final' => [
@@ -1678,7 +1716,7 @@ return [
                     'bold' => false,
                     'hide_tr' => true,
                     'label' => 'Profit after Interest and before Tax',
-                    'items' => [ 'Operating Profit', 'Interest & Bank Charges' ],
+                    'items' => [ 'Operating Profit', 'Finance Cost' ],
                     'operators' => [ '+', '-' ],
                 ]                
             ]
@@ -1702,7 +1740,7 @@ return [
                 [
                     'bold' => false,
                     'hide_tr' => true,
-                    'label' => 'Profit before Exceptional/Extraordinary Items and Tax',
+                    'label' => 'Profit before exceptional items',
                     'items' => [ 'Profit after Interest and before Tax', 'Total Other Non Operating Income', 'Total Non Operating Expenses' ],
                     'operators' => [ '+', '+', '-' ],
                 ]                
@@ -1720,7 +1758,7 @@ return [
                     'bold' => false,
                     'label' => 'PBT',
                     'hide_tr' => true,
-                    'items' => [ 'Profit before Exceptional/Extraordinary Items and Tax', 'Extraordinary Income', 'Extraordinary Expense' ],
+                    'items' => [ 'Profit before exceptional items', 'Extraordinary Income', 'Extraordinary Expense' ],
                     'operators' => [ '+', '+', '+', '-' ],
                 ]                
             ]
